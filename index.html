@@ -6,7 +6,6 @@
     <meta charset=utf-8>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
- 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -15,9 +14,14 @@
 	<h1>Täppan - hiss eller trappa!?</h1>
 	<p> Detta är ett projekt i TNM095 <p>
 
-	<p> Antal personer som går till hissen: <div id="personerihissen"></div>
-	</p>
+	<p id="capacity"></p>
+	<p id="group"></p>
 	
+	<!--Knapp som lägger till en grupp-->
+	<button type="button" onclick="decision()">Ny grupp</button>
+
+	<!--Knapp resetar allt-->
+	<button type="button" onclick="reset()">Starta om</button>
 
 <script src="js/main.js"></script>
 </body>
