@@ -35,13 +35,14 @@
 
 	}
 
-		// Check if there are any spaces left in the elevator.
+	// Check if there are any spaces left in the elevator.
 	// Return TRUE if there are spaces left, return FALSE if the elevator is full.
 	function checkEmpty(group, freeSpaces){
  		
  		if(freeSpaces==0){
  			isEmpty = false; 
  			console.log("	Hissen är full, ta trappan.")
+ 			fullElevator();
  		}
  		else{
  			isEmpty = true; 
@@ -83,3 +84,24 @@
 	}
 
 	//Queue to the elevator
+
+	//Elevator leaves
+	function emptyTheElevator(){
+		implement(); 
+		console.log("Hissen är tillbaka."); 
+		alert('Hissen är tillbaka');
+
+	}
+
+	//Check if the elevator is full
+	function fullElevator () {
+		console.log("Hissen lämnar éntreplan...")
+
+		//call function 'emptyTheElevator' after 3 seconds
+		window.setTimeout(emptyTheElevator(), 3000);	
+	}
+
+
+			
+			
+		
