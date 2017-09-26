@@ -10,36 +10,65 @@
 <html lang="en">
 
 <head>
+
     <meta charset=utf-8>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 
-	<h1>Täppan - hiss eller trappa!?</h1>
-	<p> Detta är ett projekt i TNM095 <p>
+	<div class="container">
+	  	<h1>Täppan - hiss eller trappa!?</h1>
+		<p> Detta är ett projekt i TNM095 <p>
 
+	  	<div class="row">
+		    <div class="col-md-6" style="border: 2px solid black">
+		      <h3>Canvas</h3>
+		      <div id="canvas"></div>
+		      
+		    </div>
+		    <div class="col-md-6" style="border: 2px solid black">
+			    <h3>GUI</h3>  
+			    <div id="GUI"></div>
+			    <!-- Display capacity of the elevator -->
+				<p id="capacity"></p>
+				<!-- Display number of people that wants to enter the elevator -->
+				<p id="group"></p>
+				
+				<!--Button to add a group-->
+				<button type="button" onclick="decision()">Ny grupp</button>
 
+				<!--Button to reset everything-->
+				<button type="button" onclick="reset()">Starta om</button>
 
-	<!-- Display capacity of the elevator -->
-	<p id="capacity"></p>
-	<!-- Display number of people that wants to enter the elevator -->
-	<p id="group"></p>
-	
-	<!--Button to add a group-->
-	<button type="button" onclick="decision()">Ny grupp</button>
+				<p>Round Range Slider: Range 1-10</p>
+				<div id="slidecontainer">
+				  <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
+				  <p>Value: <span id="demo"></span></p>
+				</div>
+		    </div>
+	  	</div>
 
-	<!--Button to reset everything-->
-	<button type="button" onclick="reset()">Starta om</button>
+  		<div class="row">
+  		
+  		</div>
 
-	<p>Round Range Slider: Range 1-10</p>
-	<div id="slidecontainer">
-	  <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
-	  <p>Value: <span id="demo"></span></p>
 	</div>
 
+<<<<<<< HEAD
 
 	<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
 		<svg width="100" height="100">
@@ -50,6 +79,8 @@
 <!-- Add scripts -->
 <script src="js/BehaviorTree.js"></script>
 <script src="js/Elevator.js"></script>
+=======
+>>>>>>> 5ee0d51bf04de306e445a6693384ed49a6a7cff9
 <script src="js/main.js"></script>
 <script src="js/People.js"></script>
 
