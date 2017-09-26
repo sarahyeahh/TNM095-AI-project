@@ -31,6 +31,7 @@
 		var elevator = generateElevator(); 
 		capacity = elevator[0]; 
 		freeSpaces = elevator[1]; 
+		elevatorPeople = 0; 
 
 	}
 
