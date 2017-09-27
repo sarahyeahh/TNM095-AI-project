@@ -27,3 +27,5 @@ function decision(){
 	console.log("Platser kvar: "  + freeSpaces); 
 
 }
+
+
