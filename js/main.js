@@ -8,7 +8,9 @@
  	- reset()
 
 ***********************************************************************************************************/
-
+	var canvas = document.createElement("canvas");
+	var GUI = document.createElement("GUI");
+	
 	//Declare variables
 	var isEmpty = true; 
 	var freeSpaces = 0; //som en count
