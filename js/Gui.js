@@ -40,5 +40,3 @@
 	  output3.innerHTML = this.value;
 	}
 
-
-

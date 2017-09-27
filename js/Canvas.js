@@ -79,3 +79,28 @@
 		this.player.addListeners();
 
 	} 
+
+	/****************************************************
+		Moving circle/ball
+	****************************************************/
+	var element = document.getElementById('ball');
+    var angle = 0;
+	var x = canvas.width/2;
+	var y = canvas.height;
+    var w = 1;
+    var h = canvas.height/2;
+
+    function ballCircle() {
+        x = w + w * Math.cos(angle * Math.PI / 180);
+        y = h + h * Math.sin(angle * Math.PI / 180);
+        
+        ball.style.left = x + 'px';
+        ball.style.top = y + 'px';
+
+        angle++;
+        if (angle > 360) {
+            angle = 0;
+        }
+        setTimeout(ballCircle,20);
+    }
+	ballCircle();
