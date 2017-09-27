@@ -9,10 +9,13 @@
 
 ***********************************************************************************************************/
 
+//Attribut för grupp: Antal, stress(hastighet).
+
+
 	//Generate a group of people
 	function generatePeople(){
 
-		var max = 10; 
+		var max = 6; 
 		var min = 1; 
 		var group = Math.floor(Math.random() * (max - min + 1)) + min; 
 
@@ -22,6 +25,9 @@
 		return group; 
 
 	}
+
+
+
 
 	
 
