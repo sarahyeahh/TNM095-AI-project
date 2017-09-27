@@ -9,6 +9,8 @@
  	- generateElevator()
  	- checkEmpty(group, freeSpaces)
  	- spacesLeft(group, capacity, freeSpaces)
+ 	- emptyTheElevator()
+ 	- elevatorLeaves()
 
 ***********************************************************************************************************/
 
@@ -16,8 +18,9 @@
 	function implement (){
 
 		var elevator = generateElevator(); 
-		capacity = elevator[0]; 
-		freeSpaces = elevator[1]; 
+		elevatorID = elevator[0];
+		capacity = elevator[1]; 
+		freeSpaces = elevator[2]; 
 		elevatorPeople = 0; 
 
 	}
@@ -26,14 +29,30 @@
 	function generateElevator(){
 
 		var capacity = 5; 
-		freeSpaces = capacity; 
+		freeSpaces = capacity;
+		++elevatorID;// = allElevators.length;
+		var allElevators = []; 
 
 		//Display capacity of the elevator
 		document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + capacity + "</b> personer.";  
 
-		return [capacity, freeSpaces]; 
+		//Define elevator 
+		var elevator = [elevatorID, capacity, freeSpaces];
+		console.log(elevator);
+
+		//Create the object 'elevator', it has the values 'capacity', 'freeSpaces', ´'elevatorID'
+		//var elevatorObject = {elevatorID: elevatorID, capacity: capacity, freeSpaces: freeSpaces};
+		//console.log(elevatorObject);
+
+		//Add elevator in array of elevators
+		allElevators.push(elevator);
+
+		console.log("Befintliga hissar: "+ allElevators + " [capacity, freeSpaces, ID]");
+
+		return elevator; 
 
 	}
+
 
 	// Check if there are any spaces left in the elevator.
 	// Return TRUE if there are spaces left, return FALSE if the elevator is full.
@@ -89,7 +108,7 @@
 	function emptyTheElevator(){
 		implement(); 
 		console.log("Hissen är tillbaka."); 
-		alert('Hissen är tillbaka');
+		//alert('Hissen är tillbaka');
 
 	}
 

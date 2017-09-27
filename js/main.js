@@ -15,6 +15,8 @@
 	var group = 0; 
 	var capacity = 0; 
 	var elevatorPeople = 0; 
+	var elevatorID = -1;
+	var allElevators = [];
 
 	implement(); 
 
