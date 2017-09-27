@@ -5,52 +5,77 @@
  	File for functions related to the canvas.
 
 ***********************************************************************************************************/
+	var context = canvas.getContext('2d');
 
-
-//Draw people visually
-
-function createCanvas(width, height) {
-
-
-    //var canvas = document.getElementById('canvas');
-/*      var context = canvas.getContext('2d');
-      var centerX = canvas.width / 2;
-      var centerY = canvas.height / 2;
-      var radius = 70;
-
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      context.fillStyle = 'green';
-      context.fill();
-      context.lineWidth = 5;
-      context.strokeStyle = '#003300';
-      context.stroke();
-*/
-
-
-		//this.canvas = document.createElement("canvas");
-
-		//Höjd bestäms i css. 
-	/*	this.canvas.width = width;
-		this.canvas.height = height;
-*/
 	
-	//	this.people = new createDot(3, 3, "red", 5 , 5 , this);
+	function draw() {
+	  //var canvas = document.getElementById('canvas');
+	  	if (canvas.getContext) {
+	  		
+		    var x = canvas.width/2;
+		    var y = canvas.height;
+		    var r = 10;
+		    var speed = 3;
 
-	/*	this.context = this.canvas.getContext("2d");
-		document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-		this.gridSize = 9;
-		this.largeGridSize = 3;
-		this.grid = new Grid(this.gridSize, this.canvas.width/this.gridSize, this.canvas.height/this.gridSize);
-		this.largeGrid = new Grid(this.largeGridSize, this.canvas.width/this.largeGridSize, this.canvas.height/this.largeGridSize);
+	    	//window.requestAnimationFrame(draw);
+
+	    	window.addEventListener("keydown", function(e) {
+		    switch (e.key) {
+		        case 'ArrowUp':
+		            if (y > r) y -= speed;
+		            console.log("upp");
+		            break;
+		        case 'ArrowDown':
+		            if (y < canvas.height) y += speed;
+		            console.log("ner");
+		            break;
+		        case 'ArrowLeft':
+		            if (x > r) x -= speed;
+		            console.log("vänster");
+		            break;
+		        case 'ArrowRight':
+		            if (x < canvas.width/2) x += speed;
+		            console.log("höger");
+		            break;
+		    	}
+			});
+
+			drawRectangle();
+
+			//y=150 till en början, ökar y-värdet till 160. 
+			while(y<160){	
+				drawCircle(x, y, r); 
+				y++;
+			}
+		    	
+		}
+	}
+
+	function drawCircle(x, y, r){
+
+		//Röd prick
+	    context.beginPath();
+	   	context.arc(x, y, r, 0, 2 * Math.PI, true);
+	    context.fillStyle = 'red';
+	    context.fill();
+	    context.lineWidth = 2;
+	    context.strokeStyle = 'red';
+	    context.stroke();
 		
-		this.player = new Player(3, 3, "blue", Math.floor(Math.random() * width), Math.floor(Math.random() * height), this);
-		this.enemy = new Bot(3, 3, "red", Math.floor(Math.random() * width), Math.floor(Math.random() * height), this, this.player);
-		this.player.addListeners();*/
-} 
+		//console.log(y);  		
 
+	}	
 
+	function drawRectangle(){
 
-function createDot(){
+		//Hissen/blå rektangel
+		context.fillStyle = 'blue';
+	    context.fillRect(canvas.width/2-25, 0, 50, 15);
 
-}
+	}
+
+	function createCanvas(width, height) {
+
+		this.player.addListeners();
+
+	} 

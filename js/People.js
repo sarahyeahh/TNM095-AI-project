@@ -9,26 +9,6 @@
 
 ***********************************************************************************************************/
 
-
-/*	constructor(width, height, color, x, y, canvas) {
-
-		this.canvas = canvas;
-		this.width = width;
-		this.height = height;
-		//this.speed = 2; //Stress
-		this.color = color;
-	//	this.addListeners();
-		//this.ctx = this.canvas.context;
-	
-		//this.currentGridSection = -1;
-		//this.nextGridSectionIndex = -1;
-		this.position = {
-		    x: x,
-		    y: y
-		};
-
-	}*/
-
 	//Generate a group of people
 	function generatePeople(){
 
