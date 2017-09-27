@@ -20,12 +20,12 @@
 /*------------------------------------------------------*/
 
 #slidecontainer {
-    width: 15%;
+    width: 25%;
 }
 
 .slider {
     -webkit-appearance: none;
-    width: 100%;
+    width: 15%;
     height: 15px;
     border-radius: 5px;
     background: #d3d3d3;
@@ -55,6 +55,11 @@
     border-radius: 50%;
     background: #4CAF50;
     cursor: pointer;
+}
+
+#GUIparameters{
+    margin-right:20px;
+    width: 30%;
 }
 
 

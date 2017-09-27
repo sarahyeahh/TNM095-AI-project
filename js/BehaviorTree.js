@@ -67,6 +67,7 @@ var newSpacesLeft = 0;
 			}
 		}
 
+
 		//Steg : Hur stor grupp? 
 	/*	if(group<2){
 			console.log("Ta hissen?"); 
@@ -80,5 +81,5 @@ var newSpacesLeft = 0;
 		}
 	*/
 
-		
 	}
+
