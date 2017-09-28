@@ -4,6 +4,9 @@
 
  	Behavior Tree.
 
+ 	The file includes the functions:
+ 	- decision()
+
 ***********************************************************************************************************/
 var speed = 1; 
 var tired = 0.4; 
@@ -37,7 +40,7 @@ var newSpacesLeft = 0;
 			console.log("Platser kvar: "  + newSpacesLeft); 
 		}
 		else{
-			//Wait? 
+			//Wait
 			console.log("Tyvärr du måste vänta...");
 			//Steg 3: När kommer nästa? 
 			//TODO

@@ -4,52 +4,71 @@
 
  	File for functions related to the canvas.
 
+ 	The file includes the functions:
+ 	- getSpeed()
+ 	- draw()
+ 	- drawCircle()
+ 	- drawRectangle()
+ 	- ballCircle()
+
 ***********************************************************************************************************/
+	var canvas = document.getElementById('canvas');
 	var context = canvas.getContext('2d');
 
-	
+ 	var x = canvas.width/2;
+    var y = canvas.height;
+    var r = 10;
+    var speed = 0;
+
+	function getSpeed(speedValue){
+		speed = speedValue;
+		console.log("Speed: " +  speed);
+	}
+
 	function draw() {
 	  //var canvas = document.getElementById('canvas');
 	  	if (canvas.getContext) {
+
+	  		drawRectangle();
 	  		
-		    var x = canvas.width/2;
-		    var y = canvas.height;
-		    var r = 10;
-		    var speed = 3;
-
 	    	//window.requestAnimationFrame(draw);
-
-	    	window.addEventListener("keydown", function(e) {
+			
+	   /* 	window.addEventListener("keydown", function(e) {
 		    switch (e.key) {
 		        case 'ArrowUp':
-		            if (y > r) y -= speed;
-		            console.log("upp");
+		        	if(y<160){
+			            y = y-speed;
+			            y= Math.floor(y);
+			            drawCircle(x, y, r); 
+			           // console.log("upp " + y);
+		        	}
 		            break;
 		        case 'ArrowDown':
-		            if (y < canvas.height) y += speed;
-		            console.log("ner");
-		            break;
-		        case 'ArrowLeft':
-		            if (x > r) x -= speed;
-		            console.log("vänster");
-		            break;
-		        case 'ArrowRight':
-		            if (x < canvas.width/2) x += speed;
-		            console.log("höger");
+		            if(y>150){
+			            y = y + speed;
+			            y= Math.floor(y);
+			            drawCircle(x, y, r); 
+			            //console.log("ner " + y);
+		        	}
 		            break;
 		    	}
 			});
 
-			drawRectangle();
+			*/
 
 			//y=150 till en början, ökar y-värdet till 160. 
 			while(y<160){	
+
 				drawCircle(x, y, r); 
 				y++;
 			}
+
+
 		    	
 		}
 	}
+
+	draw(); 
 
 	function drawCircle(x, y, r){
 
@@ -61,6 +80,8 @@
 	    context.lineWidth = 2;
 	    context.strokeStyle = 'red';
 	    context.stroke();
+
+	    // setTimeout(drawCircle,20);
 		
 		//console.log(y);  		
 
@@ -74,19 +95,13 @@
 
 	}
 
-	function createCanvas(width, height) {
-
-		this.player.addListeners();
-
-	} 
-
 	/****************************************************
 		Moving circle/ball
 	****************************************************/
 	var element = document.getElementById('ball');
     var angle = 0;
-	var x = canvas.width/2;
-	var y = canvas.height;
+	//var x = canvas.width/2;
+	//var y = canvas.height;
     var w = 1;
     var h = canvas.height/2;
 
@@ -103,4 +118,5 @@
         }
         setTimeout(ballCircle,20);
     }
-	ballCircle();
+
+	ballCircle(); 

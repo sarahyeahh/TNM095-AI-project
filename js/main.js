@@ -10,7 +10,6 @@
 ***********************************************************************************************************/
 	//var canvas = document.createElement("canvas");
 	var GUI = document.createElement("GUI");
-	var canvas = document.getElementById('canvas');
 	
 	//Declare variables
 	var isEmpty = true; 

@@ -27,6 +27,7 @@
 
 	slider2.oninput = function() {
 	  output2.innerHTML = this.value;
+	  getSpeed(this.value); 
 	}
 
 	/****************************************************
