@@ -27,9 +27,8 @@
 
 		//Display number of people that wants to enter the elevator
 		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + group + "</b>";  
-		
-		return group; 
 
+		return group; 
 	}
 
 
