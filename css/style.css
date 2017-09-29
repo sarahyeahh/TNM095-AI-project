@@ -16,6 +16,7 @@
     border-radius:50%;
     position:absolute;
     left: 108px;
+    z-index: -1; /* position behind canvas */
 }
 
 /*--------------------------------------------------------

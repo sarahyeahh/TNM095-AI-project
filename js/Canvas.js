@@ -99,31 +99,30 @@
 		Moving circle/ball
 	****************************************************/
 	var ball = document.getElementById('ball');
-    var angle = 0;
+    var angle = 102; //default:0 //the angle corresponding to where the ball begins to move
 	var ball_x = canvas.width/2;
 	var ball_y = canvas.height;
     var w = 1;
     var h = canvas.height/2;
 
-    //Draw the circle
+    //Draw the moving circle/ball
     function ballCircle() {
-        //ball_x = w + w * Math.cos(angle * Math.PI / 180);   //horisontal movement (x)
-        ball_y = h + h * Math.sin(angle * Math.PI / 180);	//vertical movement (y)
+    	//Draw the ball as a circle
+        ball_x = w + w * Math.cos(angle * Math.PI / 180);   //horisontal movement (x)
+        ball_y = h + h * Math.sin(angle * Math.PI / 180);	  //vertical movement (y)
         
         //The top property sets or returns the top position of a positioned element.
-		//This property specifies the top position of the element including padding, scrollbar, border and margin.
-        //ball.style.left = ball_x + 'px';
         ball.style.top = ball_y + 'px';
         ball.style.bottom = ball_y/2 + 'px';
 
-        //Increase angle to draw a circle of 360 degrees
+        //Increase angle to move the circle 360 degrees
         angle++;
-        if (angle > 360) {
-            angle = 0;
+        if (angle > 192) {  //default: 360
+            angle = 192;	//the angle corresponding to where the elevator is/ball stops moving
         }
 
         //Call function 'ballCircle' after 80 milliseconds
-        setTimeout(ballCircle,60); /*default: 20*/
+        setTimeout(ballCircle,50); //default: 20, higher value = slower movement
     }
 
 	ballCircle(); 
