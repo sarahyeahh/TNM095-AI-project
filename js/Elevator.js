@@ -14,6 +14,16 @@
 
 ***********************************************************************************************************/
 
+	//Prototype constructor for elevator. 
+	function Elevator(capacity, allElevators, elevator, elevatorID) {
+	   this.capacity = capacity; 
+	   this.freeSpaces = capacity; 
+	   this.allElevators = []; 
+	   this.elevator = elevator; 
+	   this.elevatorID = 0; 
+	   this.elevatorPeople = 0; 
+	}
+
 	//Things that will only happen once.
 	function implement (){
 
@@ -22,7 +32,6 @@
 		capacity = elevator[1]; 
 		freeSpaces = elevator[2]; 
 		elevatorPeople = 0; 
-
 	}
 
 	//Generate elevator 

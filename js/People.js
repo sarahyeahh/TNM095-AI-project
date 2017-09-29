@@ -11,6 +11,12 @@
 
 //Attribut för grupp: Antal, stress(hastighet).
 
+	//Prototype constructor
+	function People(max, min, group){
+		this.max = max; 
+		this.min = min; 
+		this.group = group; 
+	}
 
 	//Generate a group of people
 	function generatePeople(){
