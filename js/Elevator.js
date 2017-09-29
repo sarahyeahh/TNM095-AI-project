@@ -14,6 +14,16 @@
 
 ***********************************************************************************************************/
 
+	//Prototype constructor for elevator. 
+	function Elevator(capacity, allElevators, elevator, elevatorID) {
+	   this.capacity = capacity; 
+	   this.freeSpaces = capacity; 
+	   this.allElevators = []; 
+	   this.elevator = elevator; 
+	   this.elevatorID = 0; 
+	   this.elevatorPeople = 0; 
+	}
+
 	//Things that will only happen once.
 	function implement (){
 
@@ -60,7 +70,6 @@
 		return elevator; 
 	}
 
-
 	// Check if there are any spaces left in the elevator.
 	// Return TRUE if there are spaces left, return FALSE if the elevator is full.
 	function checkEmpty(group, freeSpaces){
@@ -71,7 +80,7 @@
  		if(freeSpaces==0){
  			isEmpty = false; 
  			console.log("	Hissen är full, ta trappan.")
- 			fullElevator();
+ 			//fullElevator();
  		}
  		else{
  			isEmpty = true; 
@@ -83,7 +92,6 @@
 
 	//Return how many spaces there are left. 
 	function spacesLeft(group, freeSpaces){
-
 	
 		//Temporary variables
 		var groupTemp = group; 
@@ -93,12 +101,9 @@
 		freeTemp -= groupTemp; 
 
 		return freeTemp; 
-		
 	}
 
 	function takeElevator(group, freeTemp){
-
-    	//console.log("group: " + group + " freeTemp: " + freeTemp);
 
 		//If freeTemp is negative, there are not spaces enough to fit the whole group in the elevator.
 		if(freeTemp < 0){
@@ -113,44 +118,44 @@
 			//Reset group. 
 			group = 0; 
 
-			emptyTheElevator();
+			//The elevator is full
+			fullElevator(); 
 		}
 		//freeTemp is positive and there are enough free spaces to fit the group in the elevator.
 		else{
 			//The group can enter the elevator and the number of free spaces decreases. 
 			console.log("	Grattis du fick plats i hissen!");
-
-			//console.log( " Old freeSpaces: " + freeSpaces + " freeTemp " + freeTemp);
 			freeSpaces -= group; //ändra till antal människor sen. 
 			elevatorPeople += group; 
-			//console.log( " New freeSpaces: " + freeSpaces + " freeTemp " + freeTemp);
 			
 			//Reset group. 
 			group = 0; 
 			console.log("Antal personer i hissen nu: "+ elevatorPeople )
 		}
 
-		
 		return freeSpaces; 
-
 	}
 
 	//Queue to the elevator
 
 	//Elevator leaves
 	function emptyTheElevator(){
-		implement(); 
-		console.log("Hissen är tillbaka."); 
-		//alert('Hissen är tillbaka');
-
+		
+		//Väntar 3 sekunder innan hissen kommer tillbaka tom.
+		setTimeout(function(){ 
+			//console.log("Hissen är tillbaka."); 
+        	alert('Hissen är tillbaka');
+        	implement(); 
+    	}, 3000);  
 	}
 
 	//Check if the elevator is full
-	function fullElevator () {
+	function fullElevator(){
 		console.log("Hissen lämnar éntreplan...")
 
 		//call function 'emptyTheElevator' after 3 seconds
-		window.setTimeout(emptyTheElevator(), 3000);	
+		//window.setTimeout(emptyTheElevator(), 3000);	
+		emptyTheElevator();
 	}
 
 
