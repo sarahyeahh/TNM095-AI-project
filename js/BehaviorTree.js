@@ -8,6 +8,9 @@
  	- decision()
 
 ***********************************************************************************************************/
+//TODO 
+//Hämta variablerna från någon annanstans. 
+
 var speed = 1; 
 var tired = 0.4; 
 var stressed = 0.7; 
@@ -20,7 +23,7 @@ var newSpacesLeft = 0;
 		group = generatePeople(); 
 		console.log("Grupp med " + group + " personer."); 
 
-		//Steg 0: Är hissen här? 
+		//Steg 0: Är hissen här? (Bra att ha om flera hissar.)
 		//isHere = checkHere(); 
 
 		//Steg 1: Finns lediga platser? 
@@ -47,42 +50,24 @@ var newSpacesLeft = 0;
 			//getWaitingtime()
 
 			//While waiting on an empty elevator. 
-			if(!isEmpty){
-				
-				//Steg 4A: Trött?
-				if(tired>0.5){
 					
-					speed = speed-0.3; //Går långsammare.
-					console.log("Ta hissen, du är " + speed*100 + "% pigg."); 
+			//Steg 4A: Trött?
+			if(tired>0.5){
+				
+				speed = speed-0.3; //Går långsammare.
+				console.log("Ta hissen, du är " + speed*100 + "% pigg."); 
+			}
+			else{
+				//Steg 4B: Stressad? 
+				if(stressed>0.5){
+					
+					speed = speed+0.3; //Går långsammare.
+					console.log("Ta trappan du är " + speed*100 + "% pigg."); 
 				}
 				else{
-					//Steg 4B: Stressad? 
-					if(stressed>0.5){
-						
-						speed = speed+0.3; //Går långsammare.
-						console.log("Ta trappan du är " + speed*100 + "% pigg."); 
-					}
-					else{
-
-						console.log("Ta hissen."); 
-					}	
+					console.log("Ta hissen."); 
 				}	
-			}
+			}		
 		}
-
-
-		//Steg : Hur stor grupp? 
-	/*	if(group<2){
-			console.log("Ta hissen?"); 
-		} 
-		else if(group<5){
-			console.log("Ta hissen?"); 
-		}
-		else{
-			//Ta trappen!
-			console.log("Ta trappan"); 
-		}
-	*/
-
 	}
 
