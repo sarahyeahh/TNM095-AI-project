@@ -26,33 +26,39 @@
 
 	//Things that will only happen once.
 	function implement (){
+		elevatorArray();
 
 		var elevator = generateElevator(); 
 		elevatorID = elevator[0];
 		capacity = elevator[1]; 
 		freeSpaces = elevator[2]; 
-		elevatorPeople = 0; 
-		elevatorArray();
+		activated = elevator[3];
+		elevatorPeople = 0;
 	}
 
 	//Create an array of elevator objects
 	//Properties of an elevator: elevatorID, capacity, freeSpaces
 	function elevatorArray(){
-		//Add elevators in the array allElevators
-		var allElevators = []; 
+		//Add elevators in the array allElevators 
+		var activated = false;
 		var len = 10;
 		for (var i = 0; i < len; i++) {
 		    allElevators.push({
 		        elevatorID: i,
 		        capacity: capacity,
-		        freeSpaces: freeSpaces
+		        freeSpaces: freeSpaces,
+		        activated: activated
 		    });
 		}
 	}
 
 	//Generate elevator 
 	function generateElevator(){
-
+		//Current number of elevators
+		++nmbrOfElevators;
+		console.log("Antal hissar:" + nmbrOfElevators);
+		
+		var activated = true;
 		var capacity = 5; 
 		freeSpaces = capacity;
 		++elevatorID;// = allElevators.length;
@@ -61,7 +67,7 @@
 		document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + capacity + "</b> personer.";  
 
 		//Define elevator 
-		var elevator = [elevatorID, capacity, freeSpaces];
+		var elevator = [elevatorID, capacity, freeSpaces, activated];
 		//console.log(elevator);
 
 		//Create the object 'elevator', it has the values 'capacity', 'freeSpaces', ´'elevatorID'

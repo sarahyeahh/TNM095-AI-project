@@ -19,6 +19,7 @@
 	var elevatorPeople = 0; 
 	var elevatorID = -1;
 	var allElevators = [];
+	var nmbrOfElevators = 0;
 
 	implement(); 
 
