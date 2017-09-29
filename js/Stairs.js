@@ -7,3 +7,8 @@
 ***********************************************************************************************************/
 
 	//Generate stairs
+
+//Prototype constructor (används inte än!)
+	function Stairs(number){
+    	this.number = 1;
+    }

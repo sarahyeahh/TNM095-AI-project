@@ -20,7 +20,7 @@
 	   this.freeSpaces = capacity; 
 	   this.allElevators = []; 
 	   this.elevator = elevator; 
-	   this.elevatorID = 0; 
+	   this.elevatorID = -1; //Fortfarande kvar i main. 
 	   this.elevatorPeople = 0; 
 	}
 
