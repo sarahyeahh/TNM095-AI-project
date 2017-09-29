@@ -98,25 +98,32 @@
 	/****************************************************
 		Moving circle/ball
 	****************************************************/
-	var element = document.getElementById('ball');
+	var ball = document.getElementById('ball');
     var angle = 0;
-	//var x = canvas.width/2;
-	//var y = canvas.height;
+	var ball_x = canvas.width/2;
+	var ball_y = canvas.height;
     var w = 1;
     var h = canvas.height/2;
 
+    //Draw the circle
     function ballCircle() {
-        x = w + w * Math.cos(angle * Math.PI / 180);
-        y = h + h * Math.sin(angle * Math.PI / 180);
+        //ball_x = w + w * Math.cos(angle * Math.PI / 180);   //horisontal movement (x)
+        ball_y = h + h * Math.sin(angle * Math.PI / 180);	//vertical movement (y)
         
-        ball.style.left = x + 'px';
-        ball.style.top = y + 'px';
+        //The top property sets or returns the top position of a positioned element.
+		//This property specifies the top position of the element including padding, scrollbar, border and margin.
+        //ball.style.left = ball_x + 'px';
+        ball.style.top = ball_y + 'px';
+        ball.style.bottom = ball_y/2 + 'px';
 
+        //Increase angle to draw a circle of 360 degrees
         angle++;
         if (angle > 360) {
             angle = 0;
         }
-        setTimeout(ballCircle,20);
+
+        //Call function 'ballCircle' after 80 milliseconds
+        setTimeout(ballCircle,60); /*default: 20*/
     }
 
 	ballCircle(); 

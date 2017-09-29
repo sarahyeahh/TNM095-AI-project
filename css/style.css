@@ -12,9 +12,10 @@
 #ball {
     width:10px;
     height:10px;
-    border:5px solid #900;
+    border:6px solid #900;
     border-radius:50%;
-    position:fixed;
+    position:absolute;
+    left: 108px;
 }
 
 /*--------------------------------------------------------
