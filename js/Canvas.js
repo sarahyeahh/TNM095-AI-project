@@ -20,9 +20,33 @@
     var r = 10;
     var speed = 0;
 
+	//Prototype constructor for canvas (används inte än!)
+    function Canvas(width, height, x, y, canvas, angle){
+    	this.ctx = this.canvas.context;
+	    this.x = canvas.width/2;
+	    this.y = canvas.height;
+	    this.r = 10;
+	    this.speed = 2;
+
+	    //Nya oanvända
+	    this.angle = Math.random() * Math.PI * 2;
+	    this.moveAngle = 0;
+	    this.position = {
+		    x: xpos,
+		    y: ypos
+		};
+		this.currentGrid = -1; 
+		this.nextGrid = -1; 
+    }
+
 	function getSpeed(speedValue){
 		speed = speedValue;
 		console.log("Speed: " +  speed);
+	}
+
+	//Remove the previous dot and draw a new. 
+	function update(){
+		return 0; 
 	}
 
 	function draw() {
