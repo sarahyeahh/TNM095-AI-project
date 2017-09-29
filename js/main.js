@@ -14,9 +14,9 @@
 	//Declare variables
 	var nmbrOfElevators = 0;			//Borde vara i constructor
 	//var isEmpty = true; 
-	//var freeSpaces = 0; //som en count
+	//var freeSpaces = 0; //som en count	
 	//var group = 0; 
-	//var capacity = 0; 
+	//var capacity = 0; 	
 	//var elevatorPeople = 0; 
 	var elevatorID = -1; 				//Sätt in i en constructor! 
 	//var allElevators = [];

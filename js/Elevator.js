@@ -26,9 +26,9 @@
 
 	//Things that will only happen once.
 	function implement (){
-		elevatorArray();
+		allElevators = elevatorArray();
 
-		var elevator = generateElevator(); 
+		var elevator = generateElevator(allElevators); 
 		elevatorID = elevator[0];
 		capacity = elevator[1]; 
 		freeSpaces = elevator[2]; 
@@ -37,11 +37,16 @@
 	}
 
 	//Create an array of elevator objects
-	//Properties of an elevator: elevatorID, capacity, freeSpaces
-	function elevatorArray(){
-		//Add elevators in the array allElevators 
+	//Properties of an elevator: elevatorID, capacity, freeSpaces, activated
+	function elevatorArray(allElevators){
+		//Declare variables
+		var allElevators = [];
+		var capacity = 0;
+		var freeSpaces = capacity;
 		var activated = false;
 		var len = 10;
+
+		//Add elevators in the array allElevators
 		for (var i = 0; i < len; i++) {
 		    allElevators.push({
 		        elevatorID: i,
@@ -50,6 +55,7 @@
 		        activated: activated
 		    });
 		}
+		return allElevators;
 	}
 
 	//Generate elevator 
@@ -72,6 +78,11 @@
 
 		//Create the object 'elevator', it has the values 'capacity', 'freeSpaces', ´'elevatorID'
 		//var elevatorObject = {elevatorID: elevatorID, capacity: capacity, freeSpaces: freeSpaces};
+
+		//Update the array 'allElevators'
+		allElevators[nmbrOfElevators-1].activated = true;
+		allElevators[nmbrOfElevators-1].capacity = 5;
+		allElevators[nmbrOfElevators-1].freeSpaces = capacity;
 
 		return elevator; 
 	}
