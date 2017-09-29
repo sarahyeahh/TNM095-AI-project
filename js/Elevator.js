@@ -22,7 +22,22 @@
 		capacity = elevator[1]; 
 		freeSpaces = elevator[2]; 
 		elevatorPeople = 0; 
+		elevatorArray();
+	}
 
+	//Create an array of elevator objects
+	//Properties of an elevator: elevatorID, capacity, freeSpaces
+	function elevatorArray(){
+		//Add elevators in the array allElevators
+		var allElevators = []; 
+		var len = 10;
+		for (var i = 0; i < len; i++) {
+		    allElevators.push({
+		        elevatorID: i,
+		        capacity: capacity,
+		        freeSpaces: freeSpaces
+		    });
+		}
 	}
 
 	//Generate elevator 
@@ -31,26 +46,18 @@
 		var capacity = 5; 
 		freeSpaces = capacity;
 		++elevatorID;// = allElevators.length;
-		var allElevators = []; 
 
 		//Display capacity of the elevator
 		document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + capacity + "</b> personer.";  
 
 		//Define elevator 
 		var elevator = [elevatorID, capacity, freeSpaces];
-		console.log(elevator);
+		//console.log(elevator);
 
 		//Create the object 'elevator', it has the values 'capacity', 'freeSpaces', ´'elevatorID'
 		//var elevatorObject = {elevatorID: elevatorID, capacity: capacity, freeSpaces: freeSpaces};
-		//console.log(elevatorObject);
-
-		//Add elevator in array of elevators
-		allElevators.push(elevator);
-
-		console.log("Befintliga hissar: "+ allElevators + " [capacity, freeSpaces, ID]");
 
 		return elevator; 
-
 	}
 
 
