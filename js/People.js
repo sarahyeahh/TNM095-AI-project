@@ -13,9 +13,12 @@
 
 	//Prototype constructor
 	function People(max, min, group){
+		this.world = world; 
+		
 		this.max = max; 
 		this.min = min; 
 		this.group = group; 
+
 	}
 
 	//Generate a group of people

@@ -21,6 +21,15 @@
 	var elevatorID = -1; 				//Sätt in i en constructor! 
 	//var allElevators = [];
 
+
+//Exempel på vad som kan hämtas till de olika klasserna från index.html
+	/*var world = new World(800, 600);
+	var simulator = new Simulator(world);
+	var visualizer = new WorldVisualizer(world);
+	var statsMonitor = new StatsMonitor(world, document.body);*/
+
+	var world = new World(200, 100); 
+
 	implement(); 
 
 //Prototype constructor (not used yet)
