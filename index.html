@@ -35,7 +35,7 @@
 		<p>Detta är ett projekt i TNM095<p>
 
 	  	<div class="row">
-		    <div class="col-md-6">
+		    <div class="col-md-8">
 			    
 			    <h3>Canvas</h3>
 			    <div onload="draw();">
@@ -44,7 +44,7 @@
 				</div>
 		  
 		    </div>
-		    <div class="col-md-6" style="border: 2px solid black">
+		    <div class="col-md-4" style="border: 2px solid black">
 			    
 			    <h3>GUI</h3>  
 			    <div id="GUI"></div>
@@ -64,42 +64,28 @@
 
 				<br>
 				<h3>Interact with the system:</h3>	
-
-				<div>
-				    <div class="pull-left" id="GUIparameters">
-				        <p>Number of elevators: </p>
-				    </div>
-				    <div class="input-group" id="slidecontainer">
-				            <input type="range" min="1" max="6" value="3" class="slider" id="myElevators">
-				    </div>
-				    <div class="pull-right">
-				    	<p>Value: <span id="demo"></span></p>
-				    </div>
-				</div>
-
-				<br>
-				<div>
-				    <div class="pull-left" id="GUIparameters">
+				<!-- Parameters to be changed by user -->
+				<div class="col-md-5">
+				    <div>
+				        <p>Elevators: </p>
 				        <p>Speed: </p>
-				    </div>
-				    <div class="input-group" id="slidecontainer">
-				            <input type="range" min="1" max="10" value="5" class="slider" id="mySpeed">
-				    </div>
-				    <div class="pull-right">
-				    	<p>Value: <span id="demo2"></span></p>
+				        <p>Max. groupsize: </p>
 				    </div>
 				</div>
-
-				<br>
-				<div>
-				    <div class="pull-left" id="GUIparameters">
-				        <p>Maximum groupsize: </p>
+				<!-- Sliders -->
+				<div class="col-md-5">
+				    <div id="slidecontainer">
+				        <input type="range" min="1" max="6" value="3" class="slider" id="myElevators"><br>
+				        <input type="range" min="1" max="10" value="5" class="slider" id="mySpeed"><br>
+				        <input type="range" min="1" max="20" value="10" class="slider" id="myGroups">
 				    </div>
-				    <div class="input-group" id="slidecontainer">
-				            <input type="range" min="1" max="20" value="10" class="slider" id="myGroups">
-				    </div>
-				    <div class="pull-right">
-				    	<p>Value: <span id="demo3"></span></p>
+				</div>
+				<!-- Values from sliders -->
+				<div class="col-md-2">
+					<div>
+				    	<p><span id="demo"></span></p>
+				    	<p><span id="demo2"></span></p>
+				    	<p><span id="demo3"></span></p>
 				    </div>
 				</div>
 		    </div>
