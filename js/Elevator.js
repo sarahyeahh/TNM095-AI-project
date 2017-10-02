@@ -33,18 +33,24 @@
 		capacity = elevator[1]; 
 		freeSpaces = elevator[2]; 
 		activated = elevator[3];
+		positionX = elevator[4];
+		positionY = elevator[5];
 		elevatorPeople = 0;
 	}
 
 	//Create an array of elevator objects
 	//Properties of an elevator: elevatorID, capacity, freeSpaces, activated
 	function elevatorArray(allElevators){
-		//Declare variables
+		//Declare variables for the array
 		var allElevators = [];
+		var len = 6;
+
+		//Declare variables for the elevators
 		var capacity = 0;
 		var freeSpaces = capacity;
 		var activated = false;
-		var len = 10;
+		var positionX = 0;
+		var positionY = 0;
 
 		//Add elevators in the array allElevators
 		for (var i = 0; i < len; i++) {
@@ -52,7 +58,9 @@
 		        elevatorID: i,
 		        capacity: capacity,
 		        freeSpaces: freeSpaces,
-		        activated: activated
+		        activated: activated,
+		        positionX: 3*i,
+		        positionY: positionY
 		    });
 		}
 		return allElevators;
@@ -84,6 +92,9 @@
 		allElevators[nmbrOfElevators-1].capacity = 5;
 		allElevators[nmbrOfElevators-1].freeSpaces = capacity;
 
+		//Display array of elevators
+		console.log(allElevators);
+		
 		return elevator; 
 	}
 
