@@ -111,11 +111,12 @@
 
 	}	
 
-	function drawRectangle(){
+	function drawRectangle(x,y){
 
 		//Hissen/blå rektangel
 		context.fillStyle = 'blue';
-	    context.fillRect(canvas.width/2-25, 0, 50, 15);
+	    //context.fillRect(canvas.width/2-25, 0, 30, 8);
+	    context.fillRect(x, y, 20, 6);
 
 	}
 
