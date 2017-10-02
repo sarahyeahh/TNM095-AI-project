@@ -93,7 +93,7 @@
 		allElevators[nmbrOfElevators-1].freeSpaces = capacity;
 
 		//Display array of elevators
-		console.log(allElevators);
+		//console.log(allElevators);
 		
 		return elevator; 
 	}
