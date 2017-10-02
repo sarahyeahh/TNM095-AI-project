@@ -45,7 +45,8 @@
 	}
 
 	//Remove the previous dot and draw a new. 
-	function update(){
+	Canvas.prototype.update = function(){
+	
 		return 0; 
 	}
 
