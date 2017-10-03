@@ -12,8 +12,10 @@
 //Attribut för grupp: Antal, stress(hastighet).
 
 	//Prototype constructor
-	function People(max, min, group){
+	function People(world){
 		this.world = world; 
+
+		this.currentGrid = -1; //Calculated in Move. 
 		
 		this.max = max; 
 		this.min = min; 

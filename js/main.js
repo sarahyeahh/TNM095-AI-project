@@ -28,7 +28,9 @@
 	var visualizer = new WorldVisualizer(world);
 	var statsMonitor = new StatsMonitor(world, document.body);*/
 
-	var world = new World(200, 100); 
+	//var world = new World(200, 100); 
+
+	//var node = new Node(0, 0, 0);
 
 	implement(); 
 

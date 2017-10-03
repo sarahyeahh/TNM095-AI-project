@@ -38,6 +38,20 @@
 		elevatorPeople = 0;
 	}
 
+//Implement prototype. 
+	Elevator.prototype.implement = function(argument) {
+		allElevators = elevatorArray();
+
+		var elevator = generateElevator(allElevators); 
+		elevatorID = elevator[0];
+		capacity = elevator[1]; 
+		freeSpaces = elevator[2]; 
+		activated = elevator[3];
+		positionX = elevator[4];
+		positionY = elevator[5];
+		elevatorPeople = 0;
+	}
+
 	//Create an array of elevator objects
 	//Properties of an elevator: elevatorID, capacity, freeSpaces, activated
 	function elevatorArray(allElevators){
