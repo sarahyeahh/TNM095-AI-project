@@ -21,7 +21,7 @@
     var speed = 0;
 
 	//Prototype constructor for canvas (används inte än!)
-    function Canvas(width, height, x, y, canvas, angle){
+    function Canvas(width, height){
     	this.ctx = this.canvas.context;
 	    this.x = canvas.width/2;
 	    this.y = canvas.height;

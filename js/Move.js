@@ -68,6 +68,27 @@ Move.prototype.getCurrentGridSection = function (position) {
 		}
 	}
 }
+
+//Ändra på namnet på denna!!!
+//Find the best grid. 
+Move.prototype.getGridSectionsWithLeastOccupation = function() {
+	
+	var leastOccupiedGrid = this.sections[0];
+	var leastOccupiedArray = [];
+	var better = false;
+
+	for (var i = 1; i < this.sections.length; i++){
+		if(this.sections[i].occupation <= leastOccupiedGrid.occupation) {
+			leastOccupiedArray.push(this.sections[i]);
+			leastOccupiedGrid = this.sections[i];
+			better = true;
+		}
+	}
+	if (!better)
+		leastOccupiedArray.push(leastOccupiedGrid);
+	
+	return leastOccupiedArray;
+}
 		 
 // currentGrid ska implementeras i People.
 //Calculate the Astar?

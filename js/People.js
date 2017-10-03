@@ -15,7 +15,7 @@
 	function People(world){
 
 		this.world = world; 
-
+		this.groups = [];
 		this.currentGrid = -1; //Calculated in Move. 
 		
 		//Variables for the groupsize

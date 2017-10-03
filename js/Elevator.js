@@ -15,13 +15,15 @@
 ***********************************************************************************************************/
 
 	//Prototype constructor for elevator. 
-	function Elevator(capacity, allElevators, elevator, elevatorID) {
+	function Elevator(world) {
 	   this.capacity = capacity; 
 	   this.freeSpaces = capacity; 
 	   this.allElevators = []; 
 	   this.elevator = elevator; 
 	   this.elevatorID = -1; //Fortfarande kvar i main. 
 	   this.elevatorPeople = 0; 
+
+	   this.implement
 	}
 
 	//Things that will only happen once.
@@ -39,7 +41,7 @@
 	}
 
 //Implement prototype. 
-	Elevator.prototype.implement = function(argument) {
+	Elevator.prototype.implement = function() {
 		allElevators = elevatorArray();
 
 		var elevator = generateElevator(allElevators); 
