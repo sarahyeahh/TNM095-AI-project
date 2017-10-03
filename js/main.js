@@ -32,6 +32,7 @@
 
 	//var node = new Node(0, 0, 0);
 
+
 	implement(); 
 
 //Prototype constructor (not used yet)

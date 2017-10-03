@@ -15,6 +15,8 @@ function World (width, height) {
 	this.width = width;
 	this.height = height;
 
+	this.groups = [];
+
 //Nya saker som ska implementeras för första gången 
 	this.isEmpty = true; 
 	this.freeSpaces = 0; //som en count

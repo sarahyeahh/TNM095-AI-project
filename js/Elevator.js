@@ -73,7 +73,7 @@
 		        capacity: capacity,
 		        freeSpaces: freeSpaces,
 		        activated: activated,
-		        positionX: 3*i,
+		        positionX: 40*i+40,
 		        positionY: positionY
 		    });
 		}
@@ -108,6 +108,11 @@
 
 		//Display array of elevators
 		//console.log(allElevators);
+
+		//Draw the new elevator in the canvas
+		var posX = allElevators[nmbrOfElevators-1].positionX;
+		var posY = allElevators[nmbrOfElevators-1].positionY;
+		drawRectangle(posX, posY);
 		
 		return elevator; 
 	}
