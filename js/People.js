@@ -12,28 +12,86 @@
 //Attribut för grupp: Antal, stress(hastighet).
 
 	//Prototype constructor
-	function People(max, min, group){
+	function People(max, min, groupsize){
 		this.world = world; 
 		
+		//Variables for the groupsize
 		this.max = max; 
 		this.min = min; 
-		this.group = group; 
+		this.groupsize = groupsize; 
+
+		//"Brain" to make decision
+		this.decision = new Decision(this);
+
+		//Variables effecting the decision/behavior
+		this.stressed = 0;
+		this.tired = 0;
+		this.waitTime = 0;
+		
+	    // Position and orientation of the group/person
+	    this.x = x;
+	    this.y = y;
+	    this.angle = angle; // 0-7
 
 	}
 
-	//Generate a group of people
+	//generatePeoplete a group of people
 	function generatePeople(){
 
 		var max = 6; 
 		var min = 1; 
-		var group = Math.floor(Math.random() * (max - min + 1)) + min; 
+		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
 
 		//Display number of people that wants to enter the elevator
 		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + group + "</b>";  
 
-		return group; 
+		return groupsize; 
 	}
 
+
+
+/****** DET NEDANFÖR ANVÄNDS EJ ÄNNU ******/
+
+	//List possible actions for the People
+	People.prototype.AVAILABLE_ACTIONS = ["waitForElevator", "takeElevator", "takeStairs"];
+
+/*
+	//Static constants
+	People.prototype.STATIC = {
+		MAX_STRESSED = 100,
+		MAX_TIRED = 100,
+		MAX_WAIT_TIME = 30
+	}
+*/
+
+	//Call the correct action
+	People.prototype.act = function (){
+		var actionName = this.decision.getAction();
+		this[actionName].call(this);
+		this.update();
+	}
+
+	//Update function for alla parameters
+	People.prototype.update = function () {
+
+		//Update stressfactor, tiredness and waiting time
+		this.stressed++;
+		this.tired++;
+		this.waitTime++;
+
+		//"Kill" people if exceeded max values
+		if(this.stressed > this.STATIC.MAX_STRESSED || this.tireed > this.STATIC.MAX_TIRED || this.waitTime > this.STATIC.MAX_WAIT_TIME){
+			if(Math.random() > 0.999){
+				this.kill();
+				return;
+			}
+		}
+	}
+
+
+
+
+	
 
 
 
