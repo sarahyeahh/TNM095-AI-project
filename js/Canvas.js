@@ -52,7 +52,7 @@
 
 	function draw() {
 			
-		ballCircle(); 
+		ballCircle(90,150); 
   		drawRectangle();
 
 		//y=150 till en början, ökar y-värdet till 160. 
@@ -89,6 +89,7 @@
 	/****************************************************
 		Moving circle/ball
 	****************************************************/
+/*	
 	var ball = document.getElementById('ball');
     var angle = 102; //default:0 //the angle corresponding to where the ball begins to move
 	var ball_x = canvas.width/2;
@@ -115,5 +116,31 @@
         //Call function 'ballCircle' after 80 milliseconds
         setTimeout(ballCircle,50); //default: 20, higher value = slower movement
     }
+*/
 
+	//Draw the moving circle/ball
+    function ballCircle(x,y) {
+	    var r = 2;
+
+	    //Draw the circle
+ 		context.beginPath();
+	   	context.arc(x, y, r, 0, 2 * Math.PI, true);
+	    context.fillStyle = 'green';
+	    context.fill();
+	    context.lineWidth = 2;
+	    context.strokeStyle = 'green';
+	    context.stroke();
+
+	    //Change y value and call the function again
+        y = y-10;
+        if (y > -10) {
+        	//Clear the previous circle
+        	context.clearRect(x-4, y+15, 8, 9);
+        	
+        	//Call the function again to draw the next cirle.
+        	setTimeout(function(){ 
+        		ballCircle(x,y);}, 500);  
+
+        }
+    } 
 	
