@@ -12,9 +12,8 @@
 //Attribut för grupp: Antal, stress(hastighet).
 
 	//Prototype constructor
-	function People(world){
+	function People(){
 
-		this.world = world; 
 		this.groups = [];
 		this.currentGrid = -1; //Calculated in Move. 
 		
@@ -27,9 +26,12 @@
 		this.decision = new Decision(this);
 
 		//Variables effecting the decision/behavior
-		this.stressed = 0;
-		this.tired = 0;
-		this.waitTime = 0;
+		this.stressed = 1;
+		this.tired = 1;
+		this.waitTime = 1;
+		this.speed = 2; 
+
+		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed); 
 		
 	    // Position and orientation of the group/person
 	    this.x = x;
@@ -39,7 +41,8 @@
 	}
 
 	//generatePeoplete a group of people
-	function generatePeople(){
+	People.prototype.generatePeople = function (){
+	//function generatePeople(){
 
 		var max = 6; 
 		var min = 1; 

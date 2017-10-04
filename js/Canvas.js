@@ -51,49 +51,19 @@
 	}
 
 	function draw() {
-	  //var canvas = document.getElementById('canvas');
-	  	if (canvas.getContext) {
-
-	  		drawRectangle();
-	  		
-	    	//window.requestAnimationFrame(draw);
 			
-	   /* 	window.addEventListener("keydown", function(e) {
-		    switch (e.key) {
-		        case 'ArrowUp':
-		        	if(y<160){
-			            y = y-speed;
-			            y= Math.floor(y);
-			            drawCircle(x, y, r); 
-			           // console.log("upp " + y);
-		        	}
-		            break;
-		        case 'ArrowDown':
-		            if(y>150){
-			            y = y + speed;
-			            y= Math.floor(y);
-			            drawCircle(x, y, r); 
-			            //console.log("ner " + y);
-		        	}
-		            break;
-		    	}
-			});
+		ballCircle(); 
+  		drawRectangle();
 
-			*/
+		//y=150 till en början, ökar y-värdet till 160. 
+		while(y<160){	
 
-			//y=150 till en början, ökar y-värdet till 160. 
-			while(y<160){	
-
-				drawCircle(x, y, r); 
-				y++;
-			}
-
-
-		    	
+			drawCircle(x, y, r); 
+			y++;
 		}
+		    	
+		
 	}
-
-	draw(); 
 
 	function drawCircle(x, y, r){
 
@@ -104,11 +74,7 @@
 	    context.fill();
 	    context.lineWidth = 2;
 	    context.strokeStyle = 'red';
-	    context.stroke();
-
-	    // setTimeout(drawCircle,20);
-		
-		//console.log(y);  		
+	    context.stroke();	
 
 	}	
 
@@ -116,7 +82,6 @@
 
 		//Hissen/blå rektangel
 		context.fillStyle = 'blue';
-	    //context.fillRect(canvas.width/2-25, 0, 30, 8);
 	    context.fillRect(x, y, 20, 6);
 
 	}
@@ -151,4 +116,4 @@
         setTimeout(ballCircle,50); //default: 20, higher value = slower movement
     }
 
-	ballCircle(); 
+	

@@ -15,24 +15,39 @@
 	var nmbrOfElevators = 0;			//Borde vara i constructor
 	var elevatorID = -1; 				//Sätt in i en constructor! 
 
-
-//Exempel på vad som kan hämtas till de olika klasserna från index.html
-	/*var world = new World(800, 600);
-	var simulator = new Simulator(world);
-	var visualizer = new WorldVisualizer(world);
-	var statsMonitor = new StatsMonitor(world, document.body);*/
-
-	implement(); 
-
 	//Reset the application by restarting everything
 	function reset(){
-
-		implement(); 
+		Elevator.prototype.implement(); 
 		console.log("**********STARTAR OM*************"); 
 	}
 
+	var start = document.getElementById("start");
+	start.onclick = (event) => {
+ 		new BehaviorTree(0 , 0 , 0).decision();
+ 		Elevator.prototype.implement(); 
+	}
 
-	
+	var load = document.getElementById("load");
+	load.onload = (event) => {
+ 		draw(); 
+ 		
+	}
+
+//generateElevator()
+	var elevator = document.getElementById("elevator");
+	elevator.onclick = (event) => {
+		Elevator.prototype.generateElevator(); 
+	}
+
+
+//OBS behövs inte användas än men kanske sen om reset() flyttas till en constructor. 
+//reset()
+/*	var reset = document.getElementById("reset");
+	reset.onclick = (event) => {
+ 		reset();
+ 		console.log("**********STARTAR OM*************");  
+	}
+	*/
 
 
 
