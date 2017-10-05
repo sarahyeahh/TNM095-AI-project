@@ -16,6 +16,8 @@
 	
 	slider.oninput = function() {
 	  output.innerHTML = this.value;
+	  var elevatorInput = this.value;
+	  console.log("Chosen number of elevators: " + elevatorInput);
 	}
 
 	/****************************************************
@@ -39,5 +41,7 @@
 
 	slider3.oninput = function() {
 	  output3.innerHTML = this.value;
+	  var groupsizeInput = this.value;
+	  console.log("Max size of group: " + groupsizeInput);
 	}
 

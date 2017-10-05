@@ -53,6 +53,9 @@
 		//Display number of people that wants to enter the elevator
 		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + group + "</b>";  
 
+		//Draw a new circle for each new group
+		drawGroup(90,150,groupsize);
+
 		return groupsize; 
 	}
 

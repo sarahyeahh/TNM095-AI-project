@@ -51,23 +51,18 @@
 	}
 
 	function draw() {
-			
-		ballCircle(90,150); 
+		r = 2;	//default radius
+
+		//Call all the functions drawing elements in the canvas
+		drawGroup(90,150,r); 
   		drawRectangle();
-
-		//y=150 till en början, ökar y-värdet till 160. 
-		while(y<160){	
-
-			drawCircle(x, y, r); 
-			y++;
-		}
-		    	
-		
+		drawCircle(x, y, r); 
+		drawStairs();
 	}
 
 	function drawCircle(x, y, r){
 
-		//Röd prick
+		//Red circle
 	    context.beginPath();
 	   	context.arc(x, y, r, 0, 2 * Math.PI, true);
 	    context.fillStyle = 'red';
@@ -79,50 +74,36 @@
 	}	
 
 	function drawRectangle(x,y){
-
-		//Hissen/blå rektangel
+		//Elevator = blue rectangle
 		context.fillStyle = 'blue';
 	    context.fillRect(x, y, 20, 6);
 
 	}
 
+	function drawStairs(){
+		var x = 0;
+		var y = 100;
+
+		//Stairs = yellow and orange rectangles
+		context.fillStyle = 'yellow';
+	    context.fillRect(x, y, 2, 20);
+	    context.fillStyle = 'orange';
+	    context.fillRect(x+2, y, 2, 20);
+	    context.fillStyle = 'yellow';
+	    context.fillRect(x+4, y, 2, 20);
+	    context.fillStyle = 'orange';
+	    context.fillRect(x+6, y, 2, 20);
+	}
+
 	/****************************************************
 		Moving circle/ball
 	****************************************************/
-/*	
-	var ball = document.getElementById('ball');
-    var angle = 102; //default:0 //the angle corresponding to where the ball begins to move
-	var ball_x = canvas.width/2;
-	var ball_y = canvas.height;
-    var w = 1;
-    var h = canvas.height/2;
-
-    //Draw the moving circle/ball
-    function ballCircle() {
-    	//Draw the ball as a circle
-        ball_x = w + w * Math.cos(angle * Math.PI / 180);   //horisontal movement (x)
-        ball_y = h + h * Math.sin(angle * Math.PI / 180);	  //vertical movement (y)
-        
-        //The top property sets or returns the top position of a positioned element.
-        ball.style.top = ball_y + 'px';
-        ball.style.bottom = ball_y/2 + 'px';
-
-        //Increase angle to move the circle 360 degrees
-        angle++;
-        if (angle > 192) {  //default: 360
-            angle = 192;	//the angle corresponding to where the elevator is/ball stops moving
-        }
-
-        //Call function 'ballCircle' after 80 milliseconds
-        setTimeout(ballCircle,50); //default: 20, higher value = slower movement
-    }
-*/
 
 	//Draw the moving circle/ball
-    function ballCircle(x,y) {
-	    var r = 2;
+    function drawGroup(x,y,r) {
+	    //var r = 2;
 
-	    //Draw the circle
+	    //People = green circle 
  		context.beginPath();
 	   	context.arc(x, y, r, 0, 2 * Math.PI, true);
 	    context.fillStyle = 'green';
@@ -132,14 +113,14 @@
 	    context.stroke();
 
 	    //Change y value and call the function again
-        y = y-10;
+        y = y-2*r-5;
         if (y > -10) {
         	//Clear the previous circle
         	context.clearRect(x-4, y+15, 8, 9);
         	
         	//Call the function again to draw the next cirle.
         	setTimeout(function(){ 
-        		ballCircle(x,y);}, 500);  
+        		drawGroup(x,y,r);}, 500);  
 
         }
     } 
