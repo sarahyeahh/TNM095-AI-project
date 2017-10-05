@@ -69,37 +69,41 @@
 
 	//Generate elevator 
 	Elevator.prototype.generateElevator = function(){
-		//Current number of elevators
+		//Increase number of elevators
 		++nmbrOfElevators;
-		console.log("Antal hissar:" + nmbrOfElevators);
+
+		//Check if maximum number of elevators is reached
+		if(nmbrOfElevators > 6) {
+			console.log("Det går inte att lägga till fler hissar.");
+		}
+		else { 	//Add a new elevator
 		
-		var activated = true;
-		var capacity = 5; 
-		freeSpaces = capacity;
-		++elevatorID;// = allElevators.length;
+			console.log("Antal hissar:" + nmbrOfElevators);
+			
+			var activated = true;
+			var capacity = 5; 
+			freeSpaces = capacity;
+			++elevatorID;// = allElevators.length;
 
-		//Display capacity of the elevator
-		document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + capacity + "</b> personer.";  
+			//Display capacity of the elevator
+			document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + capacity + "</b> personer.";  
 
-		//Define elevator 
-		var elevator = [elevatorID, capacity, freeSpaces, activated];
-		//console.log(elevator);
+			//Define elevator 
+			var elevator = [elevatorID, capacity, freeSpaces, activated];
 
-		//Create the object 'elevator', it has the values 'capacity', 'freeSpaces', ´'elevatorID'
-		//var elevatorObject = {elevatorID: elevatorID, capacity: capacity, freeSpaces: freeSpaces};
+			//Update the array 'allElevators'
+			this.allElevators[nmbrOfElevators-1].activated = true;
+			this.allElevators[nmbrOfElevators-1].capacity = 5;
+			this.allElevators[nmbrOfElevators-1].freeSpaces = capacity;
 
-		//Update the array 'allElevators'
-		this.allElevators[nmbrOfElevators-1].activated = true;
-		this.allElevators[nmbrOfElevators-1].capacity = 5;
-		this.allElevators[nmbrOfElevators-1].freeSpaces = capacity;
+			//Display array of elevators
+			//console.log(allElevators);
 
-		//Display array of elevators
-		//console.log(allElevators);
-
-		//Draw the new elevator in the canvas
-		var posX = this.allElevators[nmbrOfElevators-1].positionX;
-		var posY = this.allElevators[nmbrOfElevators-1].positionY;
-		drawRectangle(posX, posY);
+			//Draw the new elevator in the canvas
+			var posX = this.allElevators[nmbrOfElevators-1].positionX;
+			var posY = this.allElevators[nmbrOfElevators-1].positionY;
+			drawRectangle(posX, posY);
+		}
 		
 		return elevator; 
 	}
