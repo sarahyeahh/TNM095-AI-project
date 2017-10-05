@@ -54,15 +54,7 @@
 			
 		ballCircle(90,150); 
   		drawRectangle();
-
-		//y=150 till en början, ökar y-värdet till 160. 
-		while(y<160){	
-
-			drawCircle(x, y, r); 
-			y++;
-		}
-		    	
-		
+		drawCircle(x, y, r); 
 	}
 
 	function drawCircle(x, y, r){
