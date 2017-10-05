@@ -51,8 +51,10 @@
 	}
 
 	function draw() {
+		r = 2;	//default radius
+
 		//Call all the functions drawing elements in the canvas
-		ballCircle(90,150); 
+		drawGroup(90,150,r); 
   		drawRectangle();
 		drawCircle(x, y, r); 
 		drawStairs();
@@ -98,8 +100,8 @@
 	****************************************************/
 
 	//Draw the moving circle/ball
-    function ballCircle(x,y) {
-	    var r = 2;
+    function drawGroup(x,y,r) {
+	    //var r = 2;
 
 	    //People = green circle 
  		context.beginPath();
@@ -111,14 +113,14 @@
 	    context.stroke();
 
 	    //Change y value and call the function again
-        y = y-10;
+        y = y-2*r-5;
         if (y > -10) {
         	//Clear the previous circle
         	context.clearRect(x-4, y+15, 8, 9);
         	
         	//Call the function again to draw the next cirle.
         	setTimeout(function(){ 
-        		ballCircle(x,y);}, 500);  
+        		drawGroup(x,y,r);}, 500);  
 
         }
     } 
