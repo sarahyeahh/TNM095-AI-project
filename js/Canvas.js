@@ -22,7 +22,7 @@
 
 	//Prototype constructor for canvas (används inte än!)
     function Canvas(width, height){
-    	this.ctx = this.canvas.context;
+    	/*this.ctx = this.canvas.context;
 	    this.x = canvas.width/2;
 	    this.y = canvas.height;
 	    this.r = 10;
@@ -34,7 +34,7 @@
 	    this.position = {
 		    x: xpos,
 		    y: ypos
-		};
+		};*/
 		this.currentGrid = -1; 
 		this.nextGrid = -1; 
     }

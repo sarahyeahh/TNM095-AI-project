@@ -12,18 +12,19 @@
 //Attribut för grupp: Antal, stress(hastighet).
 
 	//Prototype constructor
-	function People(){
+	function People(width, height){
+
+		this.width = width; 
+		this.height = height; 
 
 		this.groups = [];
-		this.currentGrid = -1; //Calculated in Move. 
-		
-		//Variables for the groupsize
-		this.max = max; 
-		this.min = min; 
-		this.groupsize = groupsize; 
+		this.currentGrid = -1; 
+
+		//To the constructor Move. 
+		this.move = new Move(this.currentGrid, this.width, this.height);
 
 		//"Brain" to make decision
-		this.decision = new Decision(this);
+		//this.decision = new Decision(this);
 
 		//Variables effecting the decision/behavior
 		this.stressed = 1;
@@ -31,12 +32,12 @@
 		this.waitTime = 1;
 		this.speed = 2; 
 
-		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed); 
+		this.behavior = new BehaviorTree(this.group, this.stressed, this.tired, this.speed); 
 		
 	    // Position and orientation of the group/person
-	    this.x = x;
+	  /*  this.x = x;
 	    this.y = y;
-	    this.angle = angle; // 0-7
+	    this.angle = angle; // 0-7*/
 
 	}
 
@@ -45,7 +46,8 @@
 	//function generatePeople(){
 
 		var max = 6; 
-		var min = 1; 
+		var min = 1;  
+
 		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
 
 		//Display number of people that wants to enter the elevator

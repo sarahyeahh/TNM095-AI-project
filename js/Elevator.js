@@ -15,7 +15,7 @@
 ***********************************************************************************************************/
 
 	//Prototype constructor for elevator. 
-	function Elevator(world) {
+	function Elevator() {
 	   this.capacity = capacity; 
 	   this.freeSpaces = capacity; 
 	   this.allElevators = []; 

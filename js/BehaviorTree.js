@@ -23,8 +23,11 @@ function BehaviorTree(stress, tired, speed){
 		this.tired = tired;
 		this.speed = speed; 
 
+
+
+
 		//TODO
-		this.freeSpaces = 0;
+		this.freeSpaces = 2;
 
 }
 
@@ -38,7 +41,7 @@ function BehaviorTree(stress, tired, speed){
 		//isHere = checkHere(); 
 
 		//Steg 1: Finns lediga platser? 
-		isEmpty = Elevator.prototype.checkEmpty(group,this.freeSpaces);
+		isEmpty = Elevator.prototype.checkEmpty( group, this.freeSpaces);
 
 		//För att testa om hissen är full och inte där. 
 		//isEmpty = false; 
@@ -47,10 +50,10 @@ function BehaviorTree(stress, tired, speed){
 		
 		if(isEmpty){
 			//If there are spaces left, check how many spaces are free.
-			freeTemp = spacesLeft(group, freeSpaces);
+			var freeTemp = Elevator.prototype.spacesLeft(group, this.freeSpaces);
 	
 			//Get the new spaces after taking the elevator. 
-			newSpacesLeft = takeElevator(group, freeTemp);
+			newSpacesLeft = Elevator.prototype.takeElevator(group, freeTemp);
 			console.log("Platser kvar: "  + newSpacesLeft); 
 		}
 		else{

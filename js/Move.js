@@ -11,24 +11,36 @@
 ***********************************************************************************************************/
 
 //Kombination av Grid.js/Pathfinding.js/Gridsection.js
-function Move (gridSize, width, height){
-	this.currentGrid = currentGrid; //From People.js
-	this.grid = grid;
+function Move(current, width, height){
+	
+	this.gridSize = 9; 
+
+//	this.start = [0,0]; 
+//	this.goal = [5,5]; 
+
+	this.start = 0; 
+	this.goal = 1; 
+
+	this.astar = new Astar(start, goal); 
+
+	this.currentGrid = current; //From People.js
+	/*this.grid = grid;
 	this.visitedList = [];
 	this.queue = [];
 	this.goal = goal;
-	this.calculate();
+	this.calculate();*/
 	
-	this.size = gridSize; 
+	this.size = 9; 
 	this.width = width;
 	this.height = height;
 	this.sections = [];
+	
 	this.init();
 }
 
 Move.prototype.init = function (){
 
-	console.log("This size" +  this.size); 
+	console.log("This size " +  this.size); 
 
 	for (var i = 0; i < this.size * this.size; i++) {
 			this.sections.push(new Astar());
@@ -42,12 +54,14 @@ Move.prototype.init = function (){
 				this.sections[counter].centerX = (this.width*x) / 2;
 				this.sections[counter].centerY = (this.height*y) / 2;
 				this.sections[counter].index = counter;
+			//	console.log("counter " + counter); 
 				counter++
 		}
 	}
 }
 
 Move.prototype.getGridSection = function(index) {
+		console.log("getgridsection" + index);
 		return this.sections[index];
 }
 
@@ -57,12 +71,13 @@ Move.prototype.getCurrentGridSection = function (position) {
 	//occupations on the grid.
 	var index = -1;
 	var counter = 0;
+	
 	firstLoop:
 	for(var y = 1; y <= this.size; y++){
 		for (var x = 1; x <= this.size; x++) {
 			if(position.x <= (this.width * x) && position.y <= (this.height*y)){
 				index = counter;
-				break firstLoop;
+				break firstLoop; //Hur funkar denna?
 			}
 			counter++;
 		}

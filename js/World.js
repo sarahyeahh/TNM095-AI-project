@@ -11,24 +11,26 @@
 
 
 function World (width, height) {
-//Constructors for eg. Canvas
 	this.width = width;
 	this.height = height;	
-	this.elevator = new Elevator(); 
 
-//Constructors for the People
-	this.people = new People();
+	this.people = new People(this.width, this.height);
+
+	this.elevator = new Elevator(); 
 
 	this.visualizer = new Visualizer(); 
 
 	this.canvas = new Canvas(this.width, this.height); 
 
-//Constructors till Astar, Move och Canvas. 
- 	this.gridSize = 9; 
- 	this.grid = new Move(this.gridSize, this.width, this.height);
-
 //Finns inte än
-	this.Stairs = []; 
+	this.stairs =  new Stairs();
 
+	this.start(); 
+};
+
+
+World.prototype.start = function() {
+	
+	
 };
 

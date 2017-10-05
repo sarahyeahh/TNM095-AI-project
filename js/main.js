@@ -8,35 +8,42 @@
  	- reset()
 
 ***********************************************************************************************************/
-	//var canvas = document.createElement("canvas");
-	var GUI = document.createElement("GUI");
+	var canvas = document.createElement("canvas");
+	var GUI = document.createElement("GUI"); //Behövs denna?
+
+	var width = canvas.width;
+    var height = canvas.height;
 	
 	//Declare variables
 	var nmbrOfElevators = 0;			//Borde vara i constructor
 	var elevatorID = -1; 				//Sätt in i en constructor! 
 
-	//Reset the application by restarting everything
-	function reset(){
-		Elevator.prototype.implement(); 
-		console.log("**********STARTAR OM*************"); 
-	}
 
-	var start = document.getElementById("start");
-	start.onclick = (event) => {
- 		new BehaviorTree(0 , 0 , 0).decision();
- 		Elevator.prototype.implement(); 
-	}
-
+//Det som skapas direkt när rutan laddats. 
 	var load = document.getElementById("load");
 	load.onload = (event) => {
- 		draw(); 
- 		
+ 		draw();  //Ritar upp första cirkeln och första hissen.
+ 		new World(width, height);	
 	}
 
+//Ny grupp-knapp
+	var start = document.getElementById("start");
+	start.onclick = (event) => {
+ 		BehaviorTree.prototype.decision();
+ 		//Elevator.prototype.implement(); 
+	}
+
+//Ny hiss-knapp
 //generateElevator()
 	var elevator = document.getElementById("elevator");
 	elevator.onclick = (event) => {
 		Elevator.prototype.generateElevator(); 
+	}
+//Starta om-knapp
+	//Reset the application by restarting everything
+	function reset(){
+		Elevator.prototype.implement(); 
+		console.log("**********STARTAR OM*************"); 
 	}
 
 

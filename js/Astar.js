@@ -17,9 +17,13 @@ var gridX = 5;
 var gridY = 5;
 var start = 1; 
 var goal = 1; 
-var astar = new Astar(start, goal); 
+
 
 function Astar(start, goal) {
+
+	this.start = start; 
+	this.goal = goal; 
+
 	this.occupation = 0; //vad betyder denna?
 	this.centerX = 0; //den med ? 
 	this.centerY = 0; // den med? 
@@ -27,7 +31,6 @@ function Astar(start, goal) {
 	this.h = 0;
 	this.f = 0; //Behövs den här? 
 	this.index = -1;
-
 
 	this.reachedGoal = function() {
 		if (this.h == 0){
@@ -46,11 +49,13 @@ function Astar(start, goal) {
 
 //A*star algoritm F
 Astar.prototype.F = function (){
+	console.log("G" + this.g + "H" + this.h);
 	return (this.g + this.h);
 }
 
 //Moves done G
 Astar.prototype.G = function (){
+	console.log("G" + this.g);
 	return this.g;
 }
 
@@ -58,6 +63,7 @@ Astar.prototype.G = function (){
 Astar.prototype.H = function (){
 
 	if(this.h == 0 ){
+		console.log("H" + this.h);
 		return 0; 
 	}
 	return this.h; 
