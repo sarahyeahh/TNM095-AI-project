@@ -28,8 +28,6 @@
 //Implement prototype. 
 	Elevator.prototype.implement = function() {
 		this.allElevators = Elevator.prototype.elevatorArray();
-
-		var elevator = Elevator.prototype.generateElevator(); 
 		elevatorID = elevator[0];
 		capacity = elevator[1]; 
 		freeSpaces = elevator[2]; 
