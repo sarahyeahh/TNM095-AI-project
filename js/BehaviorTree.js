@@ -34,14 +34,14 @@ function BehaviorTree(stress, tired, speed){
 	//Decision is generated every time the button is pushed.  
 	BehaviorTree.prototype.decision = function(){
 
-		group = People.prototype.generatePeople(); 
-		console.log("Grupp med " + group + " personer."); 
+		groupsize = People.prototype.generatePeople(); 
+		console.log("Grupp med " + groupsize + " personer."); 
 
 		//Steg 0: Är hissen här? (Bra att ha om flera hissar.)
 		//isHere = checkHere(); 
 
 		//Steg 1: Finns lediga platser? 
-		isEmpty = Elevator.prototype.checkEmpty( group, this.freeSpaces);
+		isEmpty = Elevator.prototype.checkEmpty(groupsize, this.freeSpaces);
 
 		//För att testa om hissen är full och inte där. 
 		//isEmpty = false; 
@@ -50,10 +50,10 @@ function BehaviorTree(stress, tired, speed){
 		
 		if(isEmpty){
 			//If there are spaces left, check how many spaces are free.
-			var freeTemp = Elevator.prototype.spacesLeft(group, this.freeSpaces);
+			var freeTemp = Elevator.prototype.spacesLeft(groupsize, this.freeSpaces);
 	
 			//Get the new spaces after taking the elevator. 
-			newSpacesLeft = Elevator.prototype.takeElevator(group, freeTemp);
+			newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
 			console.log("Platser kvar: "  + newSpacesLeft); 
 		}
 		else{

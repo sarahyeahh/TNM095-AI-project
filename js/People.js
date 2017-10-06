@@ -32,7 +32,7 @@
 		this.waitTime = 1;
 		this.speed = 2; 
 
-		this.behavior = new BehaviorTree(this.group, this.stressed, this.tired, this.speed); 
+		this.behavior = new BehaviorTree(this.groupsize, this.stressed, this.tired, this.speed);  
 		
 	    // Position and orientation of the group/person
 	  /*  this.x = x;
@@ -51,7 +51,7 @@
 		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
 
 		//Display number of people that wants to enter the elevator
-		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + group + "</b>";  
+		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + groupsize + "</b>";  
 
 		//Draw a new circle for each new group
 		drawGroup(90,150,groupsize);
