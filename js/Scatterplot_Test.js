@@ -12,17 +12,20 @@
 var dataset = [];  // Initialize empty array
 var numDataPoints = 15;  // Number of dummy data points
 
+//xval = initial position for the dots
+//yval = initial position for the dots
 for(var i = 0; i < numDataPoints; i++) {
-    var xval = 20; //Math.floor(Math.random() * maxRange);  // New random integer
+    var xval = 60; //Math.floor(Math.random() * maxRange);  // New random integer  
     var yval = 0; //Math.floor(Math.random() * maxRange);  // New random integer
     dataset.push([xval, yval]);  // Add new number to array
 }
 
 // Setup settings for graphic
-var canvas_width = 500;
-var canvas_height = 300;
+var canvas_width = 700;
+var canvas_height = 500;
 var padding = 30;  // for chart edges
 
+/*
 // Create scale functions
 var xScale = d3.scale.linear()  // xScale is width of graphic
                 .domain([0, d3.max(dataset, function(d) {
@@ -35,21 +38,40 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
                     return d[1];  // input domain
                 })])
                 .range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
+*/
+
+// Create scale functions
+var xScale = d3.scale.linear()  // xScale is width of graphic
+                .domain([0, 120])   //Domain from the beginning for the xAxis
+                .range([padding, canvas_width - padding * 2]); // output range
+
+var yScale = d3.scale.linear()  // yScale is height of graphic
+                .domain([0, 100])   //Domain from the beginning for the yAxis
+                .range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
 
 // Define X axis
 var xAxis = d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom")
                 .ticks(5);
+                //.scale(axisScale);
 
 // Define Y axis
 var yAxis = d3.svg.axis()
                 .scale(yScale)
                 .orient("left")
                 .ticks(5);
+                //.scale(axisScale);
+
+/*
+//ADDED! Scale the axis
+var axisScale = d3.scale.linear()
+                .domain([0,100])
+                .range([0,100]);
+*/
 
 // Create SVG element
-var svg = d3.select("h3")  // This is where we put our vis
+var svg = d3.select("h4")  // This is where we put our vis
     .append("svg")
     .attr("width", canvas_width)
     .attr("height", canvas_height)
@@ -67,12 +89,14 @@ svg.selectAll("circle")
     })
     .attr("r", 2);  // radius
 
+//Draw rectangle --> elevator
 var rectangle = svg.append('rect')
-          .attr('x', 20)
-          .attr('y', 20)
-          .attr('width', 100)
-          .attr('height', 10)
-          .style('fill', 'rgb(0,0,255)')
+      .attr('x', 40)
+      .attr('y', 20)
+      .attr('width', 80)
+      .attr('height', 20)
+      .style('fill', 'rgb(0,0,255)')
+
 
 // Add to X axis
 svg.append("g")
@@ -139,6 +163,7 @@ d3.select(starta)
                   //  .attr("r", 2);  // Change radius
             });
 
+            
             // Update X Axis
             svg.select(".x.axis")
                 .transition()
@@ -149,5 +174,5 @@ d3.select(starta)
             svg.select(".y.axis")
                 .transition()
                 .duration(100)
-                .call(yAxis);
+                .call(yAxis); 
     });

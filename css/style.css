@@ -16,6 +16,25 @@
 }
 
 
+.tick text{
+font-size: 12px;
+}
+
+.tick line{
+opacity: 0.2;
+}
+
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+
 /*--------------------------------------------------------
                       CANVAS
 /*------------------------------------------------------*/
@@ -24,6 +43,12 @@
 	border:2px solid black;
     width: 95%;
     height: 50%;
+}
+
+h4 {
+    border:2px solid black;
+    width: 95%;
+    height: 50%; 
 }
 
 /* Moving ball */

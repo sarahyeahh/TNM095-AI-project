@@ -103,6 +103,7 @@
 			var posX = this.allElevators[nmbrOfElevators-1].positionX;
 			var posY = this.allElevators[nmbrOfElevators-1].positionY;
 			drawRectangle(posX, posY);
+			//drawElevator(posX, posY);
 		}
 		
 		return elevator; 
