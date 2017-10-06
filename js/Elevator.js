@@ -183,7 +183,7 @@
 		setTimeout(function(){ 
 			//console.log("Hissen är tillbaka."); 
         	alert('Hissen är tillbaka');
-        	this.implement(); 
+        	Elevator.prototype.implement(); 
     	}, 3000);  
 	}
 

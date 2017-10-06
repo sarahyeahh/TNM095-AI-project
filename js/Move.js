@@ -21,7 +21,7 @@ function Move(current, width, height){
 	this.start = 0; 
 	this.goal = 1; 
 
-	this.astar = new Astar(start, goal); 
+	this.astar = new Astar(this.start, this.goal); 
 
 	this.currentGrid = current; //From People.js
 	/*this.grid = grid;

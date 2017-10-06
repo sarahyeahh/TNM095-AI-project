@@ -12,12 +12,12 @@
 ***********************************************************************************************************/
 
 //Detta ska eller har redan deklarerats någon annanstans (typ World.js?)
-var gridSize = 25; //5x5
+/*var gridSize = 25; //5x5
 var gridX = 5; 
 var gridY = 5;
 var start = 1; 
 var goal = 1; 
-
+*/
 
 function Astar(start, goal) {
 
