@@ -16,8 +16,8 @@
 
 	//Prototype constructor for elevator. 
 	function Elevator() {
-	   this.capacity = capacity; 
-	   this.freeSpaces = capacity; 
+	   this.capacity = 6; 	//tidigare: 6 -> capacity
+	   this.freeSpaces = 6; //tidigare: 6 -> capacity
 	   this.allElevators = []; 
 	   this.elevator = elevator; 
 	   this.elevatorID = -1; //Fortfarande kvar i main. 
@@ -141,7 +141,7 @@
 		return freeTemp; 
 	}
 
-	Elevator.prototype.takeElevator  = function(groupsize, freeTemp){
+	Elevator.prototype.takeElevator  = function(groupsize, freeTemp, freeSpaces){
 
 		//If freeTemp is negative, there are not spaces enough to fit the whole group in the elevator.
 		if(freeTemp < 0){

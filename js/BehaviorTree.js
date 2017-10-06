@@ -53,7 +53,7 @@ function BehaviorTree(stress, tired, speed){
 			var freeTemp = Elevator.prototype.spacesLeft(groupsize, this.freeSpaces);
 	
 			//Get the new spaces after taking the elevator. 
-			newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
+			newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp, this.freeSpaces);
 			console.log("Platser kvar: "  + newSpacesLeft); 
 		}
 		else{
