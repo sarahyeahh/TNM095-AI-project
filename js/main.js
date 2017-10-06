@@ -24,11 +24,14 @@
 	load.onload = (event) => {
  		draw();  //Ritar upp första cirkeln och första hissen.
  		new World(width, height);	
+ 		Elevator.prototype.implement();
+ 		Elevator.prototype.generateElevator(); 
+ 		console.log("implement");
 	}
 
 //Ny grupp-knapp
-	var start = document.getElementById("start");
-	start.onclick = (event) => {
+	var newgroup = document.getElementById("newgroup");
+	newgroup.onclick = (event) => {
  		BehaviorTree.prototype.decision();
  		//Elevator.prototype.implement(); 
 	}
@@ -37,6 +40,7 @@
 //generateElevator()
 	var elevator = document.getElementById("elevator");
 	elevator.onclick = (event) => {
+		//Elevator.prototype.implement();
 		Elevator.prototype.generateElevator(); 
 	}
 //Starta om-knapp
