@@ -11,7 +11,7 @@
             .axis path,
             .axis line {
                 fill: none;
-                stroke: black;
+                stroke: red;
                 shape-rendering: crispEdges;
             }
 
@@ -25,20 +25,22 @@
   <body>
     <h2>D3 Scatterplot </h2>
     <p>This is a data visualization using transitions with a scatterplot</p>
-    <h4>Click on this text to update chart with new values</h4>
+    <a><h4>KLICKA HÄR!</h4></a>
     <h3></h3>
   
   <!-- Begin D3 Javascript -->
   <script type="text/javascript">
   
     // Setup data
+
+    //Plottar ut massa random värden. 
             var dataset = [];  // Initialize empty array
             var numDataPoints = 15;  // Number of dummy data points
-            var maxRange = Math.random() * 1000;  // Max range of new values
-            for(var i=0; i<numDataPoints; i++) {
-                var newNumber1 = Math.floor(Math.random() * maxRange);  // New random integer
-                var newNumber2 = Math.floor(Math.random() * maxRange);  // New random integer
-                dataset.push([newNumber1, newNumber2]);  // Add new number to array
+           
+            for(var i = 0; i < numDataPoints; i++) {
+                var xval = 20; //Math.floor(Math.random() * maxRange);  // New random integer
+                var yval = 0; //Math.floor(Math.random() * maxRange);  // New random integer
+                dataset.push([xval, yval]);  // Add new number to array
             }
 
             // Setup settings for graphic
@@ -90,6 +92,13 @@
                 })
                 .attr("r", 2);  // radius
 
+            var rectangle = svg.append('rect')
+                      .attr('x', 20)
+                      .attr('y', 20)
+                      .attr('width', 100)
+                      .attr('height', 10)
+                      .style('fill', 'rgb(0,0,255)')
+
             // Add to X axis
             svg.append("g")
                 .attr("class", "x axis")
@@ -105,14 +114,20 @@
             // On click, update with new data
             d3.select("h4")
                 .on("click", function() {
+
                     var numValues = dataset.length;  // Get original dataset's length
-                    var maxRange = Math.random() * 1000;  // Get max range of new values
-                    dataset = [];  // Initialize empty array
-                    for(var i=0; i<numValues; i++) {
-                        var newNumber1 = Math.floor(Math.random() * maxRange);  // Random int for x
-                        var newNumber2 = Math.floor(Math.random() * maxRange);  // Random int for y
-                        dataset.push([newNumber1, newNumber2]);  // Add new numbers to array
+
+                    dataset = [];  // Tom array med alla x och y värden.
+
+                    for(var i = 0; i<numValues; i++) {
+                        var xval = 50 + 5*i;//Math.floor(Math.random() * maxRange);  // Random int for x
+                        var yval = 100; //Math.floor(Math.random() * maxRange);  // Random int for y
+
+                        //Returnerar det nya x och y värdet. 
+                        dataset.push([xval, yval]);  // Add new numbers to array
                     }
+
+                    console.log(dataset); 
 
                     // Update scale domains
                     xScale.domain([0, d3.max(dataset, function(d) {
@@ -143,9 +158,9 @@
                         .each("end", function() {  // End animation
                             d3.select(this)  // 'this' means the current element
                                 .transition()
-                                .duration(500)
-                                .attr("fill", "black")  // Change color
-                                .attr("r", 2);  // Change radius
+                                .duration(500);
+                                //.attr("fill", "black")  // Change color
+                              //  .attr("r", 2);  // Change radius
                         });
 
                         // Update X Axis

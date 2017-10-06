@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testing animations</title>
+  <meta charset="utf-8" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.6.1/leaflet.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+  <style>
+  #info {
+    background-color:#c8ba09;
+  </style>
+</head>
+<body>
+
+  
+  <div id="info"style="width: 960px;"></div>
+  <script>
+  var minArea, curColor, angle;
+
+  var svg = d3.select("body").append("svg")
+    .attr("width", 960)
+    .attr("height", 300);
+
+// var circles = svg.append('circle').attr('cx',50).attr('cy',50).attr('r',20).style('fill','rgb(255,0,255)')
+  var rectangle = svg.append('rect')
+                      .attr('x', 20)
+                      .attr('y', 20)
+                      .attr('width', 100)
+                      .attr('height', 100)
+                      .style('fill', 'rgb(255,0,0)')
+
+  animation();
+
+  function animation() {
+
+    svg.transition()
+        .duration(5000)  //Hundradels sekunder att åka till sidan.
+        .tween("precision", function() {
+          var area = d3.interpolateRound(50, 600); //Mellan vilka x-värden som man ska åka mellan. 
+          var color = d3.interpolateRgb('rgb(255,0,255)', 'rgb(0,255,0)'); //Interpolerar färg.  Funkar ej.
+       //   var turn = d3.interpolateTransform(50, 20); 
+          return function(t) {
+            minArea = area(t);
+           // angle = turn(t);
+           
+       //     curColor = color(t)
+            render();
+          };
+        })
+        .attr("transform", "translate(0.5,0)scale(0.2)rotate(20)")
+
+
+      .transition()
+        .duration(5000) //Hundradels sekunder att åka tillbaka
+        .tween("precision", function() {
+          var area = d3.interpolateRound(600, 50); 
+          var color = d3.interpolateRgb('rgb(0,0,0)', 'rgb(255,0,255)');
+
+          return function(t) {
+            minArea = area(t);
+            
+           // curColor = color(t)
+            render();
+          };
+        })
+
+      .transition()
+        .duration(500) //Antal sekunder innan loopen börjar igen.
+        .each("end", animation);
+  }
+
+  function render() {
+    var n = 0;
+     
+    var color = d3.interpolateRgb('rgb(0,0,0)', 'rgb(255,0,255)');
+    //var color = 'rgb(' + curColor.r + ',' + curColor.g + ',' + curColor.b + ')'
+   // circles.attr('cx',minArea).style('fill',color);
+    rectangle.attr('x', minArea).style('fill',color);
+
+    //console.log(color)
+
+    //text.text(formatArea(minArea) + "px² / " + formatPercent(n / m));
+  }
+
+  </script>
+ </body>
+</html>
