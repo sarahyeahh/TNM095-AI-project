@@ -25,21 +25,6 @@ var canvas_width = 700;
 var canvas_height = 500;
 var padding = 30;  // for chart edges
 
-/*
-// Create scale functions
-var xScale = d3.scale.linear()  // xScale is width of graphic
-                .domain([0, d3.max(dataset, function(d) {
-                    return d[0];  // input domain
-                })])
-                .range([padding, canvas_width - padding * 2]); // output range
-
-var yScale = d3.scale.linear()  // yScale is height of graphic
-                .domain([0, d3.max(dataset, function(d) {
-                    return d[1];  // input domain
-                })])
-                .range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
-*/
-
 // Create scale functions
 var xScale = d3.scale.linear()  // xScale is width of graphic
                 .domain([0, 120])   //Domain from the beginning for the xAxis
@@ -54,21 +39,12 @@ var xAxis = d3.svg.axis()
                 .scale(xScale)
                 .orient("bottom")
                 .ticks(5);
-                //.scale(axisScale);
 
 // Define Y axis
 var yAxis = d3.svg.axis()
                 .scale(yScale)
                 .orient("left")
                 .ticks(5);
-                //.scale(axisScale);
-
-/*
-//ADDED! Scale the axis
-var axisScale = d3.scale.linear()
-                .domain([0,100])
-                .range([0,100]);
-*/
 
 // Create SVG element
 var svg = d3.select("h4")  // This is where we put our vis
