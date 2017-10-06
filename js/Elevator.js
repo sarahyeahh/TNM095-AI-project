@@ -7,8 +7,8 @@
  	The file includes the functions:
  	- implement()
  	- generateElevator()
- 	- checkEmpty(group, freeSpaces)
- 	- spacesLeft(group, capacity, freeSpaces)
+ 	- checkEmpty(groupsize, freeSpaces)
+ 	- spacesLeft(groupsize, capacity, freeSpaces)
  	- emptyTheElevator()
  	- elevatorLeaves()
 
@@ -110,7 +110,7 @@
 
 	// Check if there are any spaces left in the elevator.
 	// Return TRUE if there are spaces left, return FALSE if the elevator is full.
-	Elevator.prototype.checkEmpty = function (group, freeSpaces){
+	Elevator.prototype.checkEmpty = function (groupsize, freeSpaces){
  	
  		//Check if the elevator is full or not
 		console.log("	Kollar om hissen är full..."); 
@@ -129,10 +129,10 @@
 	}
 
 	//Return how many spaces there are left. 
-	Elevator.prototype.spacesLeft = function(group, freeSpaces){
+	Elevator.prototype.spacesLeft = function(groupsize, freeSpaces){
 	
 		//Temporary variables
-		var groupTemp = group; 
+		var groupTemp = groupsize; 
 		var freeTemp = freeSpaces; 
 		
 		//Check if it is possible to fit the group in the elevator. 
@@ -141,20 +141,20 @@
 		return freeTemp; 
 	}
 
-	Elevator.prototype.takeElevator  = function(group, freeTemp){
+	Elevator.prototype.takeElevator  = function(groupsize, freeTemp){
 
 		//If freeTemp is negative, there are not spaces enough to fit the whole group in the elevator.
 		if(freeTemp < 0){
 			console.log("	Tyvärr, ta trappan.");
-			//Reset group. 
-			group = 0; 
+			//Reset groupsize. 
+			groupsize = 0; 
 		}
 		else if(freeTemp == 0){
 			console.log("	Grattis du fick den sista platsen!");
-			freeSpaces -= group;
-			elevatorPeople += group;
-			//Reset group. 
-			group = 0; 
+			freeSpaces -= groupsize;
+			elevatorPeople += groupsize;
+			//Reset groupsize. 
+			groupsize = 0; 
 
 			//The elevator is full
 			fullElevator(); 
@@ -163,11 +163,11 @@
 		else{
 			//The group can enter the elevator and the number of free spaces decreases. 
 			console.log("	Grattis du fick plats i hissen!");
-			freeSpaces -= group; //ändra till antal människor sen. 
-			elevatorPeople += group; 
+			freeSpaces -= groupsize; //ändra till antal människor sen. 
+			elevatorPeople += groupsize; 
 			
 			//Reset group. 
-			group = 0; 
+			groupsize = 0; 
 			console.log("Antal personer i hissen nu: "+ elevatorPeople )
 		}
 
