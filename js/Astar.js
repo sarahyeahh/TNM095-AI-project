@@ -32,14 +32,14 @@ function Astar(start, goal) {
 	this.f = 0; //Behövs den här? 
 	this.index = -1;
 
-	this.reachedGoal = function() {
+	/*this.reachedGoal = function() {
 		if (this.h == 0){
 			return true;
 		}
 		else{
 			return false;
-		}	
-}
+		}
+}*/
 
 
 	//this.start = start;
@@ -69,14 +69,15 @@ Astar.prototype.H = function (){
 	return this.h; 
 }
 
-/*Astar.prototypes.reachedGoal = function() {
+Astar.prototype.reachedGoal = function(){
+		
 		if (this.h == 0){
 			return true;
 		}
 		else{
 			return false;
 		}	
-}*/
+}
 
 //Från AI förra kursen	
 Astar.prototype.setG = function(value) {
