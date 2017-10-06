@@ -114,6 +114,8 @@
  	
  		//Check if the elevator is full or not
 		console.log("	Kollar om hissen är full..."); 
+
+		console.log("freespaces " + freeSpaces + "groupsize" + groupsize); 
 		
  		if(freeSpaces==0){
  			isEmpty = false; 
@@ -157,7 +159,7 @@
 			groupsize = 0; 
 
 			//The elevator is full
-			fullElevator(); 
+			this.fullElevator(); 
 		}
 		//freeTemp is positive and there are enough free spaces to fit the group in the elevator.
 		else{
@@ -181,14 +183,14 @@
 		setTimeout(function(){ 
 			//console.log("Hissen är tillbaka."); 
         	alert('Hissen är tillbaka');
-        	implement(); 
+        	this.implement(); 
     	}, 3000);  
 	}
 
 	//Check if the elevator is full
 	Elevator.prototype.fullElevator = function(){
 		console.log("Hissen lämnar éntreplan...")
-		emptyTheElevator();
+		this.emptyTheElevator();
 	}
 
 	//TODO
