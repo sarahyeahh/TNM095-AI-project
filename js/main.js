@@ -22,7 +22,7 @@
 //Det som skapas direkt när rutan laddats. 
 	var load = document.getElementById("load");
 	load.onload = (event) => {
- 		draw();  //Ritar upp första cirkeln och första hissen.
+ 	//	draw();  //Ritar upp första cirkeln och första hissen.
  		new World(width, height);	
  		Elevator.prototype.implement();
  		Elevator.prototype.generateElevator(); 
