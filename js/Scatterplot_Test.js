@@ -179,18 +179,18 @@ d3.select(starta)
             var yval = 100; //Math.floor(Math.random() * maxRange);  // Random int for y
             */
 
-            //Half of the dataset goes to one place, the other half to another
-            if(i <= numValues/2) {
+            var newRadius = tempDataset[i][2];
+
+            //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
+            if(newRadius < 7) { 
                 var xval = 35;
                 var yval = 98; 
             }
-            else {
+            else {  //If the group is bigger --> go to the stairs
                 var xval = 0;
                 var yval = 70; 
             }
-
-            var newRadius = tempDataset[i][2];
-            
+ 
             //Returnerar det nya x och y värdet. 
             dataset.push([xval, yval, newRadius]);  // Add new numbers to array
         }
