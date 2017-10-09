@@ -15,17 +15,23 @@
 ***********************************************************************************************************/
 
 	//Prototype constructor for elevator. 
-	function Elevator() {
-	   this.capacity = 6; 	//tidigare: 6 -> capacity
-	   this.freeSpaces = 6; //tidigare: 6 -> capacity
-	   this.allElevators = []; 
-	   this.elevator = elevator; 
-	   this.elevatorID = -1; //Fortfarande kvar i main. 
-	   this.elevatorPeople = 0; 
+	function Elevator(world, x, y, elevator) {
+		this.world = world;
+
+		this.elevatorID = -1; //Fortfarande kvar i main. 
+	   	this.capacity = 6; 	//tidigare: 6 -> capacity
+	   	this.freeSpaces = 6; //tidigare: 6 -> capacity
+	   	this.activated = false;
+	   	this.positionX = x;
+	   	this.positionY = y;
+	    this.elevatorPeople = 0;
+
+	    //this.allElevators = []; 
+	    //this.elevator = elevator;
 
 	}
 
-//Implement prototype. 
+	//Implement prototype. 
 	Elevator.prototype.implement = function() {
 		this.allElevators = Elevator.prototype.elevatorArray();
 		elevatorID = elevator[0];
@@ -34,7 +40,7 @@
 		activated = elevator[3];
 		positionX = elevator[4];
 		positionY = elevator[5];
-		elevatorPeople = 0;
+		elevatorPeople = [6];
 	}
 
 	//Create an array of elevator objects
@@ -44,13 +50,23 @@
 		var allElevators = [];
 		var len = 6;
 
+		/*
 		//Declare variables for the elevators
 		var capacity = 0;
 		var freeSpaces = capacity;
 		var activated = false;
 		var positionX = 0;
 		var positionY = 0;
+		var elevatorPeople = 0;*/
 
+		//Lägger till i arrayen sections hur stor griden är. 
+		for (var i = 0; i < len; i++) {
+				allElevators.push(new Elevator());
+			}
+		console.log("this.allElevators: ")
+		console.log(this.allElevators);
+
+		/*
 		//Add elevators in the array allElevators
 		for (var i = 0; i < len; i++) {
 		    	allElevators.push({
@@ -59,9 +75,10 @@
 		        freeSpaces: freeSpaces,
 		        activated: activated,
 		        positionX: 40*i+40,
-		        positionY: positionY
+		        positionY: positionY,
+		        elevatorPeople: elevatorPeople
 		    });
-		}
+		}*/
 		return allElevators;
 	}
 
@@ -71,13 +88,14 @@
 		++nmbrOfElevators;
 
 		//Check if maximum number of elevators is reached
-		if(nmbrOfElevators > 6) {
+		if(nmbrOfElevators > 6) {	//istället för 6 borde det vara längden av allElevators
 			console.log("Det går inte att lägga till fler hissar.");
 		}
 		else { 	//Add a new elevator
 		
 			console.log("Antal hissar:" + nmbrOfElevators);
 			
+			var elevatorPeople = 0;
 			var activated = true;
 			var capacity = 5; 
 			freeSpaces = capacity;
@@ -86,22 +104,24 @@
 			//Display capacity of the elevator
 			document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + capacity + "</b> personer.";  
 
-			//Define elevator 
-			var elevator = [elevatorID, capacity, freeSpaces, activated];
-
 			//Update the array 'allElevators'
 			this.allElevators[nmbrOfElevators-1].activated = true;
 			this.allElevators[nmbrOfElevators-1].capacity = 5;
 			this.allElevators[nmbrOfElevators-1].freeSpaces = capacity;
+			this.allElevators[nmbrOfElevators-1].elevatorPeople = elevatorPeople;
 
 			//Display array of elevators
-			//console.log(allElevators);
+			console.log(this.allElevators);
 
 			//Draw the new elevator in the canvas
 			var posX = this.allElevators[nmbrOfElevators-1].positionX;
 			var posY = this.allElevators[nmbrOfElevators-1].positionY;
 			drawRectangle(posX, posY);
 			//drawElevator(posX, posY);
+
+			//Define elevator 
+			var elevator = [elevatorID, capacity, freeSpaces, activated, positionX, positionY, elevatorPeople];
+
 		}
 		
 		return elevator; 
@@ -114,7 +134,7 @@
  		//Check if the elevator is full or not
 		console.log("	Kollar om hissen är full..."); 
 
-		console.log("freespaces " + freeSpaces + "groupsize" + groupsize); 
+		console.log("freespaces: " + freeSpaces + "   groupsize: " + groupsize); 
 		
  		if(freeSpaces==0){
  			isEmpty = false; 
@@ -182,7 +202,7 @@
 		setTimeout(function(){ 
 			//console.log("Hissen är tillbaka."); 
         	alert('Hissen är tillbaka');
-        	Elevator.prototype.implement(); 
+        	Elevator.prototype.implement(); 	//Här ska vi väl egentligen tömma den aktuella hissen, inte kalla på implement()
     	}, 3000);  
 	}
 

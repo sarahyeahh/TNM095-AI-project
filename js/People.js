@@ -22,9 +22,8 @@
 
 		//Get the variable freeSpaces to be able to include it when calling BehaviorTree
 		// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
-		var allElevators = new Elevator();
+		var allElevators = new Elevator.prototype.implement();
 		var freeSpaces = allElevators.freeSpaces;
-		console.log("testar --> freeSpaces = " + allElevators.freeSpaces);
 
 		//To the constructor Move. 
 		this.move = new Move(this.currentGrid, this.width, this.height);
