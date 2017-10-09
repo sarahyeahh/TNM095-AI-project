@@ -11,14 +11,6 @@
 
 ***********************************************************************************************************/
 
-//Detta ska eller har redan deklarerats någon annanstans (typ World.js?)
-var gridSize = 25; //5x5
-var gridX = 5; 
-var gridY = 5;
-var start = 1; 
-var goal = 1; 
-
-
 function Astar(start, goal) {
 
 	this.start = start; 
@@ -31,19 +23,6 @@ function Astar(start, goal) {
 	this.h = 0;
 	this.f = 0; //Behövs den här? 
 	this.index = -1;
-
-	this.reachedGoal = function() {
-		if (this.h == 0){
-			return true;
-		}
-		else{
-			return false;
-		}	
-}
-
-
-	//this.start = start;
-	//this.goal = goal;//[4, 2];	
 }
 
 
@@ -69,15 +48,16 @@ Astar.prototype.H = function (){
 	return this.h; 
 }
 
-/*Astar.prototypes.reachedGoal = function() {
+Astar.prototype.reachedGoal = function(){
+		
 		if (this.h == 0){
 			return true;
 		}
 		else{
 			return false;
 		}	
-}*/
-
+}
+/*
 //Från AI förra kursen	
 Astar.prototype.setG = function(value) {
 		movesDone = value;
@@ -87,7 +67,7 @@ Astar.prototype.setG = function(value) {
 Astar.prototype.setH = function(value) {
 
 		movesLeft = value;
-	}
+	}*/
 
 /*******************************************************/
 

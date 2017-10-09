@@ -24,7 +24,7 @@ function BehaviorTree(stress, tired, speed){
 		this.speed = speed; 
 
 		//TODO
-		this.freeSpaces = 2;
+		//this.freeSpaces = 2;
 }
 
 	//Decision is generated every time the button is pushed.  
