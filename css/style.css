@@ -24,11 +24,8 @@
 
 .grid .tick {
   stroke: black;
+  stroke-width: 2px;
   opacity: 0.7;
-}
-
-.grid path {
-  stroke-width: 0;
 }
 
 
