@@ -4,6 +4,8 @@
 
  	From index2.html
 
+    - make_x_axis()
+    - make_y_axis()
     - createDataSet()
     - createSVG()
     - createCircles()
@@ -30,18 +32,6 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
                 .domain([0, 100])   //Domain from the beginning for the yAxis
                 .range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
 
-// Define X axis
-var xAxis = d3.svg.axis()
-                .scale(xScale)
-                .orient("bottom")
-                .ticks(5);
-
-// Define Y axis
-var yAxis = d3.svg.axis()
-                .scale(yScale)
-                .orient("left")
-                .ticks(5);
-
 var svg = createSVG();
 
 createCircles(svg);     //Create the circles
@@ -49,6 +39,22 @@ drawElevator(160, 20);  //Draw an elevator at this position
 drawStairs(10,120);     //Draw the stairs at this position
 drawAxes(svg);        //Draw the axes. If this function is not called, no axes are visible.
 
+
+//Make X axis
+function make_x_axis() {
+    return d3.svg.axis()
+        .scale(xScale)
+        .orient("bottom")
+        .ticks(5);
+}
+
+//Make Y axis
+function make_y_axis() {
+    return d3.svg.axis()
+        .scale(yScale)
+        .orient("left")
+        .ticks(5);
+}
 
 // Setup data
 function createDataSet() {
@@ -119,15 +125,21 @@ function drawStairs(posX, posY) {
 function drawAxes(svg) {
     // Add to X axis
     svg.append("g")
-        .attr("class", "x axis")
+        .attr("class", "grid") //förut: "class", "x axis"
         .attr("transform", "translate(0," + (canvas_height - padding) +")")
-        .call(xAxis);
+        .call(make_x_axis(xScale)
+            .tickSize(-height, 0, 0)
+            .tickFormat("")
+        );
 
     // Add to Y axis
     svg.append("g")
-        .attr("class", "y axis")
+        .attr("class", "grid") //förut: "class", "y axis"
         .attr("transform", "translate(" + padding +",0)")
-        .call(yAxis);
+        .call(make_y_axis(yScale)
+            .tickSize(-width, 0, 0)
+            .tickFormat("")
+        );
 }
 
 // On click, update with new data
@@ -188,11 +200,15 @@ d3.select(starta)
             svg.select(".x.axis")
                 .transition()
                 .duration(1000)
-                .call(xAxis);
+                .call(make_x_axis(xScale)
+                    .tickSize(-height, 0, 0)
+                    .tickFormat(""))
 
             // Update Y Axis
             svg.select(".y.axis")
                 .transition()
                 .duration(100)
-                .call(yAxis); 
+                .call(make_y_axis(yScale)
+                    .tickSize(-width, 0, 0)
+                    .tickFormat("")) 
     });
