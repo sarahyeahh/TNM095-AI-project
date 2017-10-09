@@ -45,7 +45,7 @@ function make_x_axis() {
     return d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(5);
+        .ticks(5)
 }
 
 //Make Y axis
@@ -128,7 +128,7 @@ function drawAxes(svg) {
         .attr("class", "grid") //förut: "class", "x axis"
         .attr("transform", "translate(0," + (canvas_height - padding) +")")
         .call(make_x_axis(xScale)
-            .tickSize(-height, 0, 0)
+            .tickSize(-canvas_height + 2*padding, 0, 0)
             .tickFormat("")
         );
 
@@ -137,7 +137,7 @@ function drawAxes(svg) {
         .attr("class", "grid") //förut: "class", "y axis"
         .attr("transform", "translate(" + padding +",0)")
         .call(make_y_axis(yScale)
-            .tickSize(-width, 0, 0)
+            .tickSize(3*padding - canvas_width, 0, 0)
             .tickFormat("")
         );
 }
