@@ -20,6 +20,12 @@
 		this.groups = [];
 		this.currentGrid = -1; 
 
+		//Get the variable freeSpaces to be able to include it when calling BehaviorTree
+		// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
+		var allElevators = new Elevator();
+		var freeSpaces = allElevators.freeSpaces;
+		console.log("testar --> freeSpaces = " + allElevators.freeSpaces);
+
 		//To the constructor Move. 
 		this.move = new Move(this.currentGrid, this.width, this.height);
 
@@ -32,7 +38,7 @@
 		this.waitTime = 1;
 		this.speed = 2; 
 
-		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed);  
+		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
 		
 	    // Position and orientation of the group/person
 	  /*  this.x = x;
