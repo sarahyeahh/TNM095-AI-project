@@ -43,7 +43,8 @@
 //Starta om-knapp
 	//Reset the application by restarting everything
 	function reset(){
-		Elevator.prototype.implement(); 
+		//Elevator.prototype.implement(); 
+		People.prototype.generatePeople();
 		console.log("**********STARTAR OM*************"); 
 	}
 
