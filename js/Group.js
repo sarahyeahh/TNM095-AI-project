@@ -10,8 +10,10 @@ function Group() {
 	//this.waitTime = 1;
 	//this.speed = 2; 
 	this.ID = -1;
-	this.groupSize = People.prototype.generatePeople();
-}
+	this.groupSize = People.prototype.generateGroupsize();
+	this.initialX = 60;		//intial x position
+	this.initialY = 0;		//initial y position
+};
 
 Group.prototype.getMaxSize = function (){
 	var slider3 = document.getElementById("myGroups");
@@ -22,4 +24,10 @@ Group.prototype.getMaxSize = function (){
 	output3.innerHTML = groupsizeInput;
 
  	return groupsizeInput;
-}
+};
+
+Group.prototype.update = function() {
+	// Update stress and tiredness
+	this.stressed++;
+	this.tired++;
+};
