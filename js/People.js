@@ -50,7 +50,8 @@
 	People.prototype.generatePeople = function (){
 	//function generatePeople(){
 
-		var max = 6; 
+		var max = Group.prototype.getMaxSize(); 
+		console.log( max);
 		var min = 1;  
 
 		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 

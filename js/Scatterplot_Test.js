@@ -216,7 +216,7 @@ d3.select(starta)
                     .attr("r", function (d) { return d[2]; });  // Change size
             })
             .delay(function(d, i) {
-                return i / dataset.length * 1200;  // Dynamic delay (i.e. each item delays a little longer), default = 500
+                return i / dataset.length * 5000;  // Dynamic delay (i.e. each item delays a little longer), default = 500
             })
             //.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
             .attr("cx", function(d) {
@@ -228,7 +228,7 @@ d3.select(starta)
             .each("end", function() {  // End animation
                 d3.select(this)  // 'this' means the current element
                     .transition()
-                    .duration(500);
+                    .duration(1000);    //default = 500
                     //.attr("fill", "black")  // Change color
                   //  .attr("r", 2);  // Change radius
             });
@@ -252,3 +252,4 @@ d3.select(starta)
             */
 
     });
+

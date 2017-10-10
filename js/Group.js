@@ -12,3 +12,14 @@ function Group() {
 	this.ID = -1;
 	this.groupSize = People.prototype.generatePeople();
 }
+
+Group.prototype.getMaxSize = function (){
+	var slider3 = document.getElementById("myGroups");
+	var groupsizeInput = slider3.value;
+ 	console.log("Max size of group: " + groupsizeInput);
+
+ 	var output3 = document.getElementById("demo3");
+	output3.innerHTML = groupsizeInput;
+
+ 	return groupsizeInput;
+}
