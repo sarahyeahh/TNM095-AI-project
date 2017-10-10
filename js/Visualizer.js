@@ -10,11 +10,11 @@
 
 
 function Visualizer (world, width, height) {
-/*	var game = new Phaser.Game(width, height, Phaser.AUTO, 'canvas-id', { preload: preload, create: create, update: update });
+	var game = new Phaser.Game(width, height, Phaser.AUTO, 'canvas-id', { preload: preload, create: create, update: update });
 	var bmd;
 	var bitmapSprite;
 
-
+/*
 	//Colors for background and the groups
 	var backgroundColor = rgb(224, 224, 224);
 	var groupColor = rgb(0,255,255);
@@ -51,7 +51,7 @@ function Visualizer (world, width, height) {
 		bmd.clear(0,0,width, height);
 		
 		// To decide what to draw
-		var drawAnts = document.getElementById('drawAntsCheckBox').checked;
+		//var drawAnts = document.getElementById('drawAntsCheckBox').checked;
 
 		//Draw BitMapData objects
 		bmd.ctx.fillStyle = backgroundColor;
@@ -70,7 +70,7 @@ function Visualizer (world, width, height) {
 				var yPos = dh * j - 0.5 * dh;
 				for (var k = 0; k < world.groups.length; k++) {		//antColonies --> groups
 					// Draw groups
-					var groupRadius = game.width / world.width * 0.5;
+					var groupRadius = 2;
 					bmd.ctx.fillStyle = groupColor;
 					bmd.ctx.beginPath();
 					bmd.ctx.fillRect(xPos, yPos, dw, dh);
@@ -81,7 +81,7 @@ function Visualizer (world, width, height) {
 			};
 		};
 
-		// Draw ants
+		// Draw groups
 		if (drawGroups){
 			for (var i = 0; i < world.groups.length; i++) {
 				var group = world.groups[i];
@@ -95,20 +95,13 @@ function Visualizer (world, width, height) {
 					var directionVector = {
 						x: Math.cos(group.angle / 8 * 2*Math.PI),
 						y: Math.sin(group.angle / 8 * 2*Math.PI)
-					
-					// Center piece
-					bmd.ctx.fillStyle = groupColor;
-					bmd.ctx.beginPath();
-					bmd.ctx.arc(xPos, yPos, groupRadius, 0, Math.PI*2, true); 
-					bmd.ctx.closePath();
-					bmd.ctx.fill();
 
 					/*bmd.ctx.lineWidth = groupRadius;
 					bmd.ctx.beginPath();
 					bmd.ctx.moveTo(xPos, yPos);
 					bmd.ctx.lineTo(xPos + directionVector.x * groupRadius, yPos + directionVector.y * groupRadius);
-					bmd.ctx.stroke();	*/
-	/*			}
+					bmd.ctx.stroke();	
+			}
 			}
 		}
 	}*/
