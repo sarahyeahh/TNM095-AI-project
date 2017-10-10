@@ -50,6 +50,7 @@
 		return 0; 
 	}
 
+	
 	function draw() {
 		r = 2;	//default radius
 
@@ -94,7 +95,7 @@
 	    context.fillStyle = 'orange';
 	    context.fillRect(x+6, y, 2, 20);
 	}
-
+	
 	/****************************************************
 		Moving circle/ball
 	****************************************************/
@@ -124,4 +125,4 @@
 
         }
     } 
-	
+

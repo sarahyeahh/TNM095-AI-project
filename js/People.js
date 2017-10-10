@@ -50,8 +50,8 @@
 	People.prototype.generatePeople = function (){
 	//function generatePeople(){
 
-		var max = Group.prototype.getMaxSize(); 
-		console.log( max);
+		var max = Group.prototype.getMaxSize(); //tidigare satt till 6
+		//console.log(max);
 		var min = 1;  
 
 		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
@@ -60,7 +60,7 @@
 		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + groupsize + "</b>";  
 
 		//Draw a new circle for each new group
-		drawGroup(90,150,groupsize);
+		//drawGroup(90,150,groupsize);
 
 		return groupsize; 
 	}
