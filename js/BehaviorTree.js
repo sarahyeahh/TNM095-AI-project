@@ -36,7 +36,7 @@ function BehaviorTree(stress, tired, speed, freespaces){
 	//Decision is generated every time the button is pushed.  
 	BehaviorTree.prototype.decision = function(){
 
-		groupsize = People.prototype.generatePeople(); 
+		groupsize = People.prototype.generateGroupsize(); 
 		console.log("Grupp med " + groupsize + " personer."); 
 
 		//Steg 0: Är hissen här? (Bra att ha om flera hissar.)
