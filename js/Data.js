@@ -35,13 +35,6 @@ Data.prototype.calc = function(){
 	return this.dividedGroups; 
 }
 
-<<<<<<< HEAD
-//console.log(avgPeople);
-var dividedGroups = [];
-dividedGroups = splitIntoGroups(50);
-console.log("Groups to plot: " + dividedGroups);
-=======
->>>>>>> 838e6d81eaef9756ab19cb4b81846ab8c78f424c
 
 //Split one bigger number/integer into smaller integers and save in array
 //In our case: Split avgPeople into smallerGroups
