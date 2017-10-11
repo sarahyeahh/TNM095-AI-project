@@ -12,6 +12,7 @@
     - drawElevator()
     - drawStairs()
     - drawAxes()
+    - updateCanvas()
 
 ***********************************************************************************************************/
 
@@ -36,8 +37,6 @@ var canvas_width = 700;
 var canvas_height = 500;
 var padding = 30;  // for chart edges
 
-var dataset = createDataSet();
-
 // Create scale functions
 var xScale = d3.scale.linear()  // xScale is width of graphic
                 .domain([0, 120])   //Domain from the beginning for the xAxis
@@ -47,12 +46,15 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
                 .domain([0, 100])   //Domain from the beginning for the yAxis
                 .range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
 
+var dataset = createDataSet();
 var svg = createSVG();
 
-createCircles(svg);  //Create the circles
 drawElevator(160, 20);  //Draw an elevator at this position
 drawStairs(10,120);     //Draw the stairs at this position
 drawAxes(svg);          //Draw the axes. If this function is not called, no axes are visible.
+
+createCircles(svg);     //Create the circles
+updateCanvas();         //Move the circles to their final position/update their position
 
 
 //Make X axis
@@ -79,8 +81,8 @@ function createDataSet() {
 
     //xval and yval = the initial position for the dots
     for(var i = 0; i < nmbrOfGroups; i++) {
-        var xval = 60; //Math.floor(Math.random() * maxRange);  // New random integer  
-        var yval = 0; //Math.floor(Math.random() * maxRange);  // New random integer
+        var xval = generatedGroups[i].initialX; 
+        var yval = generatedGroups[i].initialY; 
         var radius = generatedGroups[i].groupSize *2;       //Tar *2 enbart för att få större prickar
         dataset.push([xval, yval, radius]);  // Add new number to array
     }
@@ -162,11 +164,13 @@ function drawAxes(svg) {
         );
 }
 
+/*
 // On click, update with new data
 var starta = document.getElementById("klickahär");
 d3.select(starta)
-    .on("click", function() {
+    .on("click", function() {*/
 
+function updateCanvas() {
         var numValues = dataset.length;  // Get original dataset's length
 
         tempDataset = dataset;
@@ -175,9 +179,6 @@ d3.select(starta)
 
         //For all datapoints set their new position
         for(var i = 0; i<numValues; i++) {
-            /*var xval = 40 + 5*i;//Math.floor(Math.random() * maxRange);  // Random int for x
-            var yval = 100; //Math.floor(Math.random() * maxRange);  // Random int for y
-            */
 
             var newRadius = tempDataset[i][2];
 
@@ -228,7 +229,7 @@ d3.select(starta)
             .each("end", function() {  // End animation
                 d3.select(this)  // 'this' means the current element
                     .transition()
-                    .duration(1000);    //default = 500
+                    .duration(5000);    //default = 500
                     //.attr("fill", "black")  // Change color
                   //  .attr("r", 2);  // Change radius
             });
@@ -251,5 +252,5 @@ d3.select(starta)
                     .tickFormat("")) 
             */
 
-    });
+  }  
 
