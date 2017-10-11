@@ -11,34 +11,36 @@
 
 //Prototypes constructor  
 function Data(){
+	this.dividedGroups = [];
+
 	this.avgPeople = [105, 105, 157.5, 157.5, 0, 150, 150, 112.5, 112.5, 112.5]; 
 	this.time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+
+	this.calc();
 }
 
-var time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-var avgPeople= [105, 105, 157.5, 157.5, 0, 150, 150, 112.5, 112.5, 112.5]; 
+Data.prototype.calc = function(){
 
+	for (var i = 0; i < this.avgPeople.length; i++) {
+	    //Antal personer som faktiskt kommer? 
+	    this.avgPeople[i] *=0.7; 
+		//Gör till heltal
+	    this.avgPeople[i] = Math.floor(this.avgPeople[i]);  
 
-var dividedGroups = [];
+	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i]));
+	} 
 
-for (var i = 0; i < avgPeople.length; i++) {
-    //Antal personer som faktiskt kommer? 
-    avgPeople[i] *=0.7; 
-	//Gör till heltal
-    avgPeople[i] = Math.floor(avgPeople[i]);  
+	console.log(this.dividedGroups);	
 
-    dividedGroups.push(splitIntoGroups(avgPeople[i]));
-} 
+	return this.dividedGroups; 
+}
 
-//console.log(avgPeople);
-
-
-//console.log("Groups to plot: " + dividedGroups);
 
 //Split one bigger number/integer into smaller integers and save in array
 //In our case: Split avgPeople into smallerGroups
-function splitIntoGroups (totalNmbrPeople) {
-
+//function splitIntoGroups (totalNmbrPeople) {
+Data.prototype.splitIntoGroups = function(totalNmbrPeople){
+	
 	var maxSizeOfGroup = 10;
 	var smallerGroups = [];
 	console.log("total number: " + totalNmbrPeople);
@@ -56,4 +58,4 @@ function splitIntoGroups (totalNmbrPeople) {
 	return smallerGroups;
 }
 
-console.log(dividedGroups);
+
