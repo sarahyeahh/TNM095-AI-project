@@ -52,7 +52,8 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
 var dataset = createDataSet();
 var svg = createSVG();
 
-drawElevator(540, 210);  //Draw an elevator at this position
+drawEntrance(143, 570)  //Draw an entrance at this position
+drawElevator(540, 210); //Draw an elevator at this position
 drawStairs(10,150);     //Draw the stairs at this position
 drawAxes(svg);          //Draw the axes. If this function is not called, no axes are visible.
 
@@ -146,6 +147,16 @@ function drawStairs(posX, posY) {
       .attr('width', 20)
       .attr('height', 60)
       .style('fill', 'rgb(0,255,0)')
+}
+
+//Draw the entrance
+function drawEntrance(posX, posY) {
+    var rectangle = svg.append('rect')
+      .attr('x', posX)
+      .attr('y', posY)
+      .attr('width', 58)
+      .attr('height', 10)
+      .style('fill', 'rgb(0,0,0)')
 }
 
 function drawAxes(svg) {
