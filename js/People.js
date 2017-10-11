@@ -1,12 +1,10 @@
 /**********************************************************************************************************
  	Authors:  Sarah Fosse and Hanna Johansson
  	Date: Created 2017-09-26
-
  	File for functions related to the people.
-
  	The file includes the functions:
+ 	- generateGroupsize()   --> Previously called generatePeople
  	- generatePeople()
-
 ***********************************************************************************************************/
 
 //Attribut för grupp: Antal, stress(hastighet).
@@ -14,15 +12,26 @@
 	//Prototype constructor
 	function People(width, height){
 
-		this.width = width; 
-		this.height = height; 
+		this.width = width; 		//width of the world
+		this.height = height; 		//height of the world
 
-		this.groups = [];
+		this.groups = [];			//array to store all groups
+		this.activeGroups = 0;		//counter of generated groups of people
 		this.currentGrid = 0; 
-		this.index = 0;
+
+		//Get the variable freeSpaces to be able to include it when calling BehaviorTree
+		// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
+		var allElevators = new Elevator.prototype.implement();
+		var freeSpaces = allElevators.freeSpaces;
+
+		this.y = 0; 
+		this.x = 0; 
 
 		//To the constructor Move. 
-		this.move = new Move(this.currentGrid, this.width, this.height);
+		this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
+
+		//"Brain" to make decision
+		//this.decision = new Decision(this);
 
 		//Variables effecting the decision/behavior
 		this.stressed = 1;
@@ -30,37 +39,50 @@
 		this.waitTime = 1;
 		this.speed = 2; 
 
-		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed);  
+		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
 		
-		this.position = {
-			    x: x,
-			    y: y
-		};
-
 	    // Position and orientation of the group/person
-	  /*  this.x = x;
+	/*    this.x = x;
 	    this.y = y;
 	    this.angle = angle; // 0-7*/
 
 	}
 
-	//generatePeoplete a group of people
-	People.prototype.generatePeople = function (){
-	//function generatePeople(){
+	var groups = [];
+	var activeGroups = 0;
 
-		var max = 6; 
+	//generate a groupsize for a new group of people
+	People.prototype.generateGroupsize = function (){
+
+		//max and min size of a generated group
+		var max = Group.prototype.getMaxSize(); //tidigare satt till 6
 		var min = 1;  
 
+		//set groupsize to be a random number between max and min
 		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
 
 		//Display number of people that wants to enter the elevator
 		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + groupsize + "</b>";  
 
 		//Draw a new circle for each new group
-		drawGroup(90,150,groupsize);
+		//drawGroup(90,150,groupsize);
 
 		return groupsize; 
 	}
+
+	//generate a new group of people
+	People.prototype.generatePeople = function (){
+		//this.groups = [];
+		groups.push(new Group()); 
+        activeGroups++;
+        console.log("number of groups: " + activeGroups);
+        groups[activeGroups-1].ID += activeGroups;
+
+        console.log("groups: ")
+        console.log(groups);
+
+        return groups;
+    }
 
 
 
@@ -94,7 +116,7 @@
 		this.waitTime++;
 
 		//"Kill" people if exceeded max values
-		if(this.stressed > this.STATIC.MAX_STRESSED || this.tireed > this.STATIC.MAX_TIRED || this.waitTime > this.STATIC.MAX_WAIT_TIME){
+		if(this.stressed > this.STATIC.MAX_STRESSED || this.tired > this.STATIC.MAX_TIRED || this.waitTime > this.STATIC.MAX_WAIT_TIME){
 			if(Math.random() > 0.999){
 				this.kill();
 				return;
@@ -104,9 +126,5 @@
 
 
 
-	
-
-
 
 	
-

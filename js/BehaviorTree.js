@@ -16,7 +16,12 @@ var tired = 0.4;
 var stressed = 0.7; 
 var newSpacesLeft = 0; */
 
-function BehaviorTree(stress, tired, speed){
+//BehaviorTree needs:
+// - variables concerning the People --> stress, tired, speed, waitTime, groupsize, position
+// - variables concering the Elevators --> freeSpaces, elevatorID, (capacity?), position
+
+
+function BehaviorTree(stress, tired, speed, freespaces){
 
 		this.newSpacesLeft = 0; 
 		this.stressed = stress;
@@ -25,19 +30,20 @@ function BehaviorTree(stress, tired, speed){
 
 		//TODO
 		//this.freeSpaces = 2;
+		this.freeSpaces = freespaces;
 }
 
 	//Decision is generated every time the button is pushed.  
 	BehaviorTree.prototype.decision = function(){
 
-		groupsize = People.prototype.generatePeople(); 
+		groupsize = People.prototype.generateGroupsize(); 
 		console.log("Grupp med " + groupsize + " personer."); 
 
 		//Steg 0: Är hissen här? (Bra att ha om flera hissar.)
 		//isHere = checkHere(); 
 
 		//Steg 1: Finns lediga platser? 
-		isEmpty = Elevator.prototype.checkEmpty(groupsize, freeSpaces);
+		isEmpty = Elevator.prototype.checkEmpty(groupsize, this.freeSpaces);
 
 		//För att testa om hissen är full och inte där. 
 		//isEmpty = false; 
@@ -46,10 +52,10 @@ function BehaviorTree(stress, tired, speed){
 		
 		if(isEmpty){
 			//If there are spaces left, check how many spaces are free.
-			var freeTemp = Elevator.prototype.spacesLeft(groupsize, freeSpaces);
+			var freeTemp = Elevator.prototype.spacesLeft(groupsize, this.freeSpaces);
 	
 			//Get the new spaces after taking the elevator. 
-			newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp, freeSpaces);
+			newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp, this.freeSpaces);
 			console.log("Platser kvar: "  + newSpacesLeft); 
 		}
 		else{

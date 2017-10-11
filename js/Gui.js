@@ -35,13 +35,26 @@
 	/****************************************************
 		SLIDER 3: Regulate group size
 	****************************************************/
-	var slider3 = document.getElementById("myGroups");
+	/*var slider3 = document.getElementById("myGroups");
 	var output3 = document.getElementById("demo3");
 	output3.innerHTML = slider3.value;
 
+	console.log("value: " + slider3.value);*/
+
+	/*
 	slider3.oninput = function() {
-	  output3.innerHTML = this.value;
+	  //output3.innerHTML = this.value;
 	  var groupsizeInput = this.value;
 	  console.log("Max size of group: " + groupsizeInput);
+	}*/
+
+/*
+	function getMaxSize(){
+		var slider3 = document.getElementById("myGroups");
+		var groupsizeInput = slider3.value;
+	 	console.log("Max size of group: " + groupsizeInput);
+	 	return groupsizeInput;
 	}
+*/
+
 

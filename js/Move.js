@@ -11,9 +11,9 @@
 ***********************************************************************************************************/
 
 //Kombination av Grid.js/Pathfinding.js/Gridsection.js
-function Move(current, width, height){
-	
-	//this.currentSection = current; //From People.js, Number between 0-8 (9st grids)
+function Move(x, y, current, width, height){
+	//ANVÄNDS EJ
+	this.currentSection = current; //From People.js, Number between 0-8 (9st grids)
 
 	this.visitedList = [];
 	this.queue = [];
@@ -26,11 +26,13 @@ function Move(current, width, height){
 	this.start = 0; 
 	this.goal = 5; 
 	this.index = 0; 
+	
+
 
 	this.position = {
 			    x: x,
 			    y: y
-	};
+			};
 
 	this.init();
 
@@ -138,18 +140,9 @@ Move.prototype.getGridSectionsWithLeastOccupation = function() {
 //Calculate the Astar?
 Move.prototype.calculate = function(){
 
-	console.log("Calculate function"); 
-/*
-	Astar.prototype.g = 0;
-	Astar.prototype.h = this.manhattan(this.index, this.goal);
+	console.log("Calculate function");
 
-	console.log("		Moves left: "+ Astar.prototype.h); 
-
-	//Calculates the A*star
-	Astar.prototype.f = Astar.prototype.g + Astar.prototype.h;
-
-	console.log("F" +  Astar.prototype.f + " = G" + Astar.prototype.g + " + H" + Astar.prototype.h );
-*/
+	console.log(this.currentGrid);  
 	
 	this.currentGrid.g = 0;
 	this.currentGrid.h = this.manhattan(this.index, this.goal);
@@ -439,7 +432,7 @@ Move.prototype.setAdjacentSections = function(check) {
 	}
 
 
-Move.prototype.newPos = function (){
+/*Move.prototype.newPos = function (){
 
 	if(this.currentGrid.index != this.getCurrentGridSection(this.position).index) {
 	   	console.log("newpos");
@@ -475,6 +468,6 @@ Move.prototype.newPos = function (){
 
 	   	this.update();
 }
-
+*/
 
 

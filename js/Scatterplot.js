@@ -1,6 +1,6 @@
 /**********************************************************************************************************
  	Authors:  Sarah Fosse and Hanna Johansson
- 	Date: Created 2017-09-28
+ 	Date: Created 2017-10-06
 
  	From index2.html
 

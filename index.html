@@ -29,23 +29,28 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
+    <!-- Font awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 </head>
 <!-- <body onload="draw();"> -->
 <body id="load">
 
 	<div class="container">
-	  	<h1>Täppan - hiss eller trappa!?</h1>
-		<p>Detta är ett projekt i TNM095<p>
-			<button id="klickahär">Klicka här</button>
+		<header>
+		  	<h1>Täppan - hiss eller trappa!?</h1>
+			<p>Detta är ett projekt i TNM095<p>
+		</header>
+
+		<button id="klickahär">Klicka här</button>
+		<input type="button" value="Refresh Page" onClick="window.location.reload()">
 
 	  	<div class="row">
 		    <div class="col-md-8">
-			    
-			    <h3>Canvas</h3>
-			    <div>
-			    	<canvas id="canvas" class="canvas" ></canvas>
-				</div>
-		  
+		    	<h3>Canvas</h3>
+		    	<h4></h4>
+		    	<h5></h5>
+		    	<!-- <canvas id="canvas" class="canvas" ></canvas> -->
 		    </div>
 		    <div class="col-md-4" style="border: 2px solid black">
 			    
@@ -83,7 +88,8 @@
 				    <div id="slidecontainer">
 				        <input type="range" min="1" max="6" value="3" class="slider" id="myElevators"><br>
 				        <input type="range" min="1" max="10" value="5" class="slider" id="mySpeed"><br>
-				        <input type="range" min="1" max="20" value="10" class="slider" id="myGroups">
+				        <input type="range" min="1" max="20" value="10" class="slider" id="myGroups" 
+				        oninput="Group.prototype.getMaxSize()">
 				    </div>
 				</div>
 				<!-- Values from sliders -->
@@ -100,22 +106,38 @@
   		<div class="row">
   		
   		</div>
+  	</div>
 
-	</div>
-
+	<footer id="footer">
+	    <div class ="col-lg-12">
+	        <div class="row">
+	            <div class="col-md-4">
+	                <p id = "footertxt">Copyright &copy; Sarah Fosse, Hanna Johansson</p>
+	            </div>
+	            <div class="col-md-4">
+	                <p id="git_logo"><a href="https://github.com/sarahyeahh/TNM095-AI-project" target="_blank"><i class="fa fa-github fa-2x"></i></a><p>
+	            </div>
+	            <div class="col-md-4 text-right">
+	                <p id = "footertxt">Norrköping, Sweden</p>
+	            </div>
+	        </div>
+	        
+	    </div>
+	</footer>
 
 
 <!-- Add scripts -->
 <script src="js/Astar.js"></script>
 <script src="js/BehaviorTree.js"></script>
-<script src="js/Canvas.js"></script>
+<!-- <script src="js/Canvas.js"></script> -->
 <script src="js/Data.js"></script>
 <script src="js/Elevator.js"></script>
+<script src="js/Group.js"></script>
 <script src="js/Gui.js"></script>
 <script src="js/main.js"></script>
 <script src="js/Move.js"></script>
 <script src="js/People.js"></script>
-  <script src="js/Scatterplot.js"></script>
+<script src="js/Scatterplot_Test.js"></script>
 <script src="js/Stairs.js"></script>
 <script src="js/Visualizer.js"></script>
 <script src="js/World.js"></script>

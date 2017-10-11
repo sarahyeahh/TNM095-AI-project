@@ -7,12 +7,25 @@
 .axis line {
     fill: none;
     stroke: red;
+    stroke-width: 2px;
     shape-rendering: crispEdges;
 }
 
 .axis text {
     font-family: sans-serif;
     font-size: 11px;
+}
+
+.grid line {
+  stroke: black;
+  opacity: 0.5;
+  shape-rendering: crispEdges;
+}
+
+.grid .tick {
+  stroke: black;
+  stroke-width: 2px;
+  opacity: 0.7;
 }
 
 
@@ -24,6 +37,12 @@
 	border:2px solid black;
     width: 95%;
     height: 50%;
+}
+
+h4 {
+    border:2px solid black;
+    width: 95%;
+    height: 50%; 
 }
 
 /* Moving ball */
@@ -99,12 +118,34 @@
 
 
 /*--------------------------------------------------------
-                       ID
+                       FOOTER
 /*------------------------------------------------------*/
 
+#footer {
+    width:100%; 
+    float:left; 
+    background-color: #ff944d;
+    height:90px;
+}
+
+p#footertxt{
+    margin: 5%;
+    font-family: 'Arial';
+    font-size: 90%;
+}
+
+#git_logo{
+    text-align: center;
+    margin: 4%;
+    color: #595959;
+}
+
+#git_logo:hover {
+    color: #000000;
+}
 
 
 
 /*--------------------------------------------------------
-                       CLASSES
+                       
 /*------------------------------------------------------*/
