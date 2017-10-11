@@ -1,13 +1,10 @@
 /**********************************************************************************************************
  	Authors:  Sarah Fosse and Hanna Johansson
  	Date: Created 2017-09-26
-
  	File for functions related to the people.
-
  	The file includes the functions:
  	- generateGroupsize()   --> Previously called generatePeople
  	- generatePeople()
-
 ***********************************************************************************************************/
 
 //Attribut för grupp: Antal, stress(hastighet).
@@ -20,16 +17,18 @@
 
 		this.groups = [];			//array to store all groups
 		this.activeGroups = 0;		//counter of generated groups of people
-
-		this.currentGrid = -1; 
+		this.currentGrid = 0; 
 
 		//Get the variable freeSpaces to be able to include it when calling BehaviorTree
 		// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
 		var allElevators = new Elevator.prototype.implement();
 		var freeSpaces = allElevators.freeSpaces;
 
+		this.y = 0; 
+		this.x = 0; 
+
 		//To the constructor Move. 
-		this.move = new Move(this.currentGrid, this.width, this.height);
+		this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
 
 		//"Brain" to make decision
 		//this.decision = new Decision(this);
@@ -43,9 +42,9 @@
 		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
 		
 	    // Position and orientation of the group/person
-	    this.x = x;
+	/*    this.x = x;
 	    this.y = y;
-	    this.angle = angle; // 0-7
+	    this.angle = angle; // 0-7*/
 
 	}
 
@@ -129,8 +128,3 @@
 
 
 	
-
-
-
-	
-
