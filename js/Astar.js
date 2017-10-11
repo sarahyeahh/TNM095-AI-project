@@ -19,9 +19,9 @@ function Astar(start, goal) {
 	this.occupation = 0; //vad betyder denna?
 	this.centerX = 0; //den med ? 
 	this.centerY = 0; // den med? 
-	this.g = 0;
-	this.h = 0;
-	this.f = 0; //Behövs den här? 
+	this.g = 0; //Cost/Moves done 
+	this.h = 0; //Heuristic
+	this.f = 0; //Astar calculated. 
 	this.index = -1;
 }
 
@@ -57,42 +57,3 @@ Astar.prototype.reachedGoal = function(){
 			return false;
 		}	
 }
-/*
-//Från AI förra kursen	
-Astar.prototype.setG = function(value) {
-		movesDone = value;
-	}
-	
-	//Return the estimated number of moves left
-Astar.prototype.setH = function(value) {
-
-		movesLeft = value;
-	}*/
-
-/*******************************************************/
-
-/*
-//Skapa en grid med massa 5x5 1:or
-var map = new Array(gridX);
-
-for (var i = 0; i < gridX; i++) {
-  map[i] = new Array(gridY);
-  for (var j = 0; j < gridY; j++) {
-  	map[i][j] = 1; 
-  }
-}
-console.log(map);
-
-var thestart = [0, 2];
-var thegoal = [4, 2];
-
-//Lägg till en nolla på (1,3)
-map[0][2] = 0; 
-
-console.log(map);
-
-*/
-
-
-//****************************************************
-

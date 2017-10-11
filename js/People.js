@@ -18,13 +18,11 @@
 		this.height = height; 
 
 		this.groups = [];
-		this.currentGrid = -1; 
+		this.currentGrid = 0; 
+		this.index = 0;
 
 		//To the constructor Move. 
 		this.move = new Move(this.currentGrid, this.width, this.height);
-
-		//"Brain" to make decision
-		//this.decision = new Decision(this);
 
 		//Variables effecting the decision/behavior
 		this.stressed = 1;
@@ -34,6 +32,11 @@
 
 		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed);  
 		
+		this.position = {
+			    x: x,
+			    y: y
+		};
+
 	    // Position and orientation of the group/person
 	  /*  this.x = x;
 	    this.y = y;
@@ -98,7 +101,6 @@
 			}
 		}
 	}
-
 
 
 
