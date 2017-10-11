@@ -184,7 +184,6 @@ function updateCanvas() {
 
             //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
             if(newRadius < 7) { 
-                //540, 210
                 var xval = 9;
                 var yval = 5.5; 
             }
