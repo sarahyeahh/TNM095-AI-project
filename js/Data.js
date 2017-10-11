@@ -18,17 +18,22 @@ function Data(){
 var time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 var avgPeople= [105, 105, 157.5, 157.5, 0, 150, 150, 112.5, 112.5, 112.5]; 
 
+
+var dividedGroups = [];
+
 for (var i = 0; i < avgPeople.length; i++) {
     //Antal personer som faktiskt kommer? 
     avgPeople[i] *=0.7; 
 	//Gör till heltal
     avgPeople[i] = Math.floor(avgPeople[i]);  
+
+    dividedGroups.push(splitIntoGroups(avgPeople[i]));
 } 
 
 //console.log(avgPeople);
-var dividedGroups = [];
-dividedGroups = splitIntoGroups(20);
-console.log("Groups to plot: " + dividedGroups);
+
+
+//console.log("Groups to plot: " + dividedGroups);
 
 //Split one bigger number/integer into smaller integers and save in array
 //In our case: Split avgPeople into smallerGroups
@@ -50,3 +55,5 @@ function splitIntoGroups (totalNmbrPeople) {
 	}
 	return smallerGroups;
 }
+
+console.log(dividedGroups);
