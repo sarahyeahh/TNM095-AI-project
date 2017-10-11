@@ -24,6 +24,7 @@
 		var allElevators = new Elevator.prototype.implement();
 		var freeSpaces = allElevators.freeSpaces;
 
+//TODO, make new variables. 
 		this.y = 0; 
 		this.x = 0; 
 
