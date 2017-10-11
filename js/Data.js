@@ -26,6 +26,27 @@ for (var i = 0; i < avgPeople.length; i++) {
 } 
 
 //console.log(avgPeople);
+var dividedGroups = [];
+dividedGroups = splitIntoGroups(20);
+console.log("Groups to plot: " + dividedGroups);
 
-//TODO
-//Dela in antalet personer i grupper.
+//Split one bigger number/integer into smaller integers and save in array
+//In our case: Split avgPeople into smallerGroups
+function splitIntoGroups (totalNmbrPeople) {
+
+	var maxSizeOfGroup = 10;
+	var smallerGroups = [];
+	console.log("total number: " + totalNmbrPeople);
+
+	while (totalNmbrPeople > 0) {
+	  //var s = Math.round(Math.random()*n);
+	  //var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
+	  //var s = Math.round(Math.random() * (totalNmbrPeople - 1)) + 1;
+
+	  //Generate random number between maxSizeOfGroup and 1;
+	  var s = Math.round(Math.random() * maxSizeOfGroup) + 1;
+	  smallerGroups.push(s);
+	  totalNmbrPeople -= s;
+	}
+	return smallerGroups;
+}
