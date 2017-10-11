@@ -33,8 +33,9 @@
 
 
 // Setup settings for graphic
-var canvas_width = 700;
-var canvas_height = 500;
+var canvas_width = canvas.width*2;
+var canvas_height = canvas.width*2;
+console.log("canvas w" + canvas_width);
 var padding = 30;  // for chart edges
 
 // Create scale functions
@@ -62,7 +63,7 @@ function make_x_axis() {
     return d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(6)
+        .ticks(9)
 }
 
 //Make Y axis
@@ -70,7 +71,7 @@ function make_y_axis() {
     return d3.svg.axis()
         .scale(yScale)
         .orient("left")
-        .ticks(6);
+        .ticks(8);
 }
 
 // Setup data
@@ -182,6 +183,7 @@ function updateCanvas() {
 
             var newRadius = tempDataset[i][2];
 
+//TODO: Ska baseras BehaviourTree och på Move
             //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
             if(newRadius < 7) { 
                 var xval = 35;

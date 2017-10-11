@@ -19,15 +19,13 @@ function Move(x, y, current, width, height){
 	this.queue = [];
 	this.sections = [];	
 	
-	this.width = width;
-	this.height = height;
+	this.width = 2*width;
+	this.height = 2*height;
 
 	this.size = 9; 
 	this.start = 0; 
 	this.goal = 5; 
 	this.index = 0; 
-	
-
 
 	this.position = {
 			    x: x,
@@ -37,7 +35,6 @@ function Move(x, y, current, width, height){
 	this.init();
 
 	this.currentGrid = this.getCurrentGridSection(this.position);
-	//console.log(this.currentGrid.centerY); 
 	
 	console.log("Start: " + this.start + " Goal: " + this.goal); 
 	
@@ -62,14 +59,14 @@ Move.prototype.init = function (){
 
 //TODO
 //Vill man ha kvar samma mått eller vill man ändra till koordinat?
-//Räknar ut vad hörnen är i griden i förhållande till canvas width och height. 
+//Räknar ut vad hörnen är i griden i förhållande till canvas width och height.
 	var counter = 0;
 	for(var y = 1; y <= this.size; y++){
 		for (var x = 1; x <= this.size; x++) {
 
-				// Calculate center positions for grid 0-8 in the canvas. 
-				this.sections[counter].centerX = (this.width*x) / 2;
-				this.sections[counter].centerY = (this.height*y) / 2;
+				// Calculate where the xy values in the grid for index. 
+				this.sections[counter].centerX = Math.floor((this.width*x)/600);
+				this.sections[counter].centerY =  Math.floor((this.width*y)/600);
 				this.sections[counter].index = counter;
 				//Bra att ha console.logen för att veta måtten för gridet. 
 				//console.log("counter " + counter + " " + this.sections[counter].centerX + " " +  this.sections[counter].centerY); 
