@@ -49,8 +49,8 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
 var dataset = createDataSet();
 var svg = createSVG();
 
-drawElevator(160, 20);  //Draw an elevator at this position
-drawStairs(10,120);     //Draw the stairs at this position
+drawElevator(540, 210);  //Draw an elevator at this position
+drawStairs(10,150);     //Draw the stairs at this position
 drawAxes(svg);          //Draw the axes. If this function is not called, no axes are visible.
 
 createCircles(svg);     //Create the circles
@@ -129,8 +129,8 @@ function drawElevator(posX, posY) {
     var rectangle = svg.append('rect')
       .attr('x', posX)
       .attr('y', posY)
-      .attr('width', 80)
-      .attr('height', 20)
+      .attr('width', 20)
+      .attr('height', 60)
       .style('fill', 'rgb(0,0,255)')
 }
 
@@ -140,7 +140,7 @@ function drawStairs(posX, posY) {
       .attr('x', posX)
       .attr('y', posY)
       .attr('width', 20)
-      .attr('height', 80)
+      .attr('height', 60)
       .style('fill', 'rgb(0,255,0)')
 }
 
@@ -184,12 +184,13 @@ function updateCanvas() {
 
             //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
             if(newRadius < 7) { 
-                var xval = 35;
-                var yval = 98; 
+                //540, 210
+                var xval = 9;
+                var yval = 5.5; 
             }
             else {  //If the group is bigger --> go to the stairs
                 var xval = 0;
-                var yval = 70; 
+                var yval = 6.5; 
             }
  
             //Returnerar det nya x och y värdet. 
