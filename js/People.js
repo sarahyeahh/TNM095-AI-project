@@ -5,6 +5,7 @@
  	File for functions related to the people.
 
  	The file includes the functions:
+ 	- generateGroupsize()   --> Previously called generatePeople
  	- generatePeople()
 
 ***********************************************************************************************************/
@@ -14,10 +15,12 @@
 	//Prototype constructor
 	function People(width, height){
 
-		this.width = width; 
-		this.height = height; 
+		this.width = width; 		//width of the world
+		this.height = height; 		//height of the world
 
-		this.groups = [];
+		this.groups = [];			//array to store all groups
+		this.activeGroups = 0;		//counter of generated groups of people
+
 		this.currentGrid = -1; 
 
 		//Get the variable freeSpaces to be able to include it when calling BehaviorTree
@@ -40,20 +43,23 @@
 		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
 		
 	    // Position and orientation of the group/person
-	  /*  this.x = x;
+	    this.x = x;
 	    this.y = y;
-	    this.angle = angle; // 0-7*/
+	    this.angle = angle; // 0-7
 
 	}
 
-	//generatePeoplete a group of people
-	People.prototype.generatePeople = function (){
-	//function generatePeople(){
+	var groups = [];
+	var activeGroups = 0;
 
+	//generate a groupsize for a new group of people
+	People.prototype.generateGroupsize = function (){
+
+		//max and min size of a generated group
 		var max = Group.prototype.getMaxSize(); //tidigare satt till 6
-		//console.log(max);
 		var min = 1;  
 
+		//set groupsize to be a random number between max and min
 		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
 
 		//Display number of people that wants to enter the elevator
@@ -64,6 +70,20 @@
 
 		return groupsize; 
 	}
+
+	//generate a new group of people
+	People.prototype.generatePeople = function (){
+		//this.groups = [];
+		groups.push(new Group()); 
+        activeGroups++;
+        console.log("number of groups: " + activeGroups);
+        groups[activeGroups-1].ID += activeGroups;
+
+        console.log("groups: ")
+        console.log(groups);
+
+        return groups;
+    }
 
 
 
@@ -97,7 +117,7 @@
 		this.waitTime++;
 
 		//"Kill" people if exceeded max values
-		if(this.stressed > this.STATIC.MAX_STRESSED || this.tireed > this.STATIC.MAX_TIRED || this.waitTime > this.STATIC.MAX_WAIT_TIME){
+		if(this.stressed > this.STATIC.MAX_STRESSED || this.tired > this.STATIC.MAX_TIRED || this.waitTime > this.STATIC.MAX_WAIT_TIME){
 			if(Math.random() > 0.999){
 				this.kill();
 				return;
