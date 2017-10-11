@@ -33,17 +33,17 @@
 
 
 // Setup settings for graphic
-var canvas_width = 700;
-var canvas_height = 500;
+var canvas_width = 600;
+var canvas_height = 600;
 var padding = 30;  // for chart edges
 
 // Create scale functions
 var xScale = d3.scale.linear()  // xScale is width of graphic
-                .domain([0, 120])   //Domain from the beginning for the xAxis
+                .domain([0, 9])   //Domain from the beginning for the xAxis
                 .range([padding, canvas_width - padding * 2]); // output range
 
 var yScale = d3.scale.linear()  // yScale is height of graphic
-                .domain([0, 100])   //Domain from the beginning for the yAxis
+                .domain([0, 9])   //Domain from the beginning for the yAxis
                 .range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
 
 var dataset = createDataSet();
@@ -62,7 +62,7 @@ function make_x_axis() {
     return d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(6)
+        .ticks(9)
 }
 
 //Make Y axis
@@ -70,7 +70,7 @@ function make_y_axis() {
     return d3.svg.axis()
         .scale(yScale)
         .orient("left")
-        .ticks(6);
+        .ticks(9);
 }
 
 // Setup data
