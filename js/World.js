@@ -20,7 +20,7 @@ function World (width, height) {
 	//Call functions
 	this.elevator = new Elevator(); 
 	this.people = new People(this.width, this.height);
-	this.data = new Data(); 
+	this.ourdata = new Data(); //changed from data to 'ourdata'
 	
 	this.visualizer = new Visualizer(); 
 	this.canvas = new Canvas(this.width, this.height); 

@@ -16,11 +16,6 @@
 
 ***********************************************************************************************************/
 
-//Get the constructor from BehaviorTree. 
-var BT = new BehaviorTree(0, 0 , 0, 0 );
-
-//console.log(BT); 
-//console.log(BT.goal.x); */
 
 /* ---------------------------------- TESTAR LITE -------------------------------------*/
         var nmbrOfGroups = 0;
@@ -34,40 +29,14 @@ var BT = new BehaviorTree(0, 0 , 0, 0 );
         
         console.log("generatedGroups: ")
         console.log(generatedGroups);
-/* -------------------------------------------------------------------------------------*/
 
-/* -------------------------------------------------------------------------------------*/
-    /*
-        var ourGroups = []
-        ourGroups = Data.prototype.calc();
-        var groupsLength = ourGroups.length;
-        createGroupsArray(ourGroups);
-
-        function createGroupsArray(dividedGroups, groupsLength) {
-            var nmbrOfGroups = 0;
-            var generatedGroups = [];
-
-            for(i=1; i< groupsLength; i++) {
-                generatedGroups.push(new Group());
-                nmbrOfGroups = i;
-                generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
-                generatedGroups[nmbrOfGroups-1].groupSize = 10; //dividedGroups[nmbrOfGroups-1];
-            }
-            
-            console.log("generated groups, nya funktionen: ")
-            console.log(generatedGroups);
-        } 
-
-    */
-
-/* -------------------------------------------------------------------------------------*/
 
 
 // Setup settings for graphic
 
-//Only use the canvas width. 
 var canvas_width = canvas.width*2;
 var canvas_height = canvas.width*2;
+console.log("canvas w" + canvas_width);
 
 var padding = 30;  // for chart edges
 
@@ -86,7 +55,7 @@ var svg = createSVG();
 drawEntrance(143, 570)  //Draw an entrance at this position
 drawElevator(540, 210); //Draw an elevator at this position
 drawStairs(10,150);     //Draw the stairs at this position
-drawAxes(svg);        //Draw the axes. If this function is not called, no axes are visible.
+drawAxes(svg);          //Draw the axes. If this function is not called, no axes are visible.
 
 createCircles(svg);     //Create the circles
 updateCanvas();         //Move the circles to their final position/update their position
@@ -124,7 +93,6 @@ function createDataSet() {
     }
 
     console.log("data: " + dataset);
-    console.log(dataset); 
     return dataset;
 }
 
@@ -155,7 +123,7 @@ function createCircles (svg) {
         .attr("cy", function(d) {  // Circle's Y position
             return yScale(d[1]);
         })*/
-        .attr("cx", (canvas_width/9)*2.5) //Begins at [0,2.5]
+        .attr("cx", canvas_width/3)
         .attr("cy", canvas_height-padding)
         .attr("r", 1);  // radius
 }
@@ -218,8 +186,6 @@ d3.select(starta)
     .on("click", function() {*/
 
 function updateCanvas() {
-//Scatterplot.prototype.updateCanvas = function(){
-
         var numValues = dataset.length;  // Get original dataset's length
 
         tempDataset = dataset;
@@ -227,27 +193,20 @@ function updateCanvas() {
         dataset = [];  // Tom array med alla x och y värden.
 
         //For all datapoints set their new position
-        for(var i = 0; i < numValues; i++) {
+        for(var i = 0; i<numValues; i++) {
 
             var newRadius = tempDataset[i][2];
-            //The goal is set in BT.
-            var xval = BT.goal.x; 
-            var yval = BT.goal.y; 
 
 //TODO: Ska baseras BehaviourTree och på Move
             //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
-/*            if(newRadius < 7) { 
-                //540, 210
-            
-                var xval = BT.goal.x; 
-                var yval = BT.goal.y; 
-             
+            if(newRadius < 7) { 
+                var xval = 9;
+                var yval = 5.5; 
             }
             else {  //If the group is bigger --> go to the stairs
-
-                var xval = BT.goal.x; 
-                var yval = BT.goal.y; 
-            }*/
+                var xval = 0;
+                var yval = 6.5; 
+            }
  
             //Returnerar det nya x och y värdet. 
             dataset.push([xval, yval, newRadius]);  // Add new numbers to array
@@ -309,5 +268,5 @@ function updateCanvas() {
                     .tickFormat("")) 
             */
 
-}  
+  }  
 
