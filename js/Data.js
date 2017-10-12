@@ -33,7 +33,7 @@ Data.prototype.calc = function(){
 	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i], this.time[i]));
 	} 
 
-	console.log(this.dividedGroups);	
+	//console.log(this.dividedGroups);	
 
 	return this.dividedGroups; 
 }

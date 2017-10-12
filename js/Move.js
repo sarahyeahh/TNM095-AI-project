@@ -19,12 +19,15 @@ function Move(x, y, current, width, height){
 	this.queue = [];
 	this.sections = [];	
 	
-	this.width = 2*width;
+	this.width = 2*width; //The canvas. 
 	this.height = 2*height;
 
-	this.size = 9; 
-	this.start = 0; 
-	this.goal = 5; 
+	this.gridWidth = 9; //Number of grids wide. 
+	 
+//TODO: Goal och start ska bestämmas någon annanstans!
+	this.start = 0;
+	this.goal = 2; 
+
 	this.index = 0; 
 
 	this.position = {
@@ -37,32 +40,27 @@ function Move(x, y, current, width, height){
 	this.currentGrid = this.getCurrentGridSection(this.position);
 	
 	console.log("Start: " + this.start + " Goal: " + this.goal); 
-	
-	//Kallar på funktionen.
-	//Vilken ordning? 
+
 	this.astar = new Astar(this.start, this.goal); 
 	this.calculate();
-
 }
 
 Move.prototype.init = function (){
 
 	console.log("Init function"); 
-	console.log("		this.size: " +  this.size); 
+	console.log("		this.gridWidth: " +  this.gridWidth); 
 
 	//Lägger till i arrayen sections hur stor griden är. 
-	for (var i = 0; i < (this.size * this.size); i++) {
+	for (var i = 0; i < (this.gridWidth * this.gridWidth); i++) {
 			this.sections.push(new Astar());
 		}
 	console.log("this.sections: ");
 	console.log(this.sections);
 
-//TODO
-//Vill man ha kvar samma mått eller vill man ändra till koordinat?
 //Räknar ut vad hörnen är i griden i förhållande till canvas width och height.
 	var counter = 0;
-	for(var y = 1; y <= this.size; y++){
-		for (var x = 1; x <= this.size; x++) {
+	for(var y = 1; y <= this.gridWidth; y++){
+		for (var x = 1; x <= this.gridWidth; x++) {
 
 				// Calculate where the xy values in the grid for index. 
 				this.sections[counter].centerX = Math.floor((this.width*x)/600);
@@ -82,26 +80,21 @@ Move.prototype.getGridSection = function(index) {
 	return this.sections[index];
 }
 
-//Ska kallas på från BehaviorTree eller People?
-// Tex: this.getCurrentGridSection(nästa position)
 Move.prototype.getCurrentGridSection = function (position) {
 
 	console.log("GetCurrentGridSection function"); 
-	//While getting the current grid index we update the 
-	//occupations on the grid.	
+
 	var index = -1;
 	var counter = 0;
 
 	//Sätter in index: 
 	firstLoop:
-	for(var y = 1; y <= this.size; y++){
-		for (var x = 1; x <= this.size; x++) {
+	for(var y = 1; y <= this.gridWidth; y++){
+		for (var x = 1; x <= this.gridWidth; x++) {
 
 			if(position.x <= (this.width * x) && position.y <= (this.height*y)){
 				index = counter;
-		
-				break firstLoop; //Hur funkar denna?
-				//break; 
+				break firstLoop; 
 			}
 			counter++;
 		}
@@ -157,15 +150,15 @@ Move.prototype.calculate = function(){
 
 	//queue = openList
 	//currentGrid = node; 
-	//
-
 	while(this.queue.length > 0 ){
 		
 		//pop() removes the last element from an array and returns that element. 
 		//This method changes the length of the array.
 		this.currentGrid = this.queue.pop();  
+		
 		//Adds to the visited list. 
 		this.visitedList.push(this.currentGrid); 
+		
 		//console.log(this.visitedList);
 
 		// Astar.prototype.reachedGoal() returns true or false. 
@@ -219,20 +212,14 @@ Move.prototype.calculate = function(){
 Move.prototype.addToQueue = function (thing){
 
 	console.log("Addqueue function"); 
-	//console.log("		visited list length: " + this.visitedList.length); 
-	//console.log(this.visitedList); //undefined
-	//console.log(thing); 
-	//console.log(thing.index);
-
 	var found = false;
 
 	//Kollar om man redan har undersökt platsen. Går inte in här än eftersom den inte visitat än.
 	for (var i = 0; i < this.visitedList.length; i++) {
 		
-		//if (this.visitedList[i].index == thing.index) {
 		if (this.visitedList[i].index == thing.index) {
 			found = true;
-			console.log("		found true");
+			console.log("		The index " + thing.index +" has already been visited.");
 		}
 		else{
 				//Continue
@@ -247,8 +234,8 @@ Move.prototype.addToQueue = function (thing){
 		//Lägg till i kön. 
 		this.queue.push(thing);
 
-//Sorterar queue så att den med högst fscore hamnar längst ner. 
-// a och b är två stycken Objekt i griden. 
+		//Sorterar queue så att den med högst fscore hamnar längst ner. 
+		// a och b är två stycken Objekt i griden. 
 		this.queue.sort(function(a, b) {
 
 			//Kollar skillnaden mellan tidigare och nuvarande state. 
@@ -287,8 +274,7 @@ Move.prototype.manhattan = function(index, goal) {
 	console.log("		index: " + index + "  goal: " + goal); 
 
 	var manhattan = Math.abs(Math.floor(index / 9) - Math.floor(goal / 9)) + Math.abs(index % 9 - goal % 9);
-	//Math.floor(Math.abs((index / 9) - ((goal-1) / 9))) + Math.abs((index % 9) - ((goal-1) % 9));
-
+	
 	console.log("		The manhattan distance is: " + manhattan); 
 
 	return manhattan; 
@@ -314,11 +300,7 @@ Move.prototype.positionCheck = function() {
 
 		 //OBS variablerna för ML OCH MR kan vara tvärtom!!!
 
-		//console.log(i); 
-	
 		var position;
-
-//TODO - Kom på bättre namn på gridsen nedan:  
 
 		//The position of the grids. 
 		//It finds where the corner is and then decides which
@@ -371,100 +353,60 @@ Move.prototype.setAdjacentSections = function(check) {
 
 	//console.log(this.currentGrid);
 
-		var adjSections = [];
+	var adjSections = [];
 
-		//3 möjliga alternativ.
-		if (check == "TM") {
-			adjSections.push(this.currentGrid.index + 1);
-			adjSections.push(this.currentGrid.index - 1);
-			adjSections.push(this.currentGrid.index + 9);
-
-		}
-		else if (check == "DM") {
-			adjSections.push(this.currentGrid.index + 1);
-			adjSections.push(this.currentGrid.index - 1);
-			adjSections.push(this.currentGrid.index - 9);
-		}
-		else if (check == "TR") {
-			adjSections.push(this.currentGrid.index - 1);
-			adjSections.push(this.currentGrid.index + 9);
-		}
-		else if (check == "TL") {
-			adjSections.push(this.currentGrid.index + 1);
-			adjSections.push(this.currentGrid.index + 9);
-		}
-		else if (check == "DL") {
-			adjSections.push(this.currentGrid.index + 1);
-			adjSections.push(this.currentGrid.index - 9);
-		}
-		else if (check == "DR") {
-			adjSections.push(this.currentGrid.index - 1);
-			adjSections.push(this.currentGrid.index - 9);
-		}
-		else if(check == "ML") {
-			adjSections.push(this.currentGrid.index + 1);
-			adjSections.push(this.currentGrid.index - 9);
-			adjSections.push(this.currentGrid.index + 9);
-		}
-		else if(check == "MR") {
-			adjSections.push(this.currentGrid.index - 1);
-			adjSections.push(this.currentGrid.index - 9);
-			adjSections.push(this.currentGrid.index + 9);
-		}
-		// middle
-		else if(check == "M") {
-			//Fyra möjliga alternativ!
-			adjSections.push(this.currentGrid.index + 1);
-			adjSections.push(this.currentGrid.index - 1);
-			adjSections.push(this.currentGrid.index + 9);
-			adjSections.push(this.currentGrid.index - 9);
-		}
-		else{
-			console.log("		Error"); 
-		}
-
-		//console.log(adjSections);
-		return adjSections;
+	//3 möjliga alternativ.
+	if (check == "TM") {
+		adjSections.push(this.currentGrid.index + 1);
+		adjSections.push(this.currentGrid.index - 1);
+		adjSections.push(this.currentGrid.index + 9);
 
 	}
-
-
-/*Move.prototype.newPos = function (){
-
-	if(this.currentGrid.index != this.getCurrentGridSection(this.position).index) {
-	   	console.log("newpos");
-	   	this.update( this.getCurrentGridSection(this.position) );
-	   	this.path = this.visitedList;
+	else if (check == "DM") {
+		adjSections.push(this.currentGrid.index + 1);
+		adjSections.push(this.currentGrid.index - 1);
+		adjSections.push(this.currentGrid.index - 9);
+	}
+	else if (check == "TR") {
+		adjSections.push(this.currentGrid.index - 1);
+		adjSections.push(this.currentGrid.index + 9);
+	}
+	else if (check == "TL") {
+		adjSections.push(this.currentGrid.index + 1);
+		adjSections.push(this.currentGrid.index + 9);
+	}
+	else if (check == "DL") {
+		adjSections.push(this.currentGrid.index + 1);
+		adjSections.push(this.currentGrid.index - 9);
+	}
+	else if (check == "DR") {
+		adjSections.push(this.currentGrid.index - 1);
+		adjSections.push(this.currentGrid.index - 9);
+	}
+	else if(check == "ML") {
+		adjSections.push(this.currentGrid.index + 1);
+		adjSections.push(this.currentGrid.index - 9);
+		adjSections.push(this.currentGrid.index + 9);
+	}
+	else if(check == "MR") {
+		adjSections.push(this.currentGrid.index - 1);
+		adjSections.push(this.currentGrid.index - 9);
+		adjSections.push(this.currentGrid.index + 9);
+	}
+	// middle
+	else if(check == "M") {
+		//Fyra möjliga alternativ!
+		adjSections.push(this.currentGrid.index + 1);
+		adjSections.push(this.currentGrid.index - 1);
+		adjSections.push(this.currentGrid.index + 9);
+		adjSections.push(this.currentGrid.index - 9);
+	}
+	else{
+		console.log("		Error"); 
 	}
 
-	this.currentGrid = this.getCurrentGridSection(this.position);
-	var goal = [9,9];
-	// if new behavior
-	if (goal != -1) {
-		console.log("new behavior");
-		this.goal = goal;
-		this.update(this.currentGrid);
-		this.path = this.visitedList;
-	}
-
-
-		if (this.path.length == 0) {
-	   	   		
-	   			console.log("REACHED GOAL");
-	   	   	}
-	   	// if part of pathfinding done
-	   	else if (this.currentGrid.index == this.path[0].index) {
-	   		this.path.shift();
-	   		console.log("PART GOAL");
-	   	}
-	   	// if moving to new index
-	
-	 
-	   	this.position.x += this.speed ;
-	   	this.position.y -= this.speed ;
-
-	   	this.update();
+	return adjSections;
 }
-*/
+
 
 

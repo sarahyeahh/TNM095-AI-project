@@ -18,12 +18,11 @@ function World (width, height) {
 	console.log("in World, error in this.people");	
 
 	//Call functions
-	this.data = new Data(); 
 	this.people = new People(this.width, this.height);
+	this.data = new Data(); 
 	this.elevator = new Elevator(); 
 	this.visualizer = new Visualizer(); 
 	this.canvas = new Canvas(this.width, this.height); 
-
 
 	//Arrays
 	this.allElevators = [];		//store all generated elevators
@@ -44,16 +43,10 @@ function World (width, height) {
 	this.allElevators.push(new Elevator(this, 0, 0, elevator));
 	console.log("allElevators in world: " + allElevators);
 
-
-//Finns inte än
-	this.stairs =  new Stairs();
-
-	this.start(); 
+	this.number = 1; 
+	this.stairs =  new Stairs(this.number);
 };
 
 
-World.prototype.start = function() {
-	
-	
-};
+
 
