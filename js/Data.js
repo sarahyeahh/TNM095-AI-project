@@ -46,10 +46,6 @@ Data.prototype.splitIntoGroups = function(totalNmbrPeople){
 	//console.log("total number: " + totalNmbrPeople);
 
 	while (totalNmbrPeople > 0) {
-	  //var s = Math.round(Math.random()*n);
-	  //var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
-	  //var s = Math.round(Math.random() * (totalNmbrPeople - 1)) + 1;
-
 	  //Generate random number between maxSizeOfGroup and 1;
 	  var s = Math.round(Math.random() * maxSizeOfGroup) + 1;
 	  smallerGroups.push(s);
