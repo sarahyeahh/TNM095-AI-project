@@ -29,6 +29,31 @@
         
         console.log("generatedGroups: ")
         console.log(generatedGroups);
+
+/* -------------------------------------------------------------------------------------*/
+    /*
+        var ourGroups = []
+        ourGroups = Data.prototype.calc();
+        var groupsLength = ourGroups.length;
+        createGroupsArray(ourGroups);
+
+        function createGroupsArray(dividedGroups, groupsLength) {
+            var nmbrOfGroups = 0;
+            var generatedGroups = [];
+
+            for(i=1; i< groupsLength; i++) {
+                generatedGroups.push(new Group());
+                nmbrOfGroups = i;
+                generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
+                generatedGroups[nmbrOfGroups-1].groupSize = 10; //dividedGroups[nmbrOfGroups-1];
+            }
+            
+            console.log("generated groups, nya funktionen: ")
+            console.log(generatedGroups);
+        } 
+
+    */
+
 /* -------------------------------------------------------------------------------------*/
 
 
