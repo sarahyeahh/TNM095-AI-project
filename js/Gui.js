@@ -8,7 +8,7 @@
 
 
 	/****************************************************
-		SLIDER 1: Regulate number of elevators
+		SLIDER 0: Regulate number of elevators
 	****************************************************/
 	var slider = document.getElementById("myElevators");
 	var output = document.getElementById("demo");
@@ -18,6 +18,19 @@
 	  output.innerHTML = this.value;
 	  var elevatorInput = this.value;
 	  console.log("Chosen number of elevators: " + elevatorInput);
+	}
+
+	/****************************************************
+		SLIDER 1: Regulate number of stairs
+	****************************************************/
+	var slider = document.getElementById("myStairs");
+	var output = document.getElementById("demo1");
+	output.innerHTML = slider.value;
+	
+	slider.oninput = function() {
+	  output.innerHTML = this.value;
+	  var stairInput = this.value;
+	  console.log("Chosen number of stairs: " + stairInput);
 	}
 
 	/****************************************************
