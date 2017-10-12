@@ -16,14 +16,11 @@
 
 ***********************************************************************************************************/
 
+//Get the constructor from BehaviorTree. 
+var BT = new BehaviorTree(0, 0 , 0, 0 );
 
-function Scatterplot(goal) {
-
-    this.goal = goal;
-
-    console.log(this.goal);
-    this.updateCanvas();  
-}
+//console.log(BT); 
+//console.log(BT.goal.x); */
 
 /* ---------------------------------- TESTAR LITE -------------------------------------*/
         var nmbrOfGroups = 0;
@@ -66,7 +63,7 @@ drawStairs(10,150);     //Draw the stairs at this position
 drawAxes(svg);        //Draw the axes. If this function is not called, no axes are visible.
 
 createCircles(svg);     //Create the circles
-//updateCanvas();         //Move the circles to their final position/update their position
+updateCanvas();         //Move the circles to their final position/update their position
 
 
 //Make X axis
@@ -194,8 +191,8 @@ var starta = document.getElementById("klickahär");
 d3.select(starta)
     .on("click", function() {*/
 
-//function updateCanvas() {
-Scatterplot.prototype.updateCanvas = function(){
+function updateCanvas() {
+//Scatterplot.prototype.updateCanvas = function(){
 
         var numValues = dataset.length;  // Get original dataset's length
 
@@ -204,28 +201,28 @@ Scatterplot.prototype.updateCanvas = function(){
         dataset = [];  // Tom array med alla x och y värden.
 
         //For all datapoints set their new position
-        for(var i = 0; i<numValues; i++) {
+        for(var i = 0; i < numValues; i++) {
 
             var newRadius = tempDataset[i][2];
             //The goal is set in BT.
-            var xval = this.goal.x; 
-            var yval = this.goal.y; 
+            var xval = BT.goal.x; 
+            var yval = BT.goal.y; 
 
 //TODO: Ska baseras BehaviourTree och på Move
             //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
-        /*    if(newRadius < 7) { 
+/*            if(newRadius < 7) { 
                 //540, 210
             
-                var xval = this.goal.x; 
-                var yval = this.goal.y; 
+                var xval = BT.goal.x; 
+                var yval = BT.goal.y; 
              
             }
             else {  //If the group is bigger --> go to the stairs
 
-                var xval = this.goal.x; 
-                var yval = this.goal.y; 
-            }
- */
+                var xval = BT.goal.x; 
+                var yval = BT.goal.y; 
+            }*/
+ 
             //Returnerar det nya x och y värdet. 
             dataset.push([xval, yval, newRadius]);  // Add new numbers to array
         }

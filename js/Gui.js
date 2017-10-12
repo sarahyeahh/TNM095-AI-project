@@ -6,6 +6,24 @@
 
 ***********************************************************************************************************/
 
+function GUI (){
+	//Vad vill man skicka vidare till andra funktioner?
+
+	//Elements
+	this.elevators = elevators; 
+	this.stairs = stairs; 
+
+	//Mood
+	this.stress = stress; 
+	this.tired = tired; 
+	this.speed = speed; 
+
+
+	this.groups = groups; 
+	this.max = max; 
+
+
+}
 
 	/****************************************************
 		SLIDER 0: Regulate number of elevators
@@ -48,13 +66,13 @@
 	/****************************************************
 		SLIDER 3: Regulate group size
 	****************************************************/
-	/*var slider3 = document.getElementById("myGroups");
+/*	var slider3 = document.getElementById("myGroups");
 	var output3 = document.getElementById("demo3");
 	output3.innerHTML = slider3.value;
 
-	console.log("value: " + slider3.value);*/
+	console.log("value: " + slider3.value);
 
-	/*
+
 	slider3.oninput = function() {
 	  //output3.innerHTML = this.value;
 	  var groupsizeInput = this.value;
