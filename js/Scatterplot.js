@@ -22,8 +22,7 @@ function Scatterplot(goal) {
     this.goal = goal;
 
     console.log(this.goal);
-    this.updateCanvas();
-  
+    this.updateCanvas();  
 }
 
 /* ---------------------------------- TESTAR LITE -------------------------------------*/

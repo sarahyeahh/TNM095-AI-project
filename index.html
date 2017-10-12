@@ -46,15 +46,19 @@
 		<input type="button" value="Refresh Page" onClick="window.location.reload()">
 
 	  	<div class="row">
+
+
 		    <div class="col-md-8">
-		    	<h3>Canvas</h3>
+		    	<h3>Karta över täppan</h3>
 		    	<h4></h4>
 		    	<h5></h5>
-		    	<!-- <canvas id="canvas" class="canvas" ></canvas> -->
 		    </div>
-		    <div class="col-md-4" style="border: 2px solid black">
+
+		    <div class="col-md-4" style="background: #474747; color: white; padding: 20px; height:79vh;">
 			    
-			    <h3>GUI</h3>  
+
+			    <h3>GUI</h3> 
+			    <br> 
 			    <div id="GUI"></div>
 			    <!-- Display capacity of the elevator -->
 				<p id="capacity"></p>
@@ -79,6 +83,7 @@
 				<div class="col-md-5">
 				    <div>
 				        <p>Elevators: </p>
+				        <p>Stairs: </p>
 				        <p>Speed: </p>
 				        <p>Max. groupsize: </p>
 				    </div>
@@ -87,6 +92,7 @@
 				<div class="col-md-5">
 				    <div id="slidecontainer">
 				        <input type="range" min="1" max="6" value="3" class="slider" id="myElevators"><br>
+				        <input type="range" min="1" max="6" value="3" class="slider" id="myStairs"><br>
 				        <input type="range" min="1" max="10" value="5" class="slider" id="mySpeed"><br>
 				        <input type="range" min="1" max="20" value="10" class="slider" id="myGroups" 
 				        oninput="Group.prototype.getMaxSize()">
@@ -96,6 +102,7 @@
 				<div class="col-md-2">
 					<div>
 				    	<p><span id="demo"></span></p>
+				    	<p><span id="demo1"></span></p>
 				    	<p><span id="demo2"></span></p>
 				    	<p><span id="demo3"></span></p>
 				    </div>

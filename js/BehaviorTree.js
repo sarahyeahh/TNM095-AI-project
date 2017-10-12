@@ -28,26 +28,25 @@ function BehaviorTree(stress, tired, speed, freespaces){
 		this.tired = tired;
 		this.speed = speed; 
 		this.freeSpaces = freespaces;
-		//this.goal = 0;
+
+		this.elevator = true; 
 
 		//The two different goals that can be set. Should depend on the BehaviourTree. 
 		this.goalElevator = { 
 			x:9,
-			y:5//5.5
+			y:5.5
 		};
 
 		this.goalStairs = { 
 			x:0,
-			y:6//6.5
+			y:6.5
 		};
 
-		this.state = 'elevator';
-
-		this.goal = this.goalState(this.state);  
-
-		//Scatterplot(this.newgoal);
+		this.goal = this.goalElevator;
+		var scatter =  new Scatterplot(this.goal);
 		
 }
+
 
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(){
@@ -68,8 +67,6 @@ BehaviorTree.prototype.decision = function(){
 	
 	if(isEmpty){
 
-		this.goalState('elevator');
-	
 		//If there are spaces left, check how many spaces are free.
 		var freeTemp = Elevator.prototype.spacesLeft(groupsize, this.freeSpaces);
 
@@ -80,8 +77,6 @@ BehaviorTree.prototype.decision = function(){
 
 	}
 	else{
-
-		this.goalState('stairs');
 
 		//Wait
 		console.log("Tyvärr du måste vänta...");
@@ -111,30 +106,32 @@ BehaviorTree.prototype.decision = function(){
 	}
 }
 
+/***********FUNKAR INTE ÄN :( *********************************/
 
 //Decides which goal the group should go to. 
 BehaviorTree.prototype.goalState = function(state){
 
+console.log("State: " + state);
+
+/*	var goal;  
+
 	console.log("State: " + state);
 
 	//If the elevator is empty, the goal is to take the elevator. 
-	if( state == 'elevator'){
-		this.goal = this.goalElevator; 
-		console.log(this.goal);
+	if( state == "elevator"){
+		goal = this.goalElevator; 
+		console.log(this.goalElevator);
+		console.log(goal);
 	}
 	else if( state == 'stairs') {
-		this.goal = this.goalStairs; 
-		console.log(this.goal);
+		goal = this.goalStairs; 
+		console.log(goal);
 	}
 	else{
 		console.log("Error");
-	}
+	}	
 
-	//console.log(this.goal); 
-
-	this.scatter = new Scatterplot(this.goal); 
- 	
-
-	return this.goal; 
+	console.log(goal); 
+	return goal; */
 }
 

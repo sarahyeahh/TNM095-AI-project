@@ -35,16 +35,19 @@ function Move(x, y, current, width, height){
 	this.position = {
 			    x: x,
 			    y: y
-			};
+	};
 
 	this.init();
 
 	this.currentGrid = this.getCurrentGridSection(this.position);
 	
 	if(this.console){
+		console.log(this.position); 
+		console.log(this.currentGrid); 
+
 		console.log("Start: " + this.start + " Goal: " + this.goal); 
 	}
-	
+
 	this.astar = new Astar(this.start, this.goal); 
 	this.calculate();
 }
@@ -122,27 +125,27 @@ Move.prototype.getCurrentGridSection = function (position) {
 
 //Ändra på namnet på denna!!!
 //Find the best grid. 
-Move.prototype.getGridSectionsWithLeastOccupation = function() {
+Move.prototype.getSmallestFValue = function() {
 
 	if(this.console){
-		console.log("GetGridSectionsWithLeastOccupation function"); 
+		console.log("getSmallestFValue function"); 
 	}
 
-	var leastOccupiedGrid = this.sections[0];
-	var leastOccupiedArray = [];
+	var smallestF = this.sections[0];
+	var smallestFArray = [];
 	var better = false;
 
 	for (var i = 1; i < this.sections.length; i++){
-		if(this.sections[i].occupation <= leastOccupiedGrid.occupation) {
-			leastOccupiedArray.push(this.sections[i]);
-			leastOccupiedGrid = this.sections[i];
+		if(this.sections[i].occupation <= smallestF.occupation) {
+			smallestFArray.push(this.sections[i]);
+			smallestF = this.sections[i];
 			better = true;
 		}
 	}
 	if (!better)
-		leastOccupiedArray.push(leastOccupiedGrid);
+		smallestFArray.push(smallestF);
 	
-	return leastOccupiedArray;
+	return smallestFArray;
 }
 		 
 // currentGrid ska implementeras i People.
@@ -336,39 +339,39 @@ Move.prototype.positionCheck = function() {
 	// grid that is the current one. 
 	if (i == 0) {
 		position = "TL";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else if (i == 8) {
 		position = "TR";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else if (i == 72) {
 		position = "DL";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else if (i == 80) {
 		position = "DR";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else if (i > 0 && i < 8) {
 		position = "TM";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else if (i > 72 && i < 81) {
 		position = "DM";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else if(i % 9 == 0 && i != 72 && i != 0) {
 		position = "ML";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else if(i % 9 == 8 && i != 8 && i != 81) {
 		position = "MR";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 	else {
 		position = "M";
-		console.log("		Position: " + position);
+		//console.log("		Position: " + position);
 	}
 
 	return position;

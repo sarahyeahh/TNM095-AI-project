@@ -18,7 +18,7 @@ function People(width, height){
 
 	this.groups = [];			//array to store all groups
 	this.activeGroups = 0;		//counter of generated groups of people
-	this.currentGrid = 0; 
+	
 
 	//Get the variable freeSpaces to be able to include it when calling BehaviorTree
 	// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
@@ -33,15 +33,13 @@ function People(width, height){
 
 	this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
 
+//TODO: x och y ska vara något annat. 
+	this.x = 0;
+    this.y = 0;
+    this.currentGrid = 0; 
 
 	//To the constructor Move. 
 	this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
-
-    // Position and orientation of the group/person
-/*  this.x = x;
-    this.y = y;
-    this.angle = angle; // 0-7*/
-
 }
 
 var groups = [];
