@@ -9,16 +9,12 @@
 
 ***********************************************************************************************************/
 	var canvas = document.createElement("canvas");
+	//TODO - Se över denna: 
 	var GUI = document.createElement("GUI"); //Behövs denna?
 
 	var width = canvas.width;
     var height = canvas.height;
 	
-	//Declare variables
-	//var nmbrOfElevators = 0;			//Borde vara i constructor
-	//var elevatorID = -1; 				//Sätt in i en constructor! 
-
-
 //Det som skapas direkt när rutan laddats. 
 	var load = document.getElementById("load");
 	load.onload = (event) => {

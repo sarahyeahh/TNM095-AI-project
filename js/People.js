@@ -5,85 +5,114 @@
  	The file includes the functions:
  	- generateGroupsize()   --> Previously called generatePeople
  	- generatePeople()
+ 	- goalState() 
 ***********************************************************************************************************/
 
 //Attribut för grupp: Antal, stress(hastighet).
 
-	//Prototype constructor
-	function People(width, height){
+//Prototype constructor
+function People(width, height){
 
-		this.width = width; 		//width of the world
-		this.height = height; 		//height of the world
+	this.width = width; 		//width of the world
+	this.height = height; 		//height of the world
 
-		this.groups = [];			//array to store all groups
-		this.activeGroups = 0;		//counter of generated groups of people
-		this.currentGrid = 0; 
+	this.groups = [];			//array to store all groups
+	this.activeGroups = 0;		//counter of generated groups of people
+	this.currentGrid = 0; 
 
-		//Get the variable freeSpaces to be able to include it when calling BehaviorTree
-		// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
-		var allElevators = new Elevator.prototype.implement();
-		var freeSpaces = allElevators.freeSpaces;
+	//Get the variable freeSpaces to be able to include it when calling BehaviorTree
+	// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
+	var allElevators = new Elevator.prototype.implement();
+	var freeSpaces = allElevators.freeSpaces;
 
-//TODO, make new variables. 
-		this.y = 0; 
-		this.x = 0; 
+	//The two different goals that can be set. Should depend on the BehaviourTree. 
+	this.goalElevator = { 
+		x:9,
+		y:5//5.5
+	};
 
-		//To the constructor Move. 
-		this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
+	this.goalStairs = { 
+		x:0,
+		y:6//6.5
+	};
 
-		//"Brain" to make decision
-		//this.decision = new Decision(this);
+	this.goal = this.goalState();
+	this.scatterplot = new  Scatterplot(this.goal);
 
-		//Variables effecting the decision/behavior
-		this.stressed = 1;
-		this.tired = 1;
-		this.waitTime = 1;
-		this.speed = 2; 
+	//To the constructor Move. 
+	this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
 
-		this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
-		
-	    // Position and orientation of the group/person
-	/*    this.x = x;
-	    this.y = y;
-	    this.angle = angle; // 0-7*/
+	//Variables effecting the decision/behavior
+	this.stressed = 1;
+	this.tired = 1;
+	this.waitTime = 1;
+	this.speed = 2; 
 
+	this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
+	
+    // Position and orientation of the group/person
+/*    this.x = x;
+    this.y = y;
+    this.angle = angle; // 0-7*/
+
+}
+
+
+//Decides which goal the group should go to. 
+People.prototype.goalState = function(){
+	
+	var hej = true; 
+//TODO: Borde vara beroende av  BehaviourTree. 
+
+	if(hej){
+		this.goal = this.goalElevator; 
+	}
+	else{
+		this.goal = this.goalStairs; 
 	}
 
-	var groups = [];
-	var activeGroups = 0;
+//		console.log(this.goal);
 
-	//generate a groupsize for a new group of people
-	People.prototype.generateGroupsize = function (){
+//		console.log(this.goal.x) 
 
-		//max and min size of a generated group
-		var max = Group.prototype.getMaxSize(); //tidigare satt till 6
-		var min = 1;  
+	return this.goal; 
+};
 
-		//set groupsize to be a random number between max and min
-		var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
+var groups = [];
+var activeGroups = 0;
 
-		//Display number of people that wants to enter the elevator
-		document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + groupsize + "</b>";  
+//generate a groupsize for a new group of people
+People.prototype.generateGroupsize = function (){
 
-		//Draw a new circle for each new group
-		//drawGroup(90,150,groupsize);
+	//max and min size of a generated group
+	var max = Group.prototype.getMaxSize(); //tidigare satt till 6
+	var min = 1;  
 
-		return groupsize; 
-	}
+	//set groupsize to be a random number between max and min
+	var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
 
-	//generate a new group of people
-	People.prototype.generatePeople = function (){
-		//this.groups = [];
-		groups.push(new Group()); 
-        activeGroups++;
-        console.log("number of groups: " + activeGroups);
-        groups[activeGroups-1].ID += activeGroups;
+	//Display number of people that wants to enter the elevator
+	document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + groupsize + "</b>";  
 
-        console.log("groups: ")
-        console.log(groups);
+	//Draw a new circle for each new group
+	//drawGroup(90,150,groupsize);
 
-        return groups;
-    }
+	return groupsize; 
+}
+
+//generate a new group of people
+People.prototype.generatePeople = function (){
+	//this.groups = [];
+	groups.push(new Group()); 
+    activeGroups++;
+    console.log("number of groups: " + activeGroups);
+    groups[activeGroups-1].ID += activeGroups;
+
+    console.log("groups: ")
+    console.log(groups);
+
+    return groups;
+}
 
 
 

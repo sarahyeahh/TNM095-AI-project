@@ -16,9 +16,9 @@ function Astar(start, goal) {
 	this.start = start; 
 	this.goal = goal; 
 
-	this.occupation = 0; //vad betyder denna?
-	this.centerX = 0; //den med ? 
-	this.centerY = 0; // den med? 
+	this.occupation = 0; 
+	this.centerX = 0;  
+	this.centerY = 0;  
 	this.g = 0; //Cost/Moves done 
 	this.h = 0; //Heuristic
 	this.f = 0; //Astar calculated. 
@@ -48,6 +48,7 @@ Astar.prototype.H = function (){
 	return this.h; 
 }
 
+//Checks if the Heuristic has no more steps to go to reach the goal. 
 Astar.prototype.reachedGoal = function(){
 		
 		if (this.h == 0){

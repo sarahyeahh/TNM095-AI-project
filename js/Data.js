@@ -30,7 +30,7 @@ Data.prototype.calc = function(){
 	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i]));
 	} 
 
-	console.log(this.dividedGroups);	
+	//console.log(this.dividedGroups);	
 
 	return this.dividedGroups; 
 }
@@ -43,7 +43,7 @@ Data.prototype.splitIntoGroups = function(totalNmbrPeople){
 	
 	var maxSizeOfGroup = 10;
 	var smallerGroups = [];
-	console.log("total number: " + totalNmbrPeople);
+	//console.log("total number: " + totalNmbrPeople);
 
 	while (totalNmbrPeople > 0) {
 	  //var s = Math.round(Math.random()*n);
