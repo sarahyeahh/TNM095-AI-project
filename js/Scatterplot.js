@@ -20,6 +20,8 @@
 function Scatterplot(goal) {
 
     this.goal = goal;
+
+    console.log(this.goal);
     this.updateCanvas();
   
 }
@@ -206,26 +208,25 @@ Scatterplot.prototype.updateCanvas = function(){
         for(var i = 0; i<numValues; i++) {
 
             var newRadius = tempDataset[i][2];
+            //The goal is set in BT.
+            var xval = this.goal.x; 
+            var yval = this.goal.y; 
 
 //TODO: Ska baseras BehaviourTree och på Move
             //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
-            if(newRadius < 7) { 
+        /*    if(newRadius < 7) { 
                 //540, 210
             
                 var xval = this.goal.x; 
                 var yval = this.goal.y; 
-                /*var xval = 9;
-                var yval = 5.5; */
+             
             }
             else {  //If the group is bigger --> go to the stairs
 
                 var xval = this.goal.x; 
                 var yval = this.goal.y; 
-
-              /*  var xval = 0;
-                var yval = 6.5; */
             }
- 
+ */
             //Returnerar det nya x och y värdet. 
             dataset.push([xval, yval, newRadius]);  // Add new numbers to array
         }

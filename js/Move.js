@@ -15,6 +15,8 @@ function Move(x, y, current, width, height){
 	//ANVÄNDS EJ
 	this.currentSection = current; //From People.js, Number between 0-8 (9st grids)
 
+	this.console = false; //Sätt till true om den ska visa console.logs. 
+
 	this.visitedList = [];
 	this.queue = [];
 	this.sections = [];	
@@ -39,23 +41,33 @@ function Move(x, y, current, width, height){
 
 	this.currentGrid = this.getCurrentGridSection(this.position);
 	
-	console.log("Start: " + this.start + " Goal: " + this.goal); 
-
+	if(this.console){
+		console.log("Start: " + this.start + " Goal: " + this.goal); 
+	}
+	
 	this.astar = new Astar(this.start, this.goal); 
 	this.calculate();
 }
 
 Move.prototype.init = function (){
 
-	console.log("Init function"); 
-	console.log("		this.gridWidth: " +  this.gridWidth); 
+
+	if(this.console){
+		console.log("Init function"); 
+		console.log("		this.gridWidth: " +  this.gridWidth); 
+	}
+	
 
 	//Lägger till i arrayen sections hur stor griden är. 
 	for (var i = 0; i < (this.gridWidth * this.gridWidth); i++) {
 			this.sections.push(new Astar());
 		}
-	console.log("this.sections: ");
-	console.log(this.sections);
+
+
+	if(this.console){
+		console.log("this.sections: ");
+		console.log(this.sections);
+	}
 
 //Räknar ut vad hörnen är i griden i förhållande till canvas width och height.
 	var counter = 0;
@@ -74,15 +86,20 @@ Move.prototype.init = function (){
 }
 
 Move.prototype.getGridSection = function(index) {
+	
+	if(this.console){
+		console.log("Getgridsection function"); 
+		console.log("		getgridsection" + index);
+	}
 
-	console.log("Getgridsection function"); 
-	console.log("		getgridsection" + index);
 	return this.sections[index];
 }
 
 Move.prototype.getCurrentGridSection = function (position) {
-
-	console.log("GetCurrentGridSection function"); 
+	
+	if(this.console){
+		console.log("GetCurrentGridSection function"); 
+	}
 
 	var index = -1;
 	var counter = 0;
@@ -107,8 +124,10 @@ Move.prototype.getCurrentGridSection = function (position) {
 //Find the best grid. 
 Move.prototype.getGridSectionsWithLeastOccupation = function() {
 
-	console.log("GetGridSectionsWithLeastOccupation function"); 
-	
+	if(this.console){
+		console.log("GetGridSectionsWithLeastOccupation function"); 
+	}
+
 	var leastOccupiedGrid = this.sections[0];
 	var leastOccupiedArray = [];
 	var better = false;
@@ -130,23 +149,24 @@ Move.prototype.getGridSectionsWithLeastOccupation = function() {
 //Calculate the Astar?
 Move.prototype.calculate = function(){
 
-	console.log("Calculate function");
-
-	console.log(this.currentGrid);  
+	if(this.console){
+		console.log("Calculate function");
+		console.log(this.currentGrid);  
+	}
 	
 	this.currentGrid.g = 0;
 	this.currentGrid.h = this.manhattan(this.index, this.goal);
 
-	console.log("		Moves left: "+ this.currentGrid.h); 
-
 	//Calculates the A*star
 	this.currentGrid.f = this.currentGrid.g + this.currentGrid.h;
 
-	console.log("F" +  this.currentGrid.f + " = G" + this.currentGrid.g + " + H" + this.currentGrid.h );
+	if(this.console){
+		console.log("		Moves left: "+ this.currentGrid.h); 
+		console.log("F" +  this.currentGrid.f + " = G" + this.currentGrid.g + " + H" + this.currentGrid.h );
+	}
 
 	this.addToQueue(this.currentGrid); 
 
-	console.log("		queue length: " + this.queue.length); 
 
 	//queue = openList
 	//currentGrid = node; 
@@ -210,8 +230,11 @@ Move.prototype.calculate = function(){
 }
 
 Move.prototype.addToQueue = function (thing){
+	
+	if(this.console){
+		console.log("Addqueue function"); 
+	}
 
-	console.log("Addqueue function"); 
 	var found = false;
 
 	//Kollar om man redan har undersökt platsen. Går inte in här än eftersom den inte visitat än.
@@ -251,7 +274,9 @@ Move.prototype.addToQueue = function (thing){
 
 Move.prototype.update = function(currentGrid) {
 
-	console.log("Update function"); 
+	if(this.console){
+		console.log("Update function"); 
+	}
 	
 	this.currentGrid = currentGrid;
 	this.visitedList = [];
@@ -270,8 +295,10 @@ Move.prototype.update = function(currentGrid) {
 // find the minimum cost X for moving from one space to an adjacent space.
 Move.prototype.manhattan = function(index, goal) {		
 
-	console.log("Manhattan function"); 	
-	console.log("		index: " + index + "  goal: " + goal); 
+	if(this.console){
+		console.log("Manhattan function"); 	
+		console.log("		index: " + index + "  goal: " + goal); 
+	}
 
 	var manhattan = Math.abs(Math.floor(index / 9) - Math.floor(goal / 9)) + Math.abs(index % 9 - goal % 9);
 	
@@ -281,77 +308,80 @@ Move.prototype.manhattan = function(index, goal) {
 }
 
 Move.prototype.positionCheck = function() {
-
-		console.log("PositionCheck function"); 
 		
-		//Gets the index-number of the current grid and checks which position it has.
-		var i = this.currentGrid.index;  
-
-		//TOP LEFT = TL
-		// MIDDLE = M
-		//DOWN RIGHT = DR
-	/*   --- --- ---
-		| TL| TM| TR|
-		 --- --- --- 
-		| ML| M | MR|
-		 --- --- --- 
-		| DL| DM | DR|
-		 --- --- --- */
-
-		 //OBS variablerna för ML OCH MR kan vara tvärtom!!!
-
-		var position;
-
-		//The position of the grids. 
-		//It finds where the corner is and then decides which
-		// grid that is the current one. 
-		if (i == 0) {
-			position = "TL";
-			console.log("		Position: " + position);
-		}
-		else if (i == 8) {
-			position = "TR";
-			console.log("		Position: " + position);
-		}
-		else if (i == 72) {
-			position = "DL";
-			console.log("		Position: " + position);
-		}
-		else if (i == 80) {
-			position = "DR";
-			console.log("		Position: " + position);
-		}
-		else if (i > 0 && i < 8) {
-			position = "TM";
-			console.log("		Position: " + position);
-		}
-		else if (i > 72 && i < 81) {
-			position = "DM";
-			console.log("		Position: " + position);
-		}
-		else if(i % 9 == 0 && i != 72 && i != 0) {
-			position = "ML";
-			console.log("		Position: " + position);
-		}
-		else if(i % 9 == 8 && i != 8 && i != 81) {
-			position = "MR";
-			console.log("		Position: " + position);
-		}
-		else {
-			position = "M";
-			console.log("		Position: " + position);
-		}
-	
-		return position;
+	if(this.console){
+		console.log("PositionCheck function"); 
 	}
+
+	//Gets the index-number of the current grid and checks which position it has.
+	var i = this.currentGrid.index;  
+
+	//TOP LEFT = TL
+	// MIDDLE = M
+	//DOWN RIGHT = DR
+/*   --- --- ---
+	| TL| TM| TR|
+	 --- --- --- 
+	| ML| M | MR|
+	 --- --- --- 
+	| DL| DM | DR|
+	 --- --- --- */
+
+	 //OBS variablerna för ML OCH MR kan vara tvärtom!!!
+
+	var position;
+
+	//The position of the grids. 
+	//It finds where the corner is and then decides which
+	// grid that is the current one. 
+	if (i == 0) {
+		position = "TL";
+		console.log("		Position: " + position);
+	}
+	else if (i == 8) {
+		position = "TR";
+		console.log("		Position: " + position);
+	}
+	else if (i == 72) {
+		position = "DL";
+		console.log("		Position: " + position);
+	}
+	else if (i == 80) {
+		position = "DR";
+		console.log("		Position: " + position);
+	}
+	else if (i > 0 && i < 8) {
+		position = "TM";
+		console.log("		Position: " + position);
+	}
+	else if (i > 72 && i < 81) {
+		position = "DM";
+		console.log("		Position: " + position);
+	}
+	else if(i % 9 == 0 && i != 72 && i != 0) {
+		position = "ML";
+		console.log("		Position: " + position);
+	}
+	else if(i % 9 == 8 && i != 8 && i != 81) {
+		position = "MR";
+		console.log("		Position: " + position);
+	}
+	else {
+		position = "M";
+		console.log("		Position: " + position);
+	}
+
+	return position;
+}
 	
 
 Move.prototype.setAdjacentSections = function(check) {
 
-	console.log("SetAdjacentSections function"); 
-	console.log("		check: " + check); 
-
-	//console.log(this.currentGrid);
+	if(this.console){
+		console.log("SetAdjacentSections function"); 
+		console.log("		check: " + check); 
+		console.log(this.currentGrid);
+	}
 
 	var adjSections = [];
 

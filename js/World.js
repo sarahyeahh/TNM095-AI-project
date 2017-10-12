@@ -18,9 +18,10 @@ function World (width, height) {
 	console.log("in World, error in this.people");	
 
 	//Call functions
+	this.elevator = new Elevator(); 
 	this.people = new People(this.width, this.height);
 	this.data = new Data(); 
-	this.elevator = new Elevator(); 
+	
 	this.visualizer = new Visualizer(); 
 	this.canvas = new Canvas(this.width, this.height); 
 

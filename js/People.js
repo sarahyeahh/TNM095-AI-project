@@ -25,23 +25,6 @@ function People(width, height){
 	var allElevators = new Elevator.prototype.implement();
 	var freeSpaces = allElevators.freeSpaces;
 
-	//The two different goals that can be set. Should depend on the BehaviourTree. 
-	this.goalElevator = { 
-		x:9,
-		y:5//5.5
-	};
-
-	this.goalStairs = { 
-		x:0,
-		y:6//6.5
-	};
-
-	this.goal = this.goalState();
-	this.scatterplot = new  Scatterplot(this.goal);
-
-	//To the constructor Move. 
-	this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
-
 	//Variables effecting the decision/behavior
 	this.stressed = 1;
 	this.tired = 1;
@@ -49,34 +32,17 @@ function People(width, height){
 	this.speed = 2; 
 
 	this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
-	
+
+
+	//To the constructor Move. 
+	this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
+
     // Position and orientation of the group/person
-/*    this.x = x;
+/*  this.x = x;
     this.y = y;
     this.angle = angle; // 0-7*/
 
 }
-
-
-//Decides which goal the group should go to. 
-People.prototype.goalState = function(){
-	
-	var hej = true; 
-//TODO: Borde vara beroende av  BehaviourTree. 
-
-	if(hej){
-		this.goal = this.goalElevator; 
-	}
-	else{
-		this.goal = this.goalStairs; 
-	}
-
-//		console.log(this.goal);
-
-//		console.log(this.goal.x) 
-
-	return this.goal; 
-};
 
 var groups = [];
 var activeGroups = 0;
