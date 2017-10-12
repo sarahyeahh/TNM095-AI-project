@@ -23,6 +23,8 @@ Group.prototype.getMaxSize = function (){
  	var output3 = document.getElementById("demo3");
 	output3.innerHTML = groupsizeInput;
 
+	//Data.prototype.splitIntoGroups(50, groupsizeInput);
+
  	return groupsizeInput;
 };
 
