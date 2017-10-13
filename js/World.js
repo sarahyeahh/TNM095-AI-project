@@ -25,6 +25,8 @@ function World (width, height) {
 	this.visualizer = new Visualizer(); 
 	this.canvas = new Canvas(this.width, this.height); 
 
+	this.ourTime = new Time();
+
 	//Arrays
 	this.allElevators = [];		//store all generated elevators
 	this.allGroups = [];		//store all generated groups of people
