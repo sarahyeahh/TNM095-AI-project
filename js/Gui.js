@@ -37,6 +37,7 @@ console.log(gui) ;
 	  gui.elevators = parseInt(slider.value); 
 	  var elevatorInput = this.value;
 	  console.log("Chosen number of elevators: " + elevatorInput);
+//TODO:Update function
 	}
 
 	/****************************************************
@@ -47,10 +48,11 @@ console.log(gui) ;
 	output1.innerHTML = slider1.value;
 	
 	slider1.oninput = function() {
-	  output1.innerHTML = this.value;
-	  gui.stairs = parseInt(slider1.value); 
-	  var stairInput = this.value;
-	  console.log("Chosen number of stairs: " + stairInput);
+		output1.innerHTML = this.value;
+		gui.stairs = parseInt(slider1.value); 
+		var stairInput = this.value;
+		console.log("Chosen number of stairs: " + stairInput);
+//TODO:Update function
 	}
 
 	/****************************************************
@@ -61,10 +63,11 @@ console.log(gui) ;
 	output2.innerHTML = slider2.value;
 
 	slider2.oninput = function() {
-	  output2.innerHTML = this.value;
-	  gui.stairs = parseInt(slider2.value); 
-	  var speedInput = this.value;
-	  console.log("Chosen speed: " + speedInput);
+		output2.innerHTML = this.value;
+		gui.stairs = parseInt(slider2.value); 
+		var speedInput = this.value;
+		console.log("Chosen speed: " + speedInput);
+//TODO:Update function
 	}
 
 	/****************************************************
@@ -75,10 +78,11 @@ console.log(gui) ;
 	output3.innerHTML = slider3.value;
 
 	slider3.oninput = function() {
-	  output3.innerHTML = this.value;
-	  gui.groupMaxSize = parseInt(slider3.value); 
-	  var groupsizeInput = this.value;
-	  console.log("Max size of group: " + groupsizeInput);
+		 output3.innerHTML = this.value;
+		 gui.groupMaxSize = parseInt(slider3.value); 
+		 var groupsizeInput = this.value;
+		 console.log("Max size of group: " + groupsizeInput);
+//TODO:Update function
 	}
 
 /*

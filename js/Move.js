@@ -27,8 +27,8 @@ function Move(start, goal, x, y, current, width, height){
 	this.gridWidth = 9; //Number of grids wide. 
 	 
 //TODO: Goal och start ska bestämmas någon annanstans!
-	this.start = 0;
-	this.goal = 2; 
+	/*this.start = 0;
+	this.goal = 2; */
 
 	this.index = 0; 
 

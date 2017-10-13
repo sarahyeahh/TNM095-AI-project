@@ -15,7 +15,9 @@ function World (width, height) {
 	this.width = width;
 	this.height = height;
 
-	this.BT = new BehaviorTree(gui.stress, gui.tired, gui.speed, gui.freespaces);
+	this.state = "elevator"; 
+
+	this.BT = new BehaviorTree(this.state, gui.stress, gui.tired, gui.speed, gui.freespaces);
 	console.log(this.BT);
 
 	console.log("in World, error in this.people");	
@@ -40,6 +42,8 @@ function World (width, height) {
 	//Arrays
 	this.allElevators = [];		//store all generated elevators
 	this.allGroups = [];		//store all generated groups of people
+
+
 
 	//Create variable 'elevator'
 /*	var elevator = {

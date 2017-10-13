@@ -11,11 +11,11 @@
 
 ***********************************************************************************************************/
 
-function Astar() {
-/*
+function Astar(start, goal) {
+
 	this.start = start; 
 	this.goal = goal; 
-*/
+
 	this.occupation = 0; 
 	this.centerX = 0;  
 	this.centerY = 0;  

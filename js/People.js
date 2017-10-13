@@ -10,6 +10,9 @@
 
 //Attribut för grupp: Antal, stress(hastighet).
 
+var pppp= new People(); 
+console.log(pppp); 
+
 //Prototype constructor
 function People(width, height){
 
@@ -28,9 +31,11 @@ function People(width, height){
 	this.x = 0;
     this.y = 0;
     this.currentGrid = 0; 
+    this.start = 0; 
+    this.goal = 9;
 
 	//To the constructor Move. 
-	this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
+	this.move = new Move(this.start, this.goal, this.x, this.y, this.currentGrid, this.width, this.height);
 
 	this.groupsize = 0; 
 }
@@ -68,7 +73,6 @@ People.prototype.generatePeople = function (){
 
     return groups;
 }
-
 
 
 /****** DET NEDANFÖR ANVÄNDS EJ ÄNNU ******/

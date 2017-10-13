@@ -60,6 +60,11 @@
 		//Avgör hur många som ska bli set to true; 
 		for (var i = 0; i < gui.elevators; i++) {
 				this.allElevators[i].activated = true;	
+
+				//Inte så fint gjort men måste typ göra så för att reseta hissen! 
+				this.allElevators[i].elevatorPeople = 0; 
+				this.allElevators[i].freeSpaces = 6; 
+				this.allElevators[i].capacity = 6; 
 					
 		}
 
@@ -159,6 +164,7 @@
 			//console.log("Hissen är tillbaka."); 
         	alert('Hissen är tillbaka');
         	Elevator.prototype.generateElevator();
+ 
         	//Elevator.prototype.implement(); 	//Här ska vi väl egentligen tömma den aktuella hissen, inte kalla på implement()
     	}, 3000);
 	}

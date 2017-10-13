@@ -16,21 +16,25 @@
 // - variables concering the Elevators --> freeSpaces, elevatorID, (capacity?), position
 
 
-function BehaviorTree(stress, tired, speed, freespaces){
 
-		this.newSpacesLeft = 0; 
-		this.stressed = stress;
-		this.tired = tired;
-		this.speed = speed; 
-		this.freeSpaces = freespaces;
-		
-		this.goal = this.goalState("elevator"); 
+function BehaviorTree(state, stress, tired, speed){
+
+ 
+	this.stressed = stress;
+	this.tired = tired;
+	this.speed = speed; 
+	this.state = state; 
+
+	console.log(state); 
+	this.goal = this.goalState(state); 
 
 }
 
 
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(){
+
+
 
 	var data = new Data(); 
 
@@ -47,24 +51,26 @@ BehaviorTree.prototype.decision = function(){
 			//Steg 1: Finns lediga platser? 
 			isEmpty = Elevator.prototype.checkEmpty(groupsize);
 
+
 			if(isEmpty){
 
-				this.goalState('elevator'); 
+				this.state = this.goalState('elevator'); 
+				
 				//If there are spaces left, check how many spaces are free.
 				var freeTemp = Elevator.prototype.spacesLeft(groupsize);
 
 				//Get the new spaces after taking the elevator. 
-				newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
+				var newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
 				console.log("Platser kvar: "  + newSpacesLeft); 
 
 			}
 			else{
 
-				this.goalState('stairs'); 
+				this.state = this.goalState('stairs'); 
 				//Wait
 				console.log("Tyvärr du måste vänta...");
 				//Steg 3: När kommer nästa? 
-		//TODO
+//TODO
 				//getWaitingtime()
 
 				//While waiting on an empty elevator. 
@@ -110,6 +116,7 @@ BehaviorTree.prototype.goalState = function(state){
 	//If the elevator is empty, the goal is to take the elevator. 
 	if(state == "elevator"){
 		goal = goalElevator;
+		console.log("elevator"); 
 	}
 	else {
 		goal = goalStairs; 
@@ -118,7 +125,8 @@ BehaviorTree.prototype.goalState = function(state){
 		console.log("State not defined.")
 	}*/
 
- 	//console.log(goal); 
+
+ 	console.log(goal); 
 	
 	return goal; 
 }
