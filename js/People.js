@@ -18,7 +18,6 @@ function People(width, height){
 
 	this.groups = [];			//array to store all groups
 	this.activeGroups = 0;		//counter of generated groups of people
-	
 
 	//Get the variable freeSpaces to be able to include it when calling BehaviorTree
 	// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
@@ -40,7 +39,7 @@ var groups = [];
 var activeGroups = 0;
 
 //generate a groupsize for a new group of people
-People.prototype.generateGroupsize = function (){
+/*People.prototype.generateGroupsize = function (){
 
 	//max and min size of a generated group
 	//var max = Group.prototype.getMaxSize(); //tidigare satt till 6
@@ -53,11 +52,8 @@ People.prototype.generateGroupsize = function (){
 	//Display number of people that wants to enter the elevator
 	document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + this.groupsize + "</b>";  
 
-	//Draw a new circle for each new group
-	//drawGroup(90,150,groupsize);
-
 	return this.groupsize; 
-}
+}*/
 
 //generate a new group of people
 People.prototype.generatePeople = function (){

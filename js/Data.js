@@ -7,38 +7,42 @@
 ***********************************************************************************************************/
 
 //time - tid mellan 8-17
-//avgPeople - antal människor schemalagda i klassrummen per timme i genomsnitt. 
+//avgPeople - antal människor schemalagda i klassrummen per timme varje dag i genomsnitt. 
 
 //Prototypes constructor  
 function Data(){
 	this.dividedGroups = [];
-
 	this.avgPeople = [105, 105, 157.5, 157.5, 0, 150, 150, 112.5, 112.5, 112.5]; 
 	this.avgPeopleLength = this.avgPeople.length;
 	this.time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 	this.calc();
+	
+	
 }
 
-
+//Calculate whow many people that actually will go, 70%.
 Data.prototype.calc = function(){
-	console.log("i funktionen calc: ");
-	console.log(this.avgPeople);
+	//console.log("i funktionen calc: ");
+	//console.log(this.avgPeople);
+
+	this.onegroup; 
 
 	for (var i = 0; i < this.avgPeopleLength; i++) {
+	    
 	    //Antal personer som faktiskt kommer? 
-	    this.avgPeople[i] *=0.7; 
+	    this.avgPeople[i] *= 0.7;
+
 		//Gör till heltal
 	    this.avgPeople[i] = Math.floor(this.avgPeople[i]);  
 
 	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i], this.time[i]));
+	
 	} 
 
-	console.log(this.dividedGroups);	
 
 	return this.dividedGroups; 
 }
-
 
 //Split one bigger number/integer into smaller integers and save in array
 //In our case: Split avgPeople into smallerGroups
