@@ -64,7 +64,7 @@ drawStairs(10,150);     //Draw the stairs at this position
 drawAxes(svg);          //Draw the axes. If this function is not called, no axes are visible.
 
 createCircles(svg);     //Create the circles
-updateCanvas();         //Move the circles to their final position/update their position
+//updateCanvas();         //Move the circles to their final position/update their position
 
 
 /*_______________________
@@ -159,13 +159,6 @@ function createCircles (svg) {
         .data(dataset)
         .enter()
         .append("circle")  // Add circle svg
-        /*
-        .attr("cx", function(d) {
-            return xScale(d[0]);   // Circle's X position
-        })
-        .attr("cy", function(d) {  // Circle's Y position
-            return yScale(d[1]);
-        })*/
         .attr("cx", (canvas_width/9)*2.5) //Begins at [0,2.5]
         .attr("cy", canvas_height-padding)
         .attr("r", 1);  // radius
@@ -222,90 +215,55 @@ function drawAxes(svg) {
         );
 }
 
-/*
-// On click, update with new data
-var starta = document.getElementById("klickahär");
-d3.select(starta)
-    .on("click", function() {*/
-
 function updateCanvas() {
-//Scatterplot.prototype.updateCanvas = function(){
 
-        console.log("  --- Updating the canvas/plotting dots ---");
+    console.log("  --- Updating the canvas/plotting dots ---");
 
-        var numValues = dataset.length;  // Get original dataset's length
+    var numValues = dataset.length;  // Get original dataset's length
 
-        tempDataset = dataset;
-        //console.log("tempDataset" + tempDataset);
-        dataset = [];  // Tom array med alla x och y värden.
+    tempDataset = dataset;
+    //console.log("tempDataset" + tempDataset);
+    dataset = [];  // Tom array med alla x och y värden.
 
-        //For all datapoints set their new position
-        for(var i = 0; i < numValues; i++) {
+    //For all datapoints set their new position
+    for(var i = 0; i < numValues; i++) {
 
-            var newRadius = tempDataset[i][2];
-            //The goal is set in BT.
-            var xval = BT.goal.x; 
-            var yval = BT.goal.y; 
-            
-            //Returnerar det nya x och y värdet. 
-            dataset.push([xval, yval, newRadius]);  // Add new numbers to array
-        }
+        var newRadius = tempDataset[i][2];
+        //The goal is set in BT.
+        var xval = BT.goal.x; 
+        var yval = BT.goal.y; 
+        
+        //Returnerar det nya x och y värdet. 
+        dataset.push([xval, yval, newRadius]);  // Add new numbers to array
+    }
 
-        //console.log(dataset); 
-
-        /*
-        // Update scale domains
-        xScale.domain([0, d3.max(dataset, function(d) {
-            return d[0]; })]);
-        yScale.domain([0, d3.max(dataset, function(d) {
-            return d[1]; })]);
-        */
-
-        // Update circles
-        svg.selectAll("circle")
-            .data(dataset)  // Update with new data
-            .transition()  // Transition from old to new
-            .duration(6000)  // Length of animation, default = 1000
-            .each("start", function() {  // Start animation
-                d3.select(this)  // 'this' means the current element
-                    .attr("fill", "red")  // Change color
-                    .attr("r", function (d) { return d[2]; });  // Change size
-            })
-            .delay(function(d, i) {
-                return i / dataset.length * 6000;  // Dynamic delay (i.e. each item delays a little longer), default = 500
-            })
-            //.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
-            .attr("cx", function(d) {
-                return xScale(d[0]);  // Circle's X
-            })
-            .attr("cy", function(d) {
-                return yScale(d[1]);  // Circle's Y
-            })
-            .each("end", function() {  // End animation
-                d3.select(this)  // 'this' means the current element
-                    .transition()
-                    .duration(6000);    //default = 500
-                    //.attr("fill", "black")  // Change color
-                  //  .attr("r", 2);  // Change radius
-            });
-
-            /*
-            // Update X Axis
-            svg.select(".x.axis")
+    // Update circles
+    svg.selectAll("circle")
+        .data(dataset)  // Update with new data
+        .transition()  // Transition from old to new
+        .duration(6000)  // Length of animation, default = 1000
+        .each("start", function() {  // Start animation
+            d3.select(this)  // 'this' means the current element
+                .attr("fill", "red")  // Change color
+                .attr("r", function (d) { return d[2]; });  // Change size
+        })
+        .delay(function(d, i) {
+            return i / dataset.length * 6000;  // Dynamic delay (i.e. each item delays a little longer), default = 500
+        })
+        //.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
+        .attr("cx", function(d) {
+            return xScale(d[0]);  // Circle's X
+        })
+        .attr("cy", function(d) {
+            return yScale(d[1]);  // Circle's Y
+        })
+        .each("end", function() {  // End animation
+            d3.select(this)  // 'this' means the current element
                 .transition()
-                .duration(1000)
-                .call(make_x_axis(xScale)
-                    .tickSize(-height, 0, 0)
-                    .tickFormat(""))
-
-            // Update Y Axis
-            svg.select(".y.axis")
-                .transition()
-                .duration(100)
-                .call(make_y_axis(yScale)
-                    .tickSize(-width, 0, 0)
-                    .tickFormat("")) 
-            */
+                .duration(6000);    //default = 500
+                //.attr("fill", "black")  // Change color
+              //  .attr("r", 2);  // Change radius
+        });
             
 } 
 

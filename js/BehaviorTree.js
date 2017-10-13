@@ -19,13 +19,12 @@
 
 function BehaviorTree(state, stress, tired, speed){
 
- 
 	this.stressed = stress;
 	this.tired = tired;
 	this.speed = speed; 
 	this.state = state; 
 
-	console.log(state); 
+	//console.log(state); 
 	this.goal = this.goalState(state); 
 
 }
@@ -33,8 +32,6 @@ function BehaviorTree(state, stress, tired, speed){
 
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(){
-
-
 
 	var data = new Data(); 
 
@@ -55,6 +52,7 @@ BehaviorTree.prototype.decision = function(){
 			if(isEmpty){
 
 				this.state = this.goalState('elevator'); 
+				updateCanvas(); 
 				
 				//If there are spaces left, check how many spaces are free.
 				var freeTemp = Elevator.prototype.spacesLeft(groupsize);
@@ -67,6 +65,7 @@ BehaviorTree.prototype.decision = function(){
 			else{
 
 				this.state = this.goalState('stairs'); 
+				updateCanvas(); 
 				//Wait
 				console.log("Tyvärr du måste vänta...");
 				//Steg 3: När kommer nästa? 
