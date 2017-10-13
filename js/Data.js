@@ -18,12 +18,16 @@ function Data(){
 	this.time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 
 	this.calc();
+
+	//this.theTime = new Time();	?
+	//this.hour = this.theTime.startTime();	?
 }
 
 
 Data.prototype.calc = function(){
-	console.log("i funktionen calc: ");
-	console.log(this.avgPeople);
+	console.log("  --- Dividing people into groups in calc function: ---");
+	//console.log("i funktionen calc: ");
+	//console.log(this.avgPeople);
 
 	for (var i = 0; i < this.avgPeopleLength; i++) {
 	    //Antal personer som faktiskt kommer? 
