@@ -246,22 +246,7 @@ function updateCanvas() {
             //The goal is set in BT.
             var xval = BT.goal.x; 
             var yval = BT.goal.y; 
-
-//TODO: Ska baseras BehaviourTree och på Move
-            //If the group is small (groupsize is 1, 2 or 3) --> go to the elevator
-/*            if(newRadius < 7) { 
-                //540, 210
             
-                var xval = BT.goal.x; 
-                var yval = BT.goal.y; 
-             
-            }
-            else {  //If the group is bigger --> go to the stairs
-
-                var xval = BT.goal.x; 
-                var yval = BT.goal.y; 
-            }*/
- 
             //Returnerar det nya x och y värdet. 
             dataset.push([xval, yval, newRadius]);  // Add new numbers to array
         }

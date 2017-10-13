@@ -31,23 +31,12 @@ function BehaviorTree(stress, tired, speed, freespaces){
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(){
 
-	
 	var groupsize = People.prototype.generateGroupsize(); 
 	console.log("Grupp med " + groupsize + " personer."); 
-
-	//Steg 0: Är hissen här? (Bra att ha om flera hissar.)
-	//isHere = checkHere(); 
 
 	//Steg 1: Finns lediga platser? 
 	isEmpty = Elevator.prototype.checkEmpty(groupsize);
 
-	//console.log(this.elevator.isEmpty);
-
-	//För att testa om hissen är full och inte där. 
-	//isEmpty = false; 
-
-	//Steg 2: Kolla hur många platser.
-	
 	if(isEmpty){
 
 		this.goalState('elevator'); 
@@ -58,7 +47,6 @@ BehaviorTree.prototype.decision = function(){
 		newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
 		console.log("Platser kvar: "  + newSpacesLeft); 
 
-
 	}
 	else{
 
@@ -66,14 +54,13 @@ BehaviorTree.prototype.decision = function(){
 		//Wait
 		console.log("Tyvärr du måste vänta...");
 		//Steg 3: När kommer nästa? 
-		//TODO
+//TODO
 		//getWaitingtime()
 
 		//While waiting on an empty elevator. 
 				
 		//Steg 4A: Trött?
 		if(this.tired>0.5){
-			
 			this.speed = speed-0.3; //Går långsammare.
 			console.log("Ta hissen, du är " + speed*100 + "% pigg."); 
 		}
@@ -108,7 +95,6 @@ BehaviorTree.prototype.goalState = function(state){
 		x:0,
 		y:6.5
 	};
-
 
 	//If the elevator is empty, the goal is to take the elevator. 
 	if(state == "elevator"){

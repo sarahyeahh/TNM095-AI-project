@@ -25,14 +25,6 @@ function People(width, height){
 	var allElevators = new Elevator.prototype.implement();
 	var freeSpaces = allElevators.freeSpaces;
 
-	//Variables effecting the decision/behavior
-	this.stressed = 1;
-	this.tired = 1;
-	this.waitTime = 1;
-	this.speed = 2; 
-
-	this.behavior = new BehaviorTree(this.stressed, this.tired, this.speed, freeSpaces);  
-
 //TODO: x och y ska vara något annat. 
 	this.x = 0;
     this.y = 0;
