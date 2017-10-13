@@ -9,6 +9,7 @@
 
 ***********************************************************************************************************/
 	var canvas = document.createElement("canvas");
+
 	//TODO - Se över denna: 
 	var GUI = document.createElement("GUI"); //Behövs denna?
 
@@ -19,7 +20,8 @@
 	var load = document.getElementById("load");
 	load.onload = (event) => {
  	//	draw();  //Ritar upp första cirkeln och första hissen.
- 		new World(width, height);	
+ 		//new World(width, height);	
+
  		Elevator.prototype.implement();
  		Elevator.prototype.generateElevator(); 
 	}
