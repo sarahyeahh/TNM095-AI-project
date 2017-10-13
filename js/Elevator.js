@@ -133,7 +133,7 @@
 
 			//The elevator is full
 			this.allElevators[0].activated = false; 
-			console.log(this.allElevators[0].activated); 
+			//console.log(this.allElevators[0].activated); 
 			this.fullElevator(); 
 		}
 		//freeTemp is positive and there are enough free spaces to fit the group in the elevator.

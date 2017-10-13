@@ -24,7 +24,7 @@ function BehaviorTree(stress, tired, speed, freespaces){
 		this.speed = speed; 
 		this.freeSpaces = freespaces;
 		
-		this.goal = this.goalState(); 
+		this.goal = this.goalState("elevator"); 
 
 }
 
@@ -32,15 +32,13 @@ function BehaviorTree(stress, tired, speed, freespaces){
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(){
 
-	//var groupsize = People.prototype.generateGroupsize(); 
-
 	var data = new Data(); 
 
 	//data.dividedGroups.length
 	for(var i = 0; i < 1; i++){
 
 		//data.dividedGroups[i].length
-		for(var j = 0; j < data.dividedGroups[i].length; j++){
+		for(var j = 0; j < 1; j++){
 
 			var groupsize = data.dividedGroups[i][j];
 			console.log("Grupp med " + groupsize + " personer."); 
@@ -73,36 +71,29 @@ BehaviorTree.prototype.decision = function(){
 						
 				//Steg 4A: Trött?
 				if(this.tired>0.5){
-					this.speed = speed-0.3; //Går långsammare.
-					console.log("Ta hissen, du är " + speed*100 + "% pigg."); 
+					this.speed = this.speed-0.3; //Går långsammare.
+					console.log("Ta hissen, du är " + rhis.speed*100 + "% pigg."); 
 				}
 				else{
 					//Steg 4B: Stressad? 
 					if(this.stressed>0.5){
-						
-						speed = speed+0.3; //Går långsammare.
-						console.log("Ta trappan du är " + speed*100 + "% pigg."); 
+						this.speed = this.speed+0.3; //Går långsammare.
+						console.log("Ta trappan du är " + this.speed*100 + "% pigg."); 
 					}
 					else{
 						console.log("Ta hissen."); 
 					}	
 				}		
 			}
-
 		}
 	}
-	
-
-
-
-
 }
 
 
 //Decides which goal the group should go to. 
 BehaviorTree.prototype.goalState = function(state){
 
-	//console.log("State: " + state);
+	console.log("State: " + state);
 
 	var goal; 
 

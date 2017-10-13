@@ -19,7 +19,7 @@
 ***********************************************************************************************************/
 
 //Get the constructor from BehaviorTree. 
-var BT = new BehaviorTree(0, 0 , 0, 0 );
+var BT = new BehaviorTree( );
 var theTime = new Time();
 var hour = theTime.startTime();
 
