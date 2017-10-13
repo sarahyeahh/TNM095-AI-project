@@ -23,7 +23,7 @@ function World (width, height) {
 	this.ourdata = new Data(); //changed from data to 'ourdata'
 	
 	this.visualizer = new Visualizer(); 
-	this.canvas = new Canvas(this.width, this.height); 
+	//this.canvas = new Canvas(this.width, this.height); 	//used before, not now
 
 	this.ourTime = new Time();
 
@@ -43,8 +43,8 @@ function World (width, height) {
 	};
 
 	//push an elevator into array. (world, posX, posY, elevator)
-	this.allElevators.push(new Elevator(this, 0, 0, elevator));
-	console.log("allElevators in world: " + allElevators);
+	//this.allElevators.push(new Elevator(this, 0, 0, elevator));
+	//console.log("allElevators in world: " + allElevators);
 
 	this.number = 1; 
 	this.stairs =  new Stairs(this.number);
