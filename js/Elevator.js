@@ -29,15 +29,6 @@
 	//Implement prototype. 
 	Elevator.prototype.implement = function() {
 		this.allElevators = Elevator.prototype.elevatorArray();
-
-		/*elevatorID = elevator[0];
-		capacity = elevator[1]; 
-		freeSpaces = elevator[2]; 
-		activated = elevator[3];
-		positionX = elevator[4];
-		positionY = elevator[5];
-		elevatorPeople = [6];*/
-
 		//console.log(this.allElevators); 
 	}
 
@@ -47,7 +38,6 @@
 		//Declare variables for the array
 		this.allElevators = [];
 		var len = 6;
-
 		var counter = 0; 
 		var posIncr = 60;  
 
@@ -60,20 +50,6 @@
 		console.log("this.allElevators: ")
 		console.log(this.allElevators);
 
-		/*
-		//Add elevators in the array allElevators
-		for (var i = 0; i < len; i++) {
-		    	allElevators.push({
-		        elevatorID: i,
-		        capacity: capacity,
-		        freeSpaces: freeSpaces,
-		        activated: activated,
-		        positionX: 40*i+40,
-		        positionY: positionY,
-		        elevatorPeople: elevatorPeople
-		    });
-		}*/
-
 		return this.allElevators;
 	}
 
@@ -81,16 +57,13 @@
 	Elevator.prototype.generateElevator = function(){
 		//Increase number of elevators
 
-//Avgör hur många som ska bli set to true; 
-
+		//Avgör hur många som ska bli set to true; 
 		for (var i = 0; i < gui.elevators; i++) {
 				this.allElevators[i].activated = true;	
 					
 		}
 
 		console.log(this.allElevators); 
-
-		//++nmbrOfElevators;
 
 		//Check if maximum number of elevators is reached
 		if(gui.elevators > 6) {	//istället för 6 borde det vara längden av allElevators
@@ -99,34 +72,9 @@
 		else { 	//Add a new elevator
 		
 			console.log("Antal hissar:" + gui.elevators);
-			/*
-			var elevatorPeople = 0;
-			var activated = true;
-			var capacity = 5; 
-			freeSpaces = capacity;
-			++elevatorID;// = allElevators.length;*/
 
 			//Display capacity of the elevator
 			document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + this.allElevators[0].capacity + "</b> personer.";  
-
-			//Update the array 'allElevators'
-			/*this.allElevators[nmbrOfElevators-1].activated = true;
-			this.allElevators[nmbrOfElevators-1].capacity = 5;
-			this.allElevators[nmbrOfElevators-1].freeSpaces = capacity;
-			this.allElevators[nmbrOfElevators-1].elevatorPeople = elevatorPeople;*/
-
-			//Display array of elevators
-			//console.log(this.allElevators);
-
-			//Draw the new elevator in the canvas
-			/*var posX = this.allElevators[nmbrOfElevators-1].positionX;
-			var posY = this.allElevators[nmbrOfElevators-1].positionY;
-			drawRectangle(posX, posY);*/
-			//drawElevator(posX, posY);
-
-			//Define elevator 
-		//	var elevator = [elevatorID, capacity, freeSpaces, activated, positionX, positionY, elevatorPeople];
-
 		}
 		
 		return elevator; 
@@ -144,7 +92,6 @@
  		if(this.allElevators[0].freeSpaces == 0){
  			isEmpty = false; 
  			console.log("	Hissen är full, ta trappan.")
- 			//fullElevator();
  		}
  		else{
  			isEmpty = true;
@@ -185,6 +132,8 @@
 			groupsize = 0; 
 
 			//The elevator is full
+			this.allElevators[0].activated = false; 
+			console.log(this.allElevators[0].activated); 
 			this.fullElevator(); 
 		}
 		//freeTemp is positive and there are enough free spaces to fit the group in the elevator.
@@ -209,8 +158,9 @@
 		setTimeout(function(){ 
 			//console.log("Hissen är tillbaka."); 
         	alert('Hissen är tillbaka');
-        	Elevator.prototype.implement(); 	//Här ska vi väl egentligen tömma den aktuella hissen, inte kalla på implement()
-    	}, 3000);  
+        	Elevator.prototype.generateElevator();
+        	//Elevator.prototype.implement(); 	//Här ska vi väl egentligen tömma den aktuella hissen, inte kalla på implement()
+    	}, 3000);
 	}
 
 	//Check if the elevator is full
