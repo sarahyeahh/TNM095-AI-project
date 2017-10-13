@@ -82,9 +82,8 @@
 		//Increase number of elevators
 
 //Avgör hur många som ska bli set to true; 
-		var nmbrOfElevators = 1; 
 
-		for (var i = 0; i < nmbrOfElevators; i++) {
+		for (var i = 0; i < gui.elevators; i++) {
 				this.allElevators[i].activated = true;	
 					
 		}
@@ -94,12 +93,12 @@
 		//++nmbrOfElevators;
 
 		//Check if maximum number of elevators is reached
-		if(nmbrOfElevators > 6) {	//istället för 6 borde det vara längden av allElevators
+		if(gui.elevators > 6) {	//istället för 6 borde det vara längden av allElevators
 			console.log("Det går inte att lägga till fler hissar.");
 		}
 		else { 	//Add a new elevator
 		
-			console.log("Antal hissar:" + nmbrOfElevators);
+			console.log("Antal hissar:" + gui.elevators);
 			/*
 			var elevatorPeople = 0;
 			var activated = true;
@@ -142,7 +141,7 @@
 
 		console.log("freespaces: " + this.allElevators[0].freeSpaces + "   groupsize: " + groupsize); 
 		
- 		if(this.allElevators[0].freeSpaces==0){
+ 		if(this.allElevators[0].freeSpaces == 0){
  			isEmpty = false; 
  			console.log("	Hissen är full, ta trappan.")
  			//fullElevator();

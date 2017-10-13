@@ -21,8 +21,9 @@ function GUI (){
 	this.groupMaxSize = 10; 
 }
 
-var gui = new GUI(); 
-console.log(gui); 
+var gui = new GUI();
+console.log(gui) ;
+
 
 	/****************************************************
 		SLIDER 0: Regulate number of elevators
@@ -73,15 +74,11 @@ console.log(gui);
 	var output3 = document.getElementById("demo3");
 	output3.innerHTML = slider3.value;
 
-	console.log("value: " + slider3.value);
-
 	slider3.oninput = function() {
 	  output3.innerHTML = this.value;
 	  gui.groupMaxSize = parseInt(slider3.value); 
 	  var groupsizeInput = this.value;
 	  console.log("Max size of group: " + groupsizeInput);
-
-	  console.log(gui); 
 	}
 
 /*

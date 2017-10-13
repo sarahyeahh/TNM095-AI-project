@@ -17,7 +17,6 @@ function World (width, height) {
 
 	console.log("in World, error in this.people");	
 
-
 	//Call functions
 	this.elevator = new Elevator(); 
 	console.log(this.elevator);
@@ -59,3 +58,6 @@ function World (width, height) {
 	this.number = 1; 
 	this.stairs =  new Stairs(this.number);
 };
+
+var world = new World();
+console.log(world);

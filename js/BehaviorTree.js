@@ -43,8 +43,6 @@ BehaviorTree.prototype.decision = function(){
 
 	//console.log(this.elevator.isEmpty);
 
-
-
 	//För att testa om hissen är full och inte där. 
 	//isEmpty = false; 
 

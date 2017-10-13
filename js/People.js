@@ -51,7 +51,8 @@ var activeGroups = 0;
 People.prototype.generateGroupsize = function (){
 
 	//max and min size of a generated group
-	var max = Group.prototype.getMaxSize(); //tidigare satt till 6
+	//var max = Group.prototype.getMaxSize(); //tidigare satt till 6
+	var max = gui.groupMaxSize;
 	var min = 1;  
 
 	//set groupsize to be a random number between max and min
