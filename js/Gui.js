@@ -18,7 +18,7 @@ function GUI (){
 	this.tired = 0; 
 	this.speed = 3; 
 
-	this.groupsize = 10; 
+	this.groupMaxSize = 10; 
 }
 
 var gui = new GUI(); 
@@ -77,7 +77,7 @@ console.log(gui);
 
 	slider3.oninput = function() {
 	  output3.innerHTML = this.value;
-	  gui.groupsize = parseInt(slider3.value); 
+	  gui.groupMaxSize = parseInt(slider3.value); 
 	  var groupsizeInput = this.value;
 	  console.log("Max size of group: " + groupsizeInput);
 

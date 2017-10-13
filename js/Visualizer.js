@@ -10,11 +10,11 @@
 
 
 function Visualizer (world, width, height) {
-	var game = new Phaser.Game(width, height, Phaser.AUTO, 'canvas-id', { preload: preload, create: create, update: update });
+/*	var game = new Phaser.Game(width, height, Phaser.AUTO, 'canvas-id', { preload: preload, create: create, update: update });
 	var bmd;
 	var bitmapSprite;
 
-/*
+
 	//Colors for background and the groups
 	var backgroundColor = rgb(224, 224, 224);
 	var groupColor = rgb(0,255,255);

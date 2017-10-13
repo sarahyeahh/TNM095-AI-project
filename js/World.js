@@ -27,9 +27,15 @@ function World (width, height) {
 	console.log(this.ourdata);
 	
 	this.visualizer = new Visualizer(); 
+
 	console.log(this.visualizer);
-	this.canvas = new Canvas(this.width, this.height); 
-	console.log(this.canvas);
+	/*this.canvas = new Canvas(this.width, this.height); 
+	console.log(this.canvas);*/
+
+	//this.canvas = new Canvas(this.width, this.height); 	//used before, not now
+
+	this.ourTime = new Time();
+
 
 	//Arrays
 	this.allElevators = [];		//store all generated elevators
@@ -47,8 +53,8 @@ function World (width, height) {
 	};
 
 	//push an elevator into array. (world, posX, posY, elevator)
-	this.allElevators.push(new Elevator(this, 0, 0, elevator));
-	console.log("allElevators in world: " + allElevators);
+	//this.allElevators.push(new Elevator(this, 0, 0, elevator));
+	//console.log("allElevators in world: " + allElevators);
 
 	this.number = 1; 
 	this.stairs =  new Stairs(this.number);
