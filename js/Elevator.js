@@ -48,7 +48,7 @@
 				counter++	
 			}
 		console.log("this.allElevators: ")
-		console.log(this.allElevators);
+		//console.log(this.allElevators);
 
 		return this.allElevators;
 	}
@@ -63,7 +63,7 @@
 					
 		}
 
-		console.log(this.allElevators); 
+		//console.log(this.allElevators); 
 
 		//Check if maximum number of elevators is reached
 		if(gui.elevators > 6) {	//istället för 6 borde det vara längden av allElevators
