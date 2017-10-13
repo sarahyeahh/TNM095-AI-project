@@ -19,13 +19,22 @@ function World (width, height) {
 
 	//Call functions
 	this.elevator = new Elevator(); 
+	console.log(this.elevator);
 	this.people = new People(this.width, this.height);
+	console.log(this.people);
 	this.ourdata = new Data(); //changed from data to 'ourdata'
+	console.log(this.ourdata);
 	
 	this.visualizer = new Visualizer(); 
+
+	console.log(this.visualizer);
+	/*this.canvas = new Canvas(this.width, this.height); 
+	console.log(this.canvas);*/
+
 	//this.canvas = new Canvas(this.width, this.height); 	//used before, not now
 
 	this.ourTime = new Time();
+
 
 	//Arrays
 	this.allElevators = [];		//store all generated elevators
@@ -50,6 +59,5 @@ function World (width, height) {
 	this.stairs =  new Stairs(this.number);
 };
 
-
-
-
+var world = new World();
+console.log(world);

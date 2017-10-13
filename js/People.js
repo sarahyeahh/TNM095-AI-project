@@ -40,6 +40,8 @@ function People(width, height){
 
 	//To the constructor Move. 
 	this.move = new Move(this.x, this.y, this.currentGrid, this.width, this.height);
+
+	this.groupsize = 0; 
 }
 
 var groups = [];
@@ -49,19 +51,20 @@ var activeGroups = 0;
 People.prototype.generateGroupsize = function (){
 
 	//max and min size of a generated group
-	var max = Group.prototype.getMaxSize(); //tidigare satt till 6
+	//var max = Group.prototype.getMaxSize(); //tidigare satt till 6
+	var max = gui.groupMaxSize;
 	var min = 1;  
 
 	//set groupsize to be a random number between max and min
-	var groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
+	this.groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
 
 	//Display number of people that wants to enter the elevator
-	document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + groupsize + "</b>";  
+	document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + this.groupsize + "</b>";  
 
 	//Draw a new circle for each new group
 	//drawGroup(90,150,groupsize);
 
-	return groupsize; 
+	return this.groupsize; 
 }
 
 //generate a new group of people

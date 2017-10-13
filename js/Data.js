@@ -20,6 +20,7 @@ function Data(){
 	this.calc();
 }
 
+
 Data.prototype.calc = function(){
 	console.log("i funktionen calc: ");
 	console.log(this.avgPeople);
@@ -33,7 +34,7 @@ Data.prototype.calc = function(){
 	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i], this.time[i]));
 	} 
 
-	//console.log(this.dividedGroups);	
+	console.log(this.dividedGroups);	
 
 	return this.dividedGroups; 
 }
@@ -44,7 +45,8 @@ Data.prototype.calc = function(){
 //function splitIntoGroups (totalNmbrPeople) {
 Data.prototype.splitIntoGroups = function(totalNmbrPeople, hour){
 	
-	var maxSizeOfGroup = 10; //Group.prototype.getMaxSize(); 
+	//var maxSizeOfGroup = 10; //Group.prototype.getMaxSize(); 
+	var maxSizeOfGroup = gui.groupMaxSize;
 	var smallerGroups = [];
 	//console.log("total number: " + totalNmbrPeople);
 
