@@ -27,6 +27,7 @@ Time.prototype.startTimer = function() {
 }
 
 Time.prototype.displayTime = function() {
+    console.log("Time is displayed");
     if (seconds >= 60) {
         minutes++;
         seconds = 0;
@@ -40,4 +41,21 @@ Time.prototype.displayTime = function() {
         seconds++;
         setTimeout(timer, 1000);
     }
+}
+
+Time.prototype.startTime = function() {
+    console.log("Time started");
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = Time.prototype.checkTime(m);
+    s = Time.prototype.checkTime(s);
+    document.getElementById('counter').innerHTML = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+
+Time.prototype.checkTime = function(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
 }
