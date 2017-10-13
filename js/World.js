@@ -15,18 +15,20 @@ function World (width, height) {
 	this.width = width;
 	this.height = height;
 
+	this.BT = new BehaviorTree(gui.stress, gui.tired, gui.speed, gui.freespaces);
+	console.log(this.BT);
+
 	console.log("in World, error in this.people");	
 
 	//Call functions
-	this.elevator = new Elevator(); 
-	console.log(this.elevator);
-	this.people = new People(this.width, this.height);
-	console.log(this.people);
+	/*this.elevator = new Elevator(); 
+	console.log(this.elevator);*/
+	/*this.people = new People(this.width, this.height);
+	console.log(this.people);*/
 	this.ourdata = new Data(); //changed from data to 'ourdata'
 	console.log(this.ourdata);
 	
 	this.visualizer = new Visualizer(); 
-
 	console.log(this.visualizer);
 	/*this.canvas = new Canvas(this.width, this.height); 
 	console.log(this.canvas);*/
@@ -35,13 +37,12 @@ function World (width, height) {
 
 	this.ourTime = new Time();
 
-
 	//Arrays
 	this.allElevators = [];		//store all generated elevators
 	this.allGroups = [];		//store all generated groups of people
 
 	//Create variable 'elevator'
-	var elevator = {
+/*	var elevator = {
 		elevatorID: -1, 
 	   	capacity: 6,
 	  	freeSpaces: 6,
@@ -50,7 +51,7 @@ function World (width, height) {
 	   	positionY: 0,
 	    elevatorPeople: 0,
 	};
-
+*/
 	//push an elevator into array. (world, posX, posY, elevator)
 	//this.allElevators.push(new Elevator(this, 0, 0, elevator));
 	//console.log("allElevators in world: " + allElevators);

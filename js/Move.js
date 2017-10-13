@@ -11,7 +11,7 @@
 ***********************************************************************************************************/
 
 //Kombination av Grid.js/Pathfinding.js/Gridsection.js
-function Move(x, y, current, width, height){
+function Move(start, goal, x, y, current, width, height){
 	//ANVÄNDS EJ
 	this.currentSection = current; //From People.js, Number between 0-8 (9st grids)
 
@@ -54,18 +54,15 @@ function Move(x, y, current, width, height){
 
 Move.prototype.init = function (){
 
-
 	if(this.console){
 		console.log("Init function"); 
 		console.log("		this.gridWidth: " +  this.gridWidth); 
 	}
-	
 
 	//Lägger till i arrayen sections hur stor griden är. 
 	for (var i = 0; i < (this.gridWidth * this.gridWidth); i++) {
 			this.sections.push(new Astar());
 		}
-
 
 	if(this.console){
 		console.log("this.sections: ");
@@ -170,9 +167,6 @@ Move.prototype.calculate = function(){
 
 	this.addToQueue(this.currentGrid); 
 
-
-	//queue = openList
-	//currentGrid = node; 
 	while(this.queue.length > 0 ){
 		
 		//pop() removes the last element from an array and returns that element. 
@@ -181,8 +175,6 @@ Move.prototype.calculate = function(){
 		
 		//Adds to the visited list. 
 		this.visitedList.push(this.currentGrid); 
-		
-		//console.log(this.visitedList);
 
 		// Astar.prototype.reachedGoal() returns true or false. 
 		if(this.currentGrid.reachedGoal()){
@@ -204,26 +196,18 @@ Move.prototype.calculate = function(){
 		|   | L |   |
 		 --- --- --- */
 
-		// setAdjacentSections = getNeighbors
 		var adjArr = this.setAdjacentSections(this.positionCheck());		
 		console.log(adjArr);
 		
-		//adjArr = neighbors
 		for (var i = 0; i < adjArr.length; i++) {
-			//console.log(this.sections[i]);
-			//console.log(adjArr[i]);
 			
 			this.sections[adjArr[i]].h = this.manhattan(adjArr[i], this.goal);
-
-			//console.log(this.sections[adjArr[i]].h);
 			
 			//Increase the g-value, aka moves done. 
 			this.sections[adjArr[i]].g++;
 
 			//Använder sig av A*star funktionen. 
 			this.sections[adjArr[i]].f = this.sections[adjArr[i]].g + this.sections[adjArr[i]].h;
-			//console.log(this.sections[i]);
-			//console.log(adjArr[i]);
 
 			//Lägger till nya sections i queue.
 			this.addToQueue(this.sections[adjArr[i]]);
@@ -250,8 +234,6 @@ Move.prototype.addToQueue = function (thing){
 		else{
 				//Continue
 		}
-		
-		
 	}
 
 	//Om man inte hittar platsen bland redan besökta. 

@@ -42,7 +42,7 @@
 	//Reset the application by restarting everything
 	function reset(){
 		//Elevator.prototype.implement(); 
-		People.prototype.generatePeople();
+		//People.prototype.generatePeople();
 		console.log("**********STARTAR OM*************"); 
 	}
 
