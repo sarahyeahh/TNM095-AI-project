@@ -4,6 +4,8 @@
 
  	From index2.html
 
+    Functions:
+    - createGroupsArray(hour)
     - make_x_axis()
     - make_y_axis()
     - createDataSet()
@@ -22,48 +24,11 @@ var BT = new BehaviorTree(0, 0 , 0, 0 );
 //console.log(BT); 
 //console.log(BT.goal.x); */
 
-/* ---------------------------------- TESTAR LITE -------------------------------------*/
-        var nmbrOfGroups = 0;
-        var generatedGroups = [];
 
-        for(i=1; i<6; i++) {
-            generatedGroups.push(new Group());
-            nmbrOfGroups = i;
-            generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
-        }
-        
-        console.log("generatedGroups: ")
-        console.log(generatedGroups);
-/* -------------------------------------------------------------------------------------*/
+/*_______________________________
 
-/* -------------------------------------------------------------------------------------*/
-    /*
-        var ourGroups = []
-        ourGroups = Data.prototype.calc();
-        var groupsLength = ourGroups.length;
-        createGroupsArray(ourGroups);
-
-        function createGroupsArray(dividedGroups, groupsLength) {
-            var nmbrOfGroups = 0;
-            var generatedGroups = [];
-
-            for(i=1; i< groupsLength; i++) {
-                generatedGroups.push(new Group());
-                nmbrOfGroups = i;
-                generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
-                generatedGroups[nmbrOfGroups-1].groupSize = 10; //dividedGroups[nmbrOfGroups-1];
-            }
-            
-            console.log("generated groups, nya funktionen: ")
-            console.log(generatedGroups);
-        } 
-
-    */
-
-/* -------------------------------------------------------------------------------------*/
-
-
-// Setup settings for graphic
+    Setup settings for graphic
+_________________________________*/
 
 //Only use the canvas width. 
 var canvas_width = canvas.width*2;
@@ -80,17 +45,56 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
                 .domain([0, 9])   //Domain from the beginning for the yAxis
                 .range([canvas_height - padding, padding]);  // remember y starts on top going down so we flip
 
+
+
+/*__________________________________________________
+
+    Call functions to create and draw everything
+____________________________________________________*/
 var dataset = createDataSet();
 var svg = createSVG();
 
 drawEntrance(143, 570)  //Draw an entrance at this position
 drawElevator(540, 210); //Draw an elevator at this position
 drawStairs(10,150);     //Draw the stairs at this position
-drawAxes(svg);        //Draw the axes. If this function is not called, no axes are visible.
+drawAxes(svg);          //Draw the axes. If this function is not called, no axes are visible.
 
 createCircles(svg);     //Create the circles
 updateCanvas();         //Move the circles to their final position/update their position
 
+
+/*_______________________
+
+        FUNCTIONS
+_________________________*/
+
+//Create array of all groups entering Täppan at one specific hour
+function createGroupsArray(hour) {
+
+    console.log("  --- Creating groups from data ---");
+    
+    var data = new Data();  //Get all data from Data
+    //console.log("data: ");
+    //console.log(data)
+    var ourGroups = [];
+    var len = data.dividedGroups[hour-8].length; //all groups at 8:00
+    //console.log("length: " + len);
+   
+    var nmbrOfGroups = 0;
+    var generatedGroups = [];
+
+    for(i=1; i< len+1; i++) {
+        generatedGroups.push(new Group());
+        nmbrOfGroups = i;
+        generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
+        generatedGroups[nmbrOfGroups-1].groupSize = data.dividedGroups[0][nmbrOfGroups-1];
+    }
+    
+    //console.log("Generated groups at hour " + hour + ":00 : ");
+    //console.log(generatedGroups);
+
+    return generatedGroups;
+} 
 
 //Make X axis
 function make_x_axis() {
@@ -111,7 +115,10 @@ function make_y_axis() {
 
 // Setup data
 function createDataSet() {
-    //Plottar ut massa random värden. 
+    //call function createGroupArray() to create groups, input = hour of the day
+    var generatedGroups = createGroupsArray(9);   //istället för 9 ska vi skicka in 'hour'  
+    var nmbrOfGroups = generatedGroups.length;
+
     var dataset = [];  // Initialize empty array
     var numDataPoints = 15;  // Number of dummy data points
 
@@ -123,8 +130,8 @@ function createDataSet() {
         dataset.push([xval, yval, radius]);  // Add new number to array
     }
 
-    console.log("data: " + dataset);
-    console.log(dataset); 
+    //console.log("data: " + dataset);
+    //console.log(dataset); 
     return dataset;
 }
 
@@ -163,7 +170,7 @@ function createCircles (svg) {
 
 //Draw the elevator --> a rectangle, a blue rectangle
 function drawElevator(posX, posY) {
-    var rectangle = svg.append('rect')
+    var plotElevator = svg.append('rect')
       .attr('x', posX)
       .attr('y', posY)
       .attr('width', 20)
@@ -173,7 +180,7 @@ function drawElevator(posX, posY) {
 
 //Draw the stairs --> a rectangle, a green rectangle
 function drawStairs(posX, posY) {
-    var rectangle = svg.append('rect')
+    var plotStairs = svg.append('rect')
       .attr('x', posX)
       .attr('y', posY)
       .attr('width', 20)
@@ -183,7 +190,7 @@ function drawStairs(posX, posY) {
 
 //Draw the entrance
 function drawEntrance(posX, posY) {
-    var rectangle = svg.append('rect')
+    var plotEntrance = svg.append('rect')
       .attr('x', posX)
       .attr('y', posY)
       .attr('width', 58)
@@ -220,10 +227,12 @@ d3.select(starta)
 function updateCanvas() {
 //Scatterplot.prototype.updateCanvas = function(){
 
+        console.log("  --- Updating the canvas/plotting dots ---");
+
         var numValues = dataset.length;  // Get original dataset's length
 
         tempDataset = dataset;
-        console.log("tempDataset" + tempDataset);
+        //console.log("tempDataset" + tempDataset);
         dataset = [];  // Tom array med alla x och y värden.
 
         //For all datapoints set their new position
@@ -238,7 +247,7 @@ function updateCanvas() {
             dataset.push([xval, yval, newRadius]);  // Add new numbers to array
         }
 
-        console.log(dataset); 
+        //console.log(dataset); 
 
         /*
         // Update scale domains
@@ -252,14 +261,14 @@ function updateCanvas() {
         svg.selectAll("circle")
             .data(dataset)  // Update with new data
             .transition()  // Transition from old to new
-            .duration(5000)  // Length of animation, default = 1000
+            .duration(6000)  // Length of animation, default = 1000
             .each("start", function() {  // Start animation
                 d3.select(this)  // 'this' means the current element
                     .attr("fill", "red")  // Change color
                     .attr("r", function (d) { return d[2]; });  // Change size
             })
             .delay(function(d, i) {
-                return i / dataset.length * 5000;  // Dynamic delay (i.e. each item delays a little longer), default = 500
+                return i / dataset.length * 6000;  // Dynamic delay (i.e. each item delays a little longer), default = 500
             })
             //.ease("linear")  // Transition easing - default 'variable' (i.e. has acceleration), also: 'circle', 'elastic', 'bounce', 'linear'
             .attr("cx", function(d) {
@@ -271,7 +280,7 @@ function updateCanvas() {
             .each("end", function() {  // End animation
                 d3.select(this)  // 'this' means the current element
                     .transition()
-                    .duration(5000);    //default = 500
+                    .duration(6000);    //default = 500
                     //.attr("fill", "black")  // Change color
                   //  .attr("r", 2);  // Change radius
             });
@@ -293,6 +302,17 @@ function updateCanvas() {
                     .tickSize(-width, 0, 0)
                     .tickFormat("")) 
             */
+            
+} 
 
-}  
+/*
+
+function updateElevator()  {
+
+    document.getElementById("rect").style.fill = yellow;
+
+}
+*/
+
+
 
