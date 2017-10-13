@@ -8,7 +8,7 @@
     - createGroupsArray(hour)
     - make_x_axis()
     - make_y_axis()
-    - createDataSet()
+    - createDataSet(hour)
     - createSVG()
     - createCircles()
     - drawElevator()
@@ -20,6 +20,10 @@
 
 //Get the constructor from BehaviorTree. 
 var BT = new BehaviorTree(0, 0 , 0, 0 );
+var theTime = new Time();
+var hour = theTime.startTime();
+
+//console.log("Current hour:" + hour);
 
 //console.log(BT); 
 //console.log(BT.goal.x); */
@@ -51,7 +55,7 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
 
     Call functions to create and draw everything
 ____________________________________________________*/
-var dataset = createDataSet();
+var dataset = createDataSet(hour);
 var svg = createSVG();
 
 drawEntrance(143, 570)  //Draw an entrance at this position
@@ -87,11 +91,11 @@ function createGroupsArray(hour) {
         generatedGroups.push(new Group());
         nmbrOfGroups = i;
         generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
-        generatedGroups[nmbrOfGroups-1].groupSize = data.dividedGroups[0][nmbrOfGroups-1];
+        generatedGroups[nmbrOfGroups-1].groupSize = data.dividedGroups[hour-8][nmbrOfGroups-1];
     }
     
-    //console.log("Generated groups at hour " + hour + ":00 : ");
-    //console.log(generatedGroups);
+    console.log("Generated groups at hour " + hour + ":00 : ");
+    console.log(generatedGroups);
 
     return generatedGroups;
 } 
@@ -114,9 +118,9 @@ function make_y_axis() {
 }
 
 // Setup data
-function createDataSet() {
+function createDataSet(hour) {
     //call function createGroupArray() to create groups, input = hour of the day
-    var generatedGroups = createGroupsArray(9);   //istället för 9 ska vi skicka in 'hour'  
+    var generatedGroups = createGroupsArray(hour);    
     var nmbrOfGroups = generatedGroups.length;
 
     var dataset = [];  // Initialize empty array

@@ -24,6 +24,8 @@
 
  		Elevator.prototype.implement();
  		Elevator.prototype.generateElevator(); 
+ 		Time.prototype.startTime();
+ 		//Time.prototype.startTimer(); //funktion som inte funkar i nuläget
 	}
 
 //Ny grupp-knapp
