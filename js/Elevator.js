@@ -16,7 +16,6 @@
 
 	//Prototype constructor for elevator. 
 	function Elevator(x, y, elevator) {
-	
 		this.elevatorID = -1; //Fortfarande kvar i main. 
 	   	this.capacity = 6; 	//tidigare: 6 -> capacity
 	   	this.freeSpaces = 6; //tidigare: 6 -> capacity
@@ -29,7 +28,6 @@
 	//Implement prototype. 
 	Elevator.prototype.implement = function() {
 		this.allElevators = Elevator.prototype.elevatorArray();
-		//console.log(this.allElevators); 
 	}
 
 	//Create an array of elevator objects
@@ -47,13 +45,13 @@
 				this.allElevators[counter].positionY += 5*counter; 
 				counter++	
 			}
-		console.log("this.allElevators: ")
+
+		//console.log("this.allElevators: ")
 		//console.log(this.allElevators);
 
 		return this.allElevators;
 	}
 
-	//Generate elevator 
 	Elevator.prototype.generateElevator = function(){
 		//Increase number of elevators
 
@@ -68,8 +66,6 @@
 					
 		}
 
-		//console.log(this.allElevators); 
-
 		//Check if maximum number of elevators is reached
 		if(gui.elevators > 6) {	//istället för 6 borde det vara längden av allElevators
 			console.log("Det går inte att lägga till fler hissar.");
@@ -81,7 +77,7 @@
 			//Display capacity of the elevator
 			document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + this.allElevators[0].capacity + "</b> personer.";  
 		}
-		
+	
 		return elevator; 
 	}
 
@@ -124,7 +120,8 @@
 		//If freeTemp is negative, there are not spaces enough to fit the whole group in the elevator.
 		if(freeTemp < 0){
 			console.log("	Tyvärr, ta trappan.");
-			//Reset groupsize. 
+			//Reset groupsize.
+
 //TODO: Ändra till Datasetet. 
 			groupsize = 0; 
 		}
@@ -161,11 +158,8 @@
 		
 		//Väntar 3 sekunder innan hissen kommer tillbaka tom.
 		setTimeout(function(){ 
-			//console.log("Hissen är tillbaka."); 
         	alert('Hissen är tillbaka');
         	Elevator.prototype.generateElevator();
- 
-        	//Elevator.prototype.implement(); 	//Här ska vi väl egentligen tömma den aktuella hissen, inte kalla på implement()
     	}, 3000);
 	}
 
@@ -174,9 +168,6 @@
 		console.log("Hissen lämnar éntreplan...")
 		this.emptyTheElevator();
 	}
-
-	//TODO
-	//Queue to the elevator
 
 
 			

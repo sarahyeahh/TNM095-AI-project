@@ -11,9 +11,9 @@
 ***********************************************************************************************************/
 
 //Kombination av Grid.js/Pathfinding.js/Gridsection.js
-function Move(start, goal, x, y, current, width, height){
+function Move(start, goal, x, y,  width, height){
 	//ANVÄNDS EJ
-	this.currentSection = current; //From People.js, Number between 0-8 (9st grids)
+	//this.currentSection = current; //From People.js, Number between 0-8 (9st grids)
 
 	this.console = false; //Sätt till true om den ska visa console.logs. 
 
@@ -25,11 +25,6 @@ function Move(start, goal, x, y, current, width, height){
 	this.height = 2*height;
 
 	this.gridWidth = 9; //Number of grids wide. 
-	 
-//TODO: Goal och start ska bestämmas någon annanstans!
-	/*this.start = 0;
-	this.goal = 2; */
-
 	this.index = 0; 
 
 	this.position = {
@@ -38,7 +33,6 @@ function Move(start, goal, x, y, current, width, height){
 	};
 
 	this.init();
-
 	this.currentGrid = this.getCurrentGridSection(this.position);
 	
 	if(this.console){

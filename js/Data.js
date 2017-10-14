@@ -20,15 +20,12 @@ function Data(){
 
 	//this.theTime = new Time();	?
 	//this.hour = this.theTime.startTime();	?
-
 }
 
 //Calculate whow many people that actually will go, 70%.
 Data.prototype.calc = function(){
 
 	console.log("  --- Dividing people into groups in calc function: ---");
-	//console.log("i funktionen calc: ");
-	//console.log(this.avgPeople);
 
 	for (var i = 0; i < this.avgPeopleLength; i++) {
 	    
@@ -39,7 +36,6 @@ Data.prototype.calc = function(){
 	    this.avgPeople[i] = Math.floor(this.avgPeople[i]);  
 
 	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i], this.time[i]));
-	
 	} 
 
 	return this.dividedGroups; 

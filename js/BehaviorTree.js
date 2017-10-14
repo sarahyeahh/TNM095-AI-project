@@ -15,95 +15,84 @@
 // - variables concerning the People --> stress, tired, speed, waitTime, groupsize, position
 // - variables concering the Elevators --> freeSpaces, elevatorID, (capacity?), position
 
-
-
 function BehaviorTree(state, stress, tired, speed){
 
-	this.stressed = stress;
+	this.stress = stress;
 	this.tired = tired;
 	this.speed = speed; 
 	this.state = state; 
 
-	//console.log(state); 
-	this.goal = this.goalState(state); 
-
+	//this.goal = this.goalState(state); 
 }
 
-
 //Decision is generated every time the button is pushed.  
-BehaviorTree.prototype.decision = function(){
+BehaviorTree.prototype.decision = function(group){
 
-	var data = new Data(); 
+	console.log(group);
 
-	//data.dividedGroups.length
-	for(var i = 0; i < 1; i++){
+	for(var i = 0; i < group.length; i++){
 
-		//data.dividedGroups[i].length
-		for(var j = 0; j < 1; j++){
+		var groupsize = group[i].groupSize;
+		console.log("Grupp med " + groupsize + " personer."); 
+		//console.log(data.dividedGroups[i][j]);
 
-			var groupsize = data.dividedGroups[i][j];
-			//console.log(data.dividedGroups[i]); 
+		//Steg 1: Finns lediga platser? 
+		isEmpty = Elevator.prototype.checkEmpty(groupsize);
 
-			//var groupsize = this.generatedGroups;
-			console.log("Grupp med " + groupsize + " personer."); 
-			//console.log(data.dividedGroups[i][j]);
+		if(isEmpty){
 
-			//Steg 1: Finns lediga platser? 
-			isEmpty = Elevator.prototype.checkEmpty(groupsize);
+			this.state= this.goalState('elevator'); 
+			group[i].goal = this.state; 
+			updateCanvas(group[i]); 
+			
+			//If there are spaces left, check how many spaces are free.
+			var freeTemp = Elevator.prototype.spacesLeft(groupsize);
 
-			if(isEmpty){
+			//Get the new spaces after taking the elevator. 
+			var newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
+			console.log("Platser kvar: "  + newSpacesLeft); 
 
-				this.state = this.goalState('elevator'); 
+		}
+		else{
 
-				updateCanvas(); 
-				
-				//If there are spaces left, check how many spaces are free.
-				var freeTemp = Elevator.prototype.spacesLeft(groupsize);
+			this.state = this.goalState('stairs'); 
+			group[i].goal = this.state; 
+			
+			//Wait
+			console.log("Tyvärr du måste vänta...");
+			//Steg 3: När kommer nästa? 
+//TODO
+			//getWaitingtime()
 
-				//Get the new spaces after taking the elevator. 
-				var newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
-				console.log("Platser kvar: "  + newSpacesLeft); 
-
+			//While waiting on an empty elevator. 
+					
+			//Steg 4A: Trött?
+			if(group[i].tired>0.5){
+				group[i].speed = group[i].speed-0.3; //Går långsammare.
+				console.log("Ta hissen, du är " + group[i].speed*100 + "% pigg."); 
 			}
 			else{
-
-				this.state = this.goalState('stairs'); 
-				updateCanvas(); 
-				//Wait
-				console.log("Tyvärr du måste vänta...");
-				//Steg 3: När kommer nästa? 
-//TODO
-				//getWaitingtime()
-
-				//While waiting on an empty elevator. 
-						
-				//Steg 4A: Trött?
-				if(this.tired>0.5){
-					this.speed = this.speed-0.3; //Går långsammare.
-					console.log("Ta hissen, du är " + rhis.speed*100 + "% pigg."); 
+				//Steg 4B: Stressad? 
+				if(group[i].stress>0.5){
+					group[i].speed = group[i].speed+0.3; //Går långsammare.
+					console.log("Ta trappan du är " + group[i].speed*100 + "% pigg."); 
 				}
 				else{
-					//Steg 4B: Stressad? 
-					if(this.stressed>0.5){
-						this.speed = this.speed+0.3; //Går långsammare.
-						console.log("Ta trappan du är " + this.speed*100 + "% pigg."); 
-					}
-					else{
-						console.log("Ta hissen."); 
-					}	
-				}		
-			}
+					console.log("Ta hissen."); 
+				}	
+			}	
+
+			updateCanvas(group[i]); 	
 		}
+		
 	}
 }
 
-
 //Decides which goal the group should go to. 
 BehaviorTree.prototype.goalState = function(state){
-
+	
+	var goal;
 	console.log("State: " + state);
-
-	var goal; 
 
 	var goalElevator = { 
 		x:9,
@@ -120,16 +109,17 @@ BehaviorTree.prototype.goalState = function(state){
 		goal = goalElevator;
 		console.log("elevator"); 
 	}
-	else {
+/*	else  {
+		goal = goalStairs; 
+	}	*/
+	else if ( state == "stairs") {
 		goal = goalStairs; 
 	}	
-/*	else{
+	else{
 		console.log("State not defined.")
-	}*/
+	}
 
-
- 	console.log(goal); 
-	
+ 	//console.log(goal); 
 	return goal; 
 }
 

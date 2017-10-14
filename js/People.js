@@ -28,50 +28,14 @@ function People(width, height){
 //TODO: x och y ska vara något annat. 
 	this.x = 0;
     this.y = 0;
-    this.currentGrid = 0; 
+    //this.currentGrid = 0; 
     this.start = 0; 
     this.goal = 9;
 
 	//To the constructor Move. 
-	this.move = new Move(this.start, this.goal, this.x, this.y, this.currentGrid, this.width, this.height);
-
-	this.groupsize = 0; 
+	this.move = new Move(this.start, this.goal, this.x, this.y, this.width, this.height);
+ 
 }
-
-var groups = [];
-var activeGroups = 0;
-
-//generate a groupsize for a new group of people
-/*People.prototype.generateGroupsize = function (){
-
-	//max and min size of a generated group
-	//var max = Group.prototype.getMaxSize(); //tidigare satt till 6
-	var max = gui.groupMaxSize;
-	var min = 1;  
-
-	//set groupsize to be a random number between max and min
-	this.groupsize = Math.floor(Math.random() * (max - min + 1)) + min; 
-
-	//Display number of people that wants to enter the elevator
-	document.getElementById("group").innerHTML = "Antal personer som vill gå in i hissen: " + "<b>" + this.groupsize + "</b>";  
-
-	return this.groupsize; 
-}*/
-
-//generate a new group of people
-People.prototype.generatePeople = function (){
-	//this.groups = [];
-	groups.push(new Group()); 
-    activeGroups++;
-    console.log("number of groups: " + activeGroups);
-    groups[activeGroups-1].ID += activeGroups;
-
-    console.log("groups: ")
-    console.log(groups);
-
-    return groups;
-}
-
 
 /****** DET NEDANFÖR ANVÄNDS EJ ÄNNU ******/
 
