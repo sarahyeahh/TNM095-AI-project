@@ -58,7 +58,7 @@ ____________________________________________________*/
 var dataset = createDataSet(hour);
 var svg = createSVG();
 
-drawEntrance(143, 570)  //Draw an entrance at this position
+drawEntrance(143, 570);  //Draw an entrance at this position
 drawElevator(540, 210); //Draw an elevator at this position
 drawStairs(10,150);     //Draw the stairs at this position
 drawAxes(svg);          //Draw the axes. If this function is not called, no axes are visible.
