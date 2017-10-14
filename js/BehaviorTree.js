@@ -106,6 +106,7 @@ BehaviorTree.prototype.goalState = function(state){
 	//If the elevator is empty, the goal is to take the elevator. 
 	if(state == "elevator"){
 		goal = goalElevator;
+		console.log(goal);
 		console.log("Goal is set to elevator"); 
 	}
 	else if ( state == "stairs") {
