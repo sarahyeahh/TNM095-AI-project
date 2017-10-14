@@ -4,6 +4,11 @@
 
  	Data
 
+ 	Functions:
+ 		- calc()
+ 		- splitIntoGroups()
+ 		-
+
 ***********************************************************************************************************/
 
 //time - tid mellan 8-17
@@ -11,15 +16,15 @@
 
 //Prototypes constructor  
 function Data(){
-	this.dividedGroups = [];
 	this.avgPeople = [105, 105, 157.5, 157.5, 0, 150, 150, 112.5, 112.5, 112.5]; 
 	this.avgPeopleLength = this.avgPeople.length;
 	this.time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 
-	this.calc();
+	this.dividedGroups = [];
+	this.generatedGroups = [];
+	this.dataset = [];
 
-	//this.theTime = new Time();	?
-	//this.hour = this.theTime.startTime();	?
+	this.calc();
 
 }
 
@@ -27,7 +32,6 @@ function Data(){
 Data.prototype.calc = function(){
 
 	console.log("  --- Dividing people into groups in calc function: ---");
-	//console.log("i funktionen calc: ");
 	//console.log(this.avgPeople);
 
 	for (var i = 0; i < this.avgPeopleLength; i++) {
@@ -39,10 +43,13 @@ Data.prototype.calc = function(){
 	    this.avgPeople[i] = Math.floor(this.avgPeople[i]);  
 
 	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i], this.time[i]));
-	
 	} 
 
-	return this.dividedGroups; 
+	//Generate groups from dividedGroups
+	this.generatedGroups = this.createGroupsArray(this.dividedGroups);
+
+	//Create dataset from generatedGroups
+	this.dataset = this.createDataSet(this.generatedGroups);
 }
 
 //Split one bigger number/integer into smaller integers and save in array
@@ -93,6 +100,55 @@ Data.prototype.splitIntoGroups = function(totalNmbrPeople, hour){
 	}
 
 	return smallerGroups;
+}
+
+
+//Create array of all groups entering Täppan at one specific hour
+Data.prototype.createGroupsArray = function(dividedGroups){
+
+	var clock = new Time();
+	var hour = clock.startTime();
+
+    console.log("  --- Creating groups from data ---");
+
+    var ourGroups = [];
+    var len = dividedGroups[hour-8].length; 
+   
+    var nmbrOfGroups = 0;
+    this.generatedGroups = [];
+
+    for(i=1; i< len+1; i++) {
+        this.generatedGroups.push(new Group());
+        nmbrOfGroups = i;
+        this.generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
+        this.generatedGroups[nmbrOfGroups-1].groupSize = this.dividedGroups[hour-8][nmbrOfGroups-1];
+    }
+    
+    console.log("Generated groups at hour " + hour + ":00 : ");
+    console.log(this.generatedGroups);
+
+    return this.generatedGroups;
+} 
+
+
+// Setup data
+Data.prototype.createDataSet = function(generatedGroups){
+	console.log("  --- Creating dataset from generatedGroups ---");
+
+    var nmbrOfGroups = generatedGroups.length;
+
+    this.dataset = [];  // Initialize empty array
+    var numDataPoints = 15;  // Number of dummy data points
+
+    //xval and yval = the initial position for the dots
+    for(var i = 0; i < nmbrOfGroups; i++) {
+        var xval = generatedGroups[i].initialX; 
+        var yval = generatedGroups[i].initialY; 
+        var radius = generatedGroups[i].groupSize *2;       //Tar *2 enbart för att få större prickar
+        this.dataset.push([xval, yval, radius]);  // Add new number to array
+    }
+
+    return this.dataset;
 }
 
 
