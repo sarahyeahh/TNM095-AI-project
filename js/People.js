@@ -10,8 +10,6 @@
 
 //Attribut för grupp: Antal, stress(hastighet).
 
-var pppp= new People(); 
-console.log(pppp); 
 
 //Prototype constructor
 function People(width, height){

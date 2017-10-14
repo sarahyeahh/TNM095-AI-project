@@ -72,32 +72,55 @@ createCircles(svg);     //Create the circles
         FUNCTIONS
 _________________________*/
 
+// Setup data
+function createDataSet(hour) {
+    //call function createGroupArray() to create groups, input = hour of the day
+    var generatedGroups = createGroupsArray(hour);    
+    var nmbrOfGroups = generatedGroups.length;
+
+    //data.dividedGroups[i]
+
+    var dataset = [];  // Initialize empty array
+    var numDataPoints = 60;  // Number of dummy data points
+
+    //xval and yval = the initial position for the dots
+    for(var i = 0; i < nmbrOfGroups; i++) {
+        var xval = generatedGroups[i].initialX; 
+        var yval = generatedGroups[i].initialY; 
+        var radius = generatedGroups[i].groupSize *2;       //Tar *2 enbart för att få större prickar
+        dataset.push([xval, yval, radius]);  // Add new number to array
+    }
+
+    //console.log("data: " + dataset);
+    //console.log(dataset); 
+    return dataset;
+}
+
 //Create array of all groups entering Täppan at one specific hour
 function createGroupsArray(hour) {
 
     console.log("  --- Creating groups from data ---");
     
     var data = new Data();  //Get all data from Data
-    //console.log("data: ");
-    //console.log(data)
     var ourGroups = [];
     var len = data.dividedGroups[hour-8].length; //all groups at 8:00
-    //console.log("length: " + len);
-   
+    
+    console.log(len); 
+    
     var nmbrOfGroups = 0;
-    var generatedGroups = [];
+    this.generatedGroups = [];
 
     for(i=1; i< len+1; i++) {
-        generatedGroups.push(new Group());
+        this.generatedGroups.push(new Group());
         nmbrOfGroups = i;
-        generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
-        generatedGroups[nmbrOfGroups-1].groupSize = data.dividedGroups[hour-8][nmbrOfGroups-1];
+        this.generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
+        this.generatedGroups[nmbrOfGroups-1].groupSize = data.dividedGroups[hour-8][nmbrOfGroups-1];
     }
     
     console.log("Generated groups at hour " + hour + ":00 : ");
-    console.log(generatedGroups);
+    console.log(this.generatedGroups);
 
-    return generatedGroups;
+    return this.generatedGroups;
 } 
 
 //Make X axis
@@ -117,29 +140,6 @@ function make_y_axis() {
 
 }
 
-// Setup data
-function createDataSet(hour) {
-    //call function createGroupArray() to create groups, input = hour of the day
-    var generatedGroups = createGroupsArray(hour);    
-    var nmbrOfGroups = generatedGroups.length;
-
-    var dataset = [];  // Initialize empty array
-    var numDataPoints = 15;  // Number of dummy data points
-
-    //xval and yval = the initial position for the dots
-    for(var i = 0; i < nmbrOfGroups; i++) {
-        var xval = generatedGroups[i].initialX; 
-        var yval = generatedGroups[i].initialY; 
-        var radius = generatedGroups[i].groupSize *2;       //Tar *2 enbart för att få större prickar
-        dataset.push([xval, yval, radius]);  // Add new number to array
-    }
-
-    //console.log("data: " + dataset);
-    //console.log(dataset); 
-    return dataset;
-}
-
-
 // Create the SVG element
 function createSVG () {
     // "h4" is where we put our visualization
@@ -150,7 +150,6 @@ function createSVG () {
 
     return svg;
 }
-
 
 //Create the circles
 function createCircles (svg) {
@@ -163,7 +162,6 @@ function createCircles (svg) {
         .attr("cy", canvas_height-padding)
         .attr("r", 1);  // radius
 }
-
 
 //Draw the elevator --> a rectangle, a blue rectangle
 function drawElevator(posX, posY) {

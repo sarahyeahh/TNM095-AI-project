@@ -42,16 +42,19 @@ BehaviorTree.prototype.decision = function(){
 		for(var j = 0; j < 1; j++){
 
 			var groupsize = data.dividedGroups[i][j];
+			//console.log(data.dividedGroups[i]); 
+
+			//var groupsize = this.generatedGroups;
 			console.log("Grupp med " + groupsize + " personer."); 
 			//console.log(data.dividedGroups[i][j]);
 
 			//Steg 1: Finns lediga platser? 
 			isEmpty = Elevator.prototype.checkEmpty(groupsize);
 
-
 			if(isEmpty){
 
 				this.state = this.goalState('elevator'); 
+
 				updateCanvas(); 
 				
 				//If there are spaces left, check how many spaces are free.
