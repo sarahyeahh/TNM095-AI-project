@@ -1,0 +1,86 @@
+#TNM095-AI-project: Function logic
+
+##Täppan - elevator or stairs?
+
+-------------------------------------------------
+###1) Onload
+-> main.js
+-------------------------------------------------
+- Elevator.prototype.implement();
+	-> Elevator.prototype.elevatorArray();	-> output: allElevators (array of all elevators)
+- Elevator.prototype.generateElevator();	-> output: elevator (the last activated elevator in allElevators)
+- Time.prototype.startTime();	-> output: hour (this current hour)
+	-> Time.prototype.checkTime(i)		-> output: correct format of minutes and seconds (m and s are not displayed or used)
+
+* OVERVIEW: 
+	- array of allElevators are created (var allElevators)
+	- an elevator is set to activated as it is generated
+	- the current hour is taken from a clock (var hour)
+
+-------------------------------------------------
+###2) Also onload/as index file is run
+ -> Data.js
+-------------------------------------------------
+-> Data.prototype.calc()	-> output: dividedGroups (array of groupsizes, not actual group objects)
+	-> splitIntoGroups(avgPeople, hour)		-> output: smallerGroups (just like dividedGroups, array of groups made out of total nmbr of people at a certain time/hour)
+	* This function gets maxSizeOfGroup from the GUI
+
+* OVERVIEW:
+	- data is generated (constructor Data())
+	- data is divided into groups depending on hour (var dividedGroups)
+
+-------------------------------------------------
+###3) Also onload/as index file is run
+ -> Scatterplot.js
+-------------------------------------------------
+* Creates several variables by calling constructors and functions
+- var BT = new BehaviorTree(0, 0 , 0, 0 );
+- var theTime = new Time();
+- var hour = theTime.startTime();	-> output: hour (this current hour)
+- var dataset = createDataSet(hour);	-> output: dataset (dataset includes [x,y,radius] for each group to be drawn, based on hour)
+	-> var generatedGroups = createGroupsArray(hour);	-> output: generatedGroups (array of Group objects, size of each group taken from data.dividedGroups) 
+- var svg = createSVG();	-> output: svg (where to put our visualization)
+
+* Contains a lot of function calls, which creates the "canvas"/our visual output
+drawEntrance(143, 570);		-> output: appends a rectangle (entrance) to svg  
+drawElevator(540, 210); 	-> output: appends a rectangle (elevator) to svg
+drawStairs(10,150);   		-> output: appends a rectangle (stairs) to svg  
+drawAxes(svg);
+	-> make_x_axis(xScale)	-> output: appends x axis to svg
+	-> make_y_axis(yScale)	-> output: appends y axis to svg
+createCircles(svg);			-> output: appends circles (groups) to svg, based on dataset     
+updateCanvas();				-> output: makes a copy of dataset and inserts new x and y coordinates (the goal) for each group, appends the new circles to svg 
+
+* OVERVIEW:
+	- hour is gotten from Time()
+	- array of Group objects are created from a dataset, based on dividedGroups (var generatedGroups)
+	- svg is created and objects appended to it; elevator, stairs, entrance
+	- groups are drawn as circles, moving from start to goal coordinates by an animation
+
+
+-------------------------------------------------
+###4) When "Ny grupp" is pressed
+ -> main.js
+-------------------------------------------------
+-> BehaviorTree.prototype.decision();
+	-> People.prototype.generateGroupsize(); 	-> output: groupSize //Currently just a random integer, but should be taken from generatedGroups.groupsize
+	-> Elevator.prototype.checkEmpty(groupsize);	-> output: true/false if the elevator isEmpty or not, depending on groupSize. By empty meaning if its full (false) or there are spaces left (true).
+			//If isEmpty=true
+			-> BehaviorTree.prototype.goalState();	-> output: goal (coordinates to either elevator or stairs)
+			-> Elevator.prototype.spacesLeft(groupsize);	-> output: freeTemp (freeSpaces in the elevator)
+			-> Elevator.prototype.takeElevator(groupsize, freeTemp);	-> output: freeSpaces (var newSpacesLeft)
+				//If elevator is full
+				-> this.fullElevator(); 
+					-> this.emptyTheElevator();
+						-> Elevator.prototype.generateElevator();	//Här genereras en ny hiss, men vi bör tömma den aktuella hissen
+			//If isEmpty=false
+			-> BehaviorTree.prototype.goalState()	-> output: goal (coordinates to either elevator or stairs)
+
+
+
+
+
+
+
+
+
