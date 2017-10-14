@@ -64,5 +64,5 @@ function World (width, height) {
 	this.stairs =  new Stairs(this.number);
 };
 
-var world = new World();
-console.log(world);
+//var world = new World();
+//console.log(world);
