@@ -32,7 +32,6 @@
 	start.onclick = (event) => {
  		console.log("Start");
  		createDataSet(hour);
-
 	}
 
 //Ny grupp-knapp

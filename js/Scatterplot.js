@@ -167,7 +167,6 @@ function updateCanvas(group) {
 
     createCircles(svg);
 
-
    // var numValues = dataset.length;  // Get original dataset's length
 
    // tempDataset = dataset;
