@@ -2,7 +2,7 @@
 
 ##Täppan - elevator or stairs?
 
--------------------------------------------------
+
 ###1) Onload
 -> main.js
 -------------------------------------------------
@@ -17,7 +17,7 @@
 	- an elevator is set to activated as it is generated
 	- the current hour is taken from a clock (var hour)
 
--------------------------------------------------
+
 ###2) Also onload/as index file is run
  -> Data.js
 -------------------------------------------------
@@ -29,7 +29,7 @@
 	- data is generated (constructor Data())
 	- data is divided into groups depending on hour (var dividedGroups)
 
--------------------------------------------------
+
 ###3) Also onload/as index file is run
  -> Scatterplot.js
 -------------------------------------------------
@@ -58,7 +58,7 @@ updateCanvas();				-> output: makes a copy of dataset and inserts new x and y co
 	- groups are drawn as circles, moving from start to goal coordinates by an animation
 
 
--------------------------------------------------
+
 ###4) When "Ny grupp" is pressed
  -> main.js
 -------------------------------------------------
