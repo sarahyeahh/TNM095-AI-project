@@ -30,8 +30,8 @@ function World (width, height) {
 	this.ourdata = new Data(); //changed from data to 'ourdata'
 	console.log(this.ourdata);
 	
-	this.visualizer = new Visualizer(); 
-	console.log(this.visualizer);
+	//this.visualizer = new Visualizer(); 	//Används inte nu
+	//console.log(this.visualizer);
 	/*this.canvas = new Canvas(this.width, this.height); 
 	console.log(this.canvas);*/
 
