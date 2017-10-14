@@ -1,9 +1,9 @@
-#TNM095-AI-project: Function logic
+# TNM095-AI-project: Function logic
 
-##Täppan - elevator or stairs?
+## Täppan - elevator or stairs?
 
 -------------------------------------------------
-###1) Onload
+### 1) Onload
 -> main.js
 -------------------------------------------------
 - Elevator.prototype.implement();
@@ -18,7 +18,7 @@
 	- the current hour is taken from a clock (var hour)
 
 -------------------------------------------------
-###2) Also onload/as index file is run
+### 2) Also onload/as index file is run
  -> Data.js
 -------------------------------------------------
 -> Data.prototype.calc()	-> output: dividedGroups (array of groupsizes, not actual group objects)
@@ -30,7 +30,7 @@
 	- data is divided into groups depending on hour (var dividedGroups)
 
 -------------------------------------------------
-###3) Also onload/as index file is run
+### 3) Also onload/as index file is run
  -> Scatterplot.js
 -------------------------------------------------
 * Creates several variables by calling constructors and functions
@@ -59,7 +59,7 @@ updateCanvas();				-> output: makes a copy of dataset and inserts new x and y co
 
 
 -------------------------------------------------
-###4) When "Ny grupp" is pressed
+### 4) When "Ny grupp" is pressed
  -> main.js
 -------------------------------------------------
 -> BehaviorTree.prototype.decision();
