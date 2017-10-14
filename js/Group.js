@@ -10,7 +10,7 @@ function Group() {
 	//this.waitTime = 1;
 	//this.speed = 2; 
 	this.ID = -1;
-	this.groupSize = People.prototype.generateGroupsize();
+	//this.groupSize = People.prototype.generateGroupsize();
 	this.initialX = 60;		//intial x position
 	this.initialY = 0;		//initial y position
 };

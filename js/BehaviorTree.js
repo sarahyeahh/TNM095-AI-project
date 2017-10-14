@@ -16,65 +16,81 @@
 // - variables concering the Elevators --> freeSpaces, elevatorID, (capacity?), position
 
 
-function BehaviorTree(stress, tired, speed, freespaces){
 
-		this.newSpacesLeft = 0; 
-		this.stressed = stress;
-		this.tired = tired;
-		this.speed = speed; 
-		this.freeSpaces = freespaces;
-		
-		this.goal = this.goalState(); 
+function BehaviorTree(state, stress, tired, speed){
+
+	this.stressed = stress;
+	this.tired = tired;
+	this.speed = speed; 
+	this.state = state; 
+
+	//console.log(state); 
+	this.goal = this.goalState(state); 
+
 }
 
 
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(){
 
-	var groupsize = People.prototype.generateGroupsize(); 
-	console.log("Grupp med " + groupsize + " personer."); 
+	var data = new Data(); 
 
-	//Steg 1: Finns lediga platser? 
-	isEmpty = Elevator.prototype.checkEmpty(groupsize);
+	//data.dividedGroups.length
+	for(var i = 0; i < 1; i++){
 
-	if(isEmpty){
+		//data.dividedGroups[i].length
+		for(var j = 0; j < 1; j++){
 
-		this.goalState('elevator'); 
-		//If there are spaces left, check how many spaces are free.
-		var freeTemp = Elevator.prototype.spacesLeft(groupsize);
+			var groupsize = data.dividedGroups[i][j];
+			console.log("Grupp med " + groupsize + " personer."); 
+			//console.log(data.dividedGroups[i][j]);
 
-		//Get the new spaces after taking the elevator. 
-		newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
-		console.log("Platser kvar: "  + newSpacesLeft); 
+			//Steg 1: Finns lediga platser? 
+			isEmpty = Elevator.prototype.checkEmpty(groupsize);
 
-	}
-	else{
 
-		this.goalState('stairs'); 
-		//Wait
-		console.log("Tyvärr du måste vänta...");
-		//Steg 3: När kommer nästa? 
-//TODO
-		//getWaitingtime()
+			if(isEmpty){
 
-		//While waiting on an empty elevator. 
+				this.state = this.goalState('elevator'); 
+				updateCanvas(); 
 				
-		//Steg 4A: Trött?
-		if(this.tired>0.5){
-			this.speed = speed-0.3; //Går långsammare.
-			console.log("Ta hissen, du är " + speed*100 + "% pigg."); 
-		}
-		else{
-			//Steg 4B: Stressad? 
-			if(this.stressed>0.5){
-				
-				speed = speed+0.3; //Går långsammare.
-				console.log("Ta trappan du är " + speed*100 + "% pigg."); 
+				//If there are spaces left, check how many spaces are free.
+				var freeTemp = Elevator.prototype.spacesLeft(groupsize);
+
+				//Get the new spaces after taking the elevator. 
+				var newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
+				console.log("Platser kvar: "  + newSpacesLeft); 
+
 			}
 			else{
-				console.log("Ta hissen."); 
-			}	
-		}		
+
+				this.state = this.goalState('stairs'); 
+				updateCanvas(); 
+				//Wait
+				console.log("Tyvärr du måste vänta...");
+				//Steg 3: När kommer nästa? 
+//TODO
+				//getWaitingtime()
+
+				//While waiting on an empty elevator. 
+						
+				//Steg 4A: Trött?
+				if(this.tired>0.5){
+					this.speed = this.speed-0.3; //Går långsammare.
+					console.log("Ta hissen, du är " + rhis.speed*100 + "% pigg."); 
+				}
+				else{
+					//Steg 4B: Stressad? 
+					if(this.stressed>0.5){
+						this.speed = this.speed+0.3; //Går långsammare.
+						console.log("Ta trappan du är " + this.speed*100 + "% pigg."); 
+					}
+					else{
+						console.log("Ta hissen."); 
+					}	
+				}		
+			}
+		}
 	}
 }
 
@@ -99,6 +115,7 @@ BehaviorTree.prototype.goalState = function(state){
 	//If the elevator is empty, the goal is to take the elevator. 
 	if(state == "elevator"){
 		goal = goalElevator;
+		console.log("elevator"); 
 	}
 	else {
 		goal = goalStairs; 
@@ -106,6 +123,7 @@ BehaviorTree.prototype.goalState = function(state){
 /*	else{
 		console.log("State not defined.")
 	}*/
+
 
  	console.log(goal); 
 	
