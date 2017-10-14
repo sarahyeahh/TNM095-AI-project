@@ -10,7 +10,6 @@
 ***********************************************************************************************************/
 //TODO 
 
-
 //BehaviorTree needs:
 // - variables concerning the People --> stress, tired, speed, waitTime, groupsize, position
 // - variables concering the Elevators --> freeSpaces, elevatorID, (capacity?), position
@@ -22,7 +21,7 @@ function BehaviorTree(state, stress, tired, speed){
 	this.speed = speed; 
 	this.state = state; 
 
-	//this.goal = this.goalState(state); 
+	this.goal = this.goalState(state); 
 }
 
 //Decision is generated every time the button is pushed.  
@@ -33,8 +32,7 @@ BehaviorTree.prototype.decision = function(group){
 	for(var i = 0; i < group.length; i++){
 
 		var groupsize = group[i].groupSize;
-		console.log("Grupp med " + groupsize + " personer."); 
-		//console.log(data.dividedGroups[i][j]);
+		console.log("Grupp med " + groupsize + " personer.");
 
 		//Steg 1: Finns lediga platser? 
 		isEmpty = Elevator.prototype.checkEmpty(groupsize);
@@ -43,7 +41,6 @@ BehaviorTree.prototype.decision = function(group){
 
 			this.state= this.goalState('elevator'); 
 			group[i].goal = this.state; 
-			updateCanvas(group[i]); 
 			
 			//If there are spaces left, check how many spaces are free.
 			var freeTemp = Elevator.prototype.spacesLeft(groupsize);
@@ -51,6 +48,8 @@ BehaviorTree.prototype.decision = function(group){
 			//Get the new spaces after taking the elevator. 
 			var newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
 			console.log("Platser kvar: "  + newSpacesLeft); 
+
+			updateCanvas(group[i]); 
 
 		}
 		else{
@@ -107,19 +106,19 @@ BehaviorTree.prototype.goalState = function(state){
 	//If the elevator is empty, the goal is to take the elevator. 
 	if(state == "elevator"){
 		goal = goalElevator;
-		console.log("elevator"); 
+		console.log("Goal is set to elevator"); 
 	}
-/*	else  {
-		goal = goalStairs; 
-	}	*/
 	else if ( state == "stairs") {
 		goal = goalStairs; 
+		console.log(goal);
+		console.log("Goal is set to stairs"); 
 	}	
 	else{
 		console.log("State not defined.")
+
 	}
 
- 	//console.log(goal); 
 	return goal; 
 }
+
 

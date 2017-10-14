@@ -24,9 +24,6 @@ function World (width, height) {
 
 	this.ourdata = new Data(); //changed from data to 'ourdata'
 	//console.log(this.ourdata);
-	
-	this.visualizer = new Visualizer(); 
-	//console.log(this.visualizer);
 
 	this.ourTime = new Time();
 

@@ -163,6 +163,8 @@ function updateCanvas(group) {
     console.log("  --- Updating the canvas/plotting dots ---");
     this.dataset = new DataSet();
 
+    console.log(group); 
+
     createCircles(svg);
 
 
