@@ -10,11 +10,9 @@
 ***********************************************************************************************************/
 //TODO 
 
-
 //BehaviorTree needs:
 // - variables concerning the People --> stress, tired, speed, waitTime, groupsize, position
 // - variables concering the Elevators --> freeSpaces, elevatorID, (capacity?), position
-
 
 
 function BehaviorTree(state, stress, tired, speed){
@@ -26,9 +24,9 @@ function BehaviorTree(state, stress, tired, speed){
 
 	//console.log(state); 
 	this.goal = this.goalState(state); 
-
 }
 
+//Vi borde skicka in en specifik grupp till decision() 
 
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(){
@@ -50,8 +48,8 @@ BehaviorTree.prototype.decision = function(){
 
 
 			if(isEmpty){
-
-				this.state = this.goalState('elevator'); 
+				//this.state = this.goalState('elevator');
+				this.goal = BehaviorTree.prototype.goalState("elevator");
 				updateCanvas(); 
 				
 				//If there are spaces left, check how many spaces are free.
@@ -64,10 +62,12 @@ BehaviorTree.prototype.decision = function(){
 			}
 			else{
 
-				this.state = this.goalState('stairs'); 
+				//this.state = this.goalState('stairs'); 
+				this.goal = this.goalState('stairs');
 				updateCanvas(); 
 				//Wait
 				console.log("Tyvärr du måste vänta...");
+				
 				//Steg 3: När kommer nästa? 
 //TODO
 				//getWaitingtime()
@@ -77,7 +77,7 @@ BehaviorTree.prototype.decision = function(){
 				//Steg 4A: Trött?
 				if(this.tired>0.5){
 					this.speed = this.speed-0.3; //Går långsammare.
-					console.log("Ta hissen, du är " + rhis.speed*100 + "% pigg."); 
+					console.log("Ta hissen, du är " + this.speed*100 + "% pigg."); 
 				}
 				else{
 					//Steg 4B: Stressad? 
@@ -115,16 +115,17 @@ BehaviorTree.prototype.goalState = function(state){
 	//If the elevator is empty, the goal is to take the elevator. 
 	if(state == "elevator"){
 		goal = goalElevator;
-		console.log("elevator"); 
+		console.log("Goal is set to elevator"); 
 	}
 	else {
 		goal = goalStairs; 
+		console.log("Goal is set to stairs"); 
 	}	
 /*	else{
 		console.log("State not defined.")
 	}*/
 
-
+	console.log("Goal:"); 
  	console.log(goal); 
 	
 	return goal; 
