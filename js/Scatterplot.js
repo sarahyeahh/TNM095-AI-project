@@ -189,7 +189,7 @@ function drawAxes(svg) {
 }
 
 
-function updateCanvas(group, i) {
+function updateCanvas(group) {
 
     console.log("  --- Updating the canvas/plotting dots ---");
 

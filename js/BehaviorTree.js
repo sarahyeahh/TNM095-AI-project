@@ -47,7 +47,7 @@ BehaviorTree.prototype.decision = function(group){
 			var newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
 			console.log("Platser kvar: "  + newSpacesLeft); 
 
-			updateCanvas(group[i], i); 
+			updateCanvas(group[i]); 
 
 		}
 		else{
@@ -79,7 +79,7 @@ BehaviorTree.prototype.decision = function(group){
 				}	
 			}	
 
-			updateCanvas(group[i], i); 	
+			updateCanvas(group[i]); 	
 		}
 		
 	}
