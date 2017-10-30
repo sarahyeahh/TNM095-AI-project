@@ -22,7 +22,7 @@ function GUI (){
 }
 
 var gui = new GUI();
-//console.log(gui) ;
+console.log(gui) ;
 
 	/****************************************************
 		SLIDER 0: Regulate number of elevators
@@ -63,8 +63,8 @@ var gui = new GUI();
 
 	slider2.oninput = function() {
 		output2.innerHTML = this.value;
-		gui.stairs = parseInt(slider2.value); 
-		var speedInput = this.value;
+		gui.speed = parseInt(slider2.value); 
+		speedInput = this.value;
 		console.log("Chosen speed: " + speedInput);
 //TODO:Update function
 	}

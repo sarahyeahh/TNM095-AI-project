@@ -202,7 +202,7 @@ function updateCanvas(group) {
         .data(this.dataset)  // Update with new data
         .transition()  // Transition from old to new
         .duration(function(d){
-            return 2000*d.speed; 
+            return 20000/d.speed; 
         })  // Length of animation, default = 1000
         .each("start", function() {  // Start animation
             d3.select(this)  // 'this' means the current element
