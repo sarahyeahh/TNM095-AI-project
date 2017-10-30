@@ -65,21 +65,25 @@ BehaviorTree.prototype.decision = function(group){
 					
 			//Steg 4A: Trött?
 			if(group[i].tired>0.5){
-				group[i].speed = group[i].speed-0.3; //Går långsammare.
-				console.log("	Ta hissen, du är " + group[i].speed*100 + "% pigg."); 
+				group[i].speed = group[i].speed-1; //Går långsammare.
+				console.log("	Ta hissen, du är " + group[i].tired*100 + "% pigg och har hastigheten: " +  group[i].speed); 
+				updateCanvas(group[i]); 
+
 			}
 			else{
 				//Steg 4B: Stressad? 
 				if(group[i].stress>0.5){
-					group[i].speed = group[i].speed+0.3; //Går långsammare.
-					console.log("	Ta trappan du är " + group[i].speed*100 + "% pigg."); 
+					group[i].speed = group[i].speed+1; //Går långsammare.
+					console.log("	Ta trappan du är " + group[i].stress*100 + "% pigg och har hastigheten: " +  group[i].speed); 
+					updateCanvas(group[i]); 
 				}
 				else{
 					console.log("	Ta hissen."); 
+					updateCanvas(group[i]); 
 				}	
 			}	
 
-			updateCanvas(group[i]); 	
+			//updateCanvas(group[i]); 	
 		}
 		
 	}
