@@ -116,8 +116,7 @@ function createDataSet(hour) {
 //Create array of all groups entering Täppan at one specific hour
 function createGroupsArray(hour) {
 
-    console.log("  --- Creating groups from data ---");
-    
+    console.log("  --- Creating groups from data ---");   
     var data = new Data();  //Get all data from Data
     var ourGroups = [];
     var len = data.dividedGroups[hour-8].length; //all groups at 8:00    
@@ -126,6 +125,7 @@ function createGroupsArray(hour) {
 
     for(i=1; i< len+1; i++) {
         this.generatedGroups.push(new Group());
+        this.generatedGroups.speed = gui.speed; 
         nmbrOfGroups = i;
         this.generatedGroups[nmbrOfGroups-1].ID += nmbrOfGroups;
         this.generatedGroups[nmbrOfGroups-1].groupSize = data.dividedGroups[hour-8][nmbrOfGroups-1];
