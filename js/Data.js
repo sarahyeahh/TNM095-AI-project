@@ -123,6 +123,8 @@ function createGroupsArray(hour) {
     var nmbrOfGroups = 0;
     this.generatedGroups = [];
 
+
+    //Adds new groups. 
     for(i=1; i< len+1; i++) {
         this.generatedGroups.push(new Group());
         this.generatedGroups.speed = gui.speed; 
@@ -131,6 +133,13 @@ function createGroupsArray(hour) {
         this.generatedGroups[nmbrOfGroups-1].groupSize = data.dividedGroups[hour-8][nmbrOfGroups-1];
     }
     
+    //Adds randomized stress or tiredness. 
+    for(var j = 0; j<this.generatedGroups.length; j++){
+
+        this.generatedGroups[j].stress = Math.floor(Math.random() * 10)/10;
+        this.generatedGroups[j].tired =  Math.floor(Math.random() * 10)/10;
+    }
+
     console.log("Generated groups at hour " + hour + ":00 : ");
     console.log(this.generatedGroups);
 
