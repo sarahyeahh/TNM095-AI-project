@@ -113,9 +113,6 @@ function createDataSet(hour) {
     for(var j = 0; j < gui.elevators; j++){
     	drawElevator(540, 210+j*120); //Draw an elevator at this position
     }
-    
-    console.log("Hej");
-    console.log(gui.elevators);
 
     return dataset;
 }
