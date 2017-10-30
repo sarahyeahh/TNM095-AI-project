@@ -35,18 +35,7 @@
  		createDataSet(hour);
 	}
 
-//Ny grupp-knapp
-	var newgroup = document.getElementById("newgroup");
-	newgroup.onclick = (event) => {
- 		BehaviorTree.prototype.decision();
-	}
 
-//Ny hiss-knapp
-//generateElevator()
-	var elevator = document.getElementById("elevator");
-	elevator.onclick = (event) => {
-		Elevator.prototype.generateElevator(); 
-	}
 //Starta om-knapp
 	//Reset the application by restarting everything
 	function reset(){

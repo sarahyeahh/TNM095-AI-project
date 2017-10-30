@@ -76,9 +76,7 @@
 
 			//Display capacity of the elevator
 			document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + this.allElevators[0].capacity + "</b> personer.";  
-		}
-	
-		return elevator; 
+		} 
 	}
 
 	// Check if there are any spaces left in the elevator.
