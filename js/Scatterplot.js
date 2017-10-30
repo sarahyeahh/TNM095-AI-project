@@ -18,7 +18,6 @@
 
 ***********************************************************************************************************/
 
-
 /*_______________________________
 
     Setup settings for graphic
@@ -47,7 +46,6 @@ function draw(group){
     }
     
     createCircles(svg);  
-    console.log(this.dataset); 
 }
 
 //Only use the canvas width. 
@@ -68,6 +66,9 @@ var yScale = d3.scale.linear()  // yScale is height of graphic
 
     Call functions to create and draw everything
 ____________________________________________________*/
+
+//var dataset = data.dataset;
+//var dataset = createDataSet(hour);
 
 var svg = createSVG();
 
@@ -196,7 +197,7 @@ function updateCanvas(group, i) {
     this.dataset[group.ID].yval = group.goal.y; 
     this.dataset[group.ID].speed = group.speed; 
 
-     // Update circles
+    // Update circles
     svg.selectAll("circle")
         .data(this.dataset)  // Update with new data
         .transition()  // Transition from old to new

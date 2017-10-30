@@ -21,7 +21,7 @@
 	load.onload = (event) => {
  	//	draw();  //Ritar upp första cirkeln och första hissen.
  	console.log("************************Load**************************");
- 		new World(width, height);	
+ 		//new World(width, height);	
 
  		Elevator.prototype.implement();
  		Elevator.prototype.generateElevator(); //TODO: Implement borde kunna kalla på generateElevator....

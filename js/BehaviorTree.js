@@ -27,8 +27,6 @@ function BehaviorTree(state, stress, tired, speed){
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(group){
 
-	//console.log(group);
-
 	for(var i = 0; i < group.length; i++){
 
 		var groupsize = group[i].groupSize;

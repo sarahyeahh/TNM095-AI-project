@@ -4,6 +4,11 @@
 
  	Data
 
+ 	Functions:
+ 		- calc()
+ 		- splitIntoGroups()
+ 		-
+
 ***********************************************************************************************************/
 
 //time - tid mellan 8-17
@@ -11,15 +16,11 @@
 
 //Prototypes constructor  
 function Data(){
-	this.dividedGroups = [];
+    this.dividedGroups = [];
 	this.avgPeople = [105, 105, 157.5, 157.5, 0, 150, 150, 112.5, 112.5, 112.5]; 
 	this.avgPeopleLength = this.avgPeople.length;
 	this.time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-
 	this.calc();
-
-	//this.theTime = new Time();	?
-	//this.hour = this.theTime.startTime();	?
 }
 
 //Calculate whow many people that actually will go, 70%.
@@ -34,11 +35,10 @@ Data.prototype.calc = function(){
 
 		//Gör till heltal
 	    this.avgPeople[i] = Math.floor(this.avgPeople[i]);  
-
 	    this.dividedGroups.push(this.splitIntoGroups(this.avgPeople[i], this.time[i]));
 	} 
 
-	return this.dividedGroups; 
+    return this.dividedGroups; 
 }
 
 //Split one bigger number/integer into smaller integers and save in array
@@ -46,11 +46,8 @@ Data.prototype.calc = function(){
 //function splitIntoGroups (totalNmbrPeople) {
 Data.prototype.splitIntoGroups = function(totalNmbrPeople, hour){
 	
-	//var maxSizeOfGroup = 10; //Group.prototype.getMaxSize(); 
 	var maxSizeOfGroup = gui.groupMaxSize;
 	var smallerGroups = [];
-	//console.log("total number: " + totalNmbrPeople);
-
 	var tempTotal = totalNmbrPeople;
 	var singleFactor = 1;
 	var pairFactor = 1;
@@ -91,28 +88,28 @@ Data.prototype.splitIntoGroups = function(totalNmbrPeople, hour){
 	return smallerGroups;
 }
 
-
 var theTime = new Time();
-	var hour = theTime.startTime();
+var hour = theTime.startTime();
 
 // Setup data
 function createDataSet(hour) {
+
+    console.log("  --- Creating dataset from generatedGroups ---");
+
     //call function createGroupArray() to create groups, input = hour of the day
-    var generatedGroups = createGroupsArray(hour);    
+    this.generatedGroups = createGroupsArray(hour);
     var nmbrOfGroups = generatedGroups.length;
     var dataset = [];  // Initialize empty array
     var numDataPoints = 60;  // Number of dummy data points
 
     //xval and yval = the initial position for the dots
     for(var i = 0; i < nmbrOfGroups; i++) {
-        var xval = generatedGroups[i].initialX; 
-        var yval = generatedGroups[i].initialY; 
-        var radius = generatedGroups[i].groupSize *2;       //Tar *2 enbart för att få större prickar
+        var xval = this.generatedGroups[i].initialX; 
+        var yval = this.generatedGroups[i].initialY; 
+        var radius = this.generatedGroups[i].groupSize *2;       //Tar *2 enbart för att få större prickar
         dataset.push([xval, yval, radius]);  // Add new number to array
     }
 
-    //console.log("data: " + dataset);
-   // console.log(dataset); 
     return dataset;
 }
 
@@ -123,8 +120,7 @@ function createGroupsArray(hour) {
     
     var data = new Data();  //Get all data from Data
     var ourGroups = [];
-    var len = data.dividedGroups[hour-8].length; //all groups at 8:00
-    
+    var len = data.dividedGroups[hour-8].length; //all groups at 8:00    
     var nmbrOfGroups = 0;
     this.generatedGroups = [];
 
@@ -138,8 +134,12 @@ function createGroupsArray(hour) {
     console.log("Generated groups at hour " + hour + ":00 : ");
     console.log(this.generatedGroups);
 
+    //Sends the group information to create the circles (to create correct number and size) on the canvas.
     draw(this.generatedGroups);
+    //Sends the group information to the decision tree to decise the circles path. 
     BehaviorTree.prototype.decision(this.generatedGroups);
 
     return this.generatedGroups;
 } 
+
+
