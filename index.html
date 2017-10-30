@@ -42,11 +42,7 @@
 			<p>Detta är ett projekt i TNM095<p>
 		</header>
 
-		<button id="klickahär">Klicka här</button>
-		<input type="button" value="Refresh Page" onClick="window.location.reload()">
-
 	  	<div class="row">
-
 
 		    <div class="col-md-8">
 		    	<h3>Karta över täppan</h3>
@@ -54,38 +50,24 @@
 		    	<h5></h5>
 		    </div>
 
-		    <div class="col-md-4" style="background: #474747; color: white; padding: 20px; height:79vh;">
+		    <div class="col-md-4" style="background: #474747; color: white; padding: 20px; height:55vh;">
 			    
 
-			    <h3>GUI</h3> 
+			    <h3>Information</h3> 
 			    <br> 
 			    <div id="GUI"></div>
 			    <!-- Display capacity of the elevator -->
 				<p id="capacity"></p>
 				<!-- Display number of people that wants to enter the elevator -->
 				<p id="group"></p>
-
+				<!-- Display current time -->
 				<p id="counter"></p>
-				<p id="counter2"></p>
+				<!-- <p id="counter2"></p>	-->
+
+				<!-- Buttons -->
 				<button id="start" type="button">Start</button>
-				<button id="stop" type="button">Stop</button>
-
-				<br>
-				<br>
+				<button type="button" onClick="window.location.reload()">Refresh page</button><br>
 				
-				<!--Button to add a group-->
-				<button id="newgroup">Ny grupp</button>
-				<!--button id="start" type="button" onclick=decision()">Ny grupp</button-->
-
-				<!--Button to add a´n elevator-->
-			<!-- 	<button id="elevator" type="button" onclick="generateElevator()">Ny hiss</button> -->
-				<button id="elevator" type="button">Ny hiss</button>
-
-				<!--Button to reset everything-->
-				<button id="restart" type="button" onclick="reset()">Starta om</button> 
-				<!-- <button id="reset" type="button">Starta om</button> -->
-
-				<br>
 				<h3>Interact with the system:</h3>	
 				<!-- Parameters to be changed by user -->
 				<div class="col-md-5">
