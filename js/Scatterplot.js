@@ -227,7 +227,12 @@ function updateCanvas(group) {
                 .attr("fill", "black")
                 .style("fill-opacity", 0) //Disappears when reach goal
                 .duration(500);    //default = 500
-        });            
+        });
+
+        // Update rectangles
+        //svg.selectAll("rect")
+        //    .style("fill-opacity", .4)
+       
 } 
 
 /*

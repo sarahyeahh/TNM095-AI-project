@@ -110,6 +110,10 @@ function createDataSet(hour) {
         dataset.push([xval, yval, radius]);  // Add new number to array
     }
 
+    for(var j = 0; j < gui.elevators; j++){
+    	drawElevator(540, 210+j*120); //Draw an elevator at this position
+    }
+
     return dataset;
 }
 
