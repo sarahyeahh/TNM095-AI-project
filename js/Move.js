@@ -15,7 +15,7 @@ function Move(start, goal, x, y,  width, height){
 	//ANVÄNDS EJ
 	//this.currentSection = current; //From People.js, Number between 0-8 (9st grids)
 
-	this.console = false; //Sätt till true om den ska visa console.logs. 
+	this.console = true; //Sätt till true om den ska visa console.logs. 
 
 	this.visitedList = [];
 	this.queue = [];

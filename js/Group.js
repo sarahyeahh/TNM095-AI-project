@@ -17,7 +17,7 @@ function Group() {
 	this.waitTime = 1;
 	
 	this.groupSize = 0; 
-	this.initialX = 60;		//intial x position
+	this.initialX = 2.5;		//intial x position
 	this.initialY = 0;		//initial y position
 };
 
@@ -35,9 +35,6 @@ function createDataSet(hour) {
     //call function createGroupArray() to create groups, input = hour of the day
     var generatedGroups = createGroupsArray(hour);    
     var nmbrOfGroups = generatedGroups.length;
-
-    //data.dividedGroups[i]
-
     var dataset = [];  // Initialize empty array
     var numDataPoints = 60;  // Number of dummy data points
 
@@ -74,8 +71,9 @@ function createGroupsArray(hour) {
     }
     
     console.log("Generated groups at hour " + hour + ":00 : ");
-    //console.log(this.generatedGroups);
+    console.log(this.generatedGroups);
 
+    draw(this.generatedGroups);
     BehaviorTree.prototype.decision(this.generatedGroups);
 
     return this.generatedGroups;

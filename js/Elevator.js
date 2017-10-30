@@ -88,7 +88,7 @@
  		//Check if the elevator is full or not
 		console.log("	Kollar om hissen är full..."); 
 
-		console.log("freespaces: " + this.allElevators[0].freeSpaces + "   groupsize: " + groupsize); 
+		console.log("	freespaces: " + this.allElevators[0].freeSpaces + "   groupsize: " + groupsize); 
 		
  		if(this.allElevators[0].freeSpaces == 0){
  			isEmpty = false; 
@@ -119,14 +119,14 @@
 
 		//If freeTemp is negative, there are not spaces enough to fit the whole group in the elevator.
 		if(freeTemp < 0){
-			console.log("	Tyvärr, ta trappan.");
+			console.log("		Tyvärr, ta trappan.");
 			//Reset groupsize.
 
 //TODO: Ändra till Datasetet. 
 			groupsize = 0; 
 		}
 		else if(freeTemp == 0){
-			console.log("	Grattis du fick den sista platsen!");
+			console.log("		Grattis du fick den sista platsen!");
 			this.allElevators[0].freeSpaces -= groupsize;
 			//elevatorPeople += groupsize;
 			this.allElevators[0].elevatorPeople += groupsize;
@@ -158,7 +158,8 @@
 		
 		//Väntar 3 sekunder innan hissen kommer tillbaka tom.
 		setTimeout(function(){ 
-        	alert('Hissen är tillbaka');
+        	//alert('Hissen är tillbaka');
+        	console.log('				Hissen är tillbaka');
         	Elevator.prototype.generateElevator();
     	}, 3000);
 	}

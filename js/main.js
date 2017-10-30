@@ -20,6 +20,7 @@
 	var load = document.getElementById("load");
 	load.onload = (event) => {
  	//	draw();  //Ritar upp första cirkeln och första hissen.
+ 	console.log("************************Load**************************");
  		new World(width, height);	
 
  		Elevator.prototype.implement();
@@ -30,7 +31,7 @@
 
 	var start = document.getElementById("start");
 	start.onclick = (event) => {
- 		console.log("Start");
+ 		console.log("************************START**************************");
  		createDataSet(hour);
 	}
 

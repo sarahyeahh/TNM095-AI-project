@@ -60,6 +60,8 @@ svg.selectAll("circle")
     .enter()
     .append("circle")  // Add circle svg
     .attr("cx", function(d) {
+        console.log(d[0]); 
+        console.log(xScale(d[0])); 
         return xScale(d[0]);  // Circle's X
     })
     .attr("cy", function(d) {  // Circle's Y
