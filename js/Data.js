@@ -32,7 +32,6 @@ function Data(){
 Data.prototype.calc = function(){
 
 	console.log("  --- Dividing people into groups in calc function: ---");
-	//console.log(this.avgPeople);
 
 	for (var i = 0; i < this.avgPeopleLength; i++) {
 	    

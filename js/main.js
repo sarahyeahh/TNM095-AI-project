@@ -20,12 +20,19 @@
 	var load = document.getElementById("load");
 	load.onload = (event) => {
  	//	draw();  //Ritar upp första cirkeln och första hissen.
- 		//new World(width, height);	
+ 		new World(width, height);	
 
  		Elevator.prototype.implement();
- 		Elevator.prototype.generateElevator(); 
+ 		Elevator.prototype.generateElevator(); //TODO: Implement borde kunna kalla på generateElevator....
  		Time.prototype.startTime();
  		//Time.prototype.startTimer(); //funktion som inte funkar i nuläget
+	}
+
+	var start = document.getElementById("start");
+	start.onclick = (event) => {
+ 		console.log("Start");
+ 		//createDataSet(hour);
+
 	}
 
 //Ny grupp-knapp
