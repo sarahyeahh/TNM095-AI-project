@@ -16,13 +16,9 @@ function World (width, height) {
 	this.height = height;
 
 	this.state = "elevator"; 
-
 	this.BT = new BehaviorTree(this.state, gui.stress, gui.tired, gui.speed, gui.freespaces);
-	//console.log(this.BT);
 
-	//console.log("in World, error in this.people");	
-
-	this.ourdata = new Data(); //changed from data to 'ourdata'
+//	this.ourdata = new Data(); //changed from data to 'ourdata'
 	//console.log(this.ourdata);
 
 	this.ourTime = new Time();

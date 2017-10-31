@@ -17,7 +17,7 @@
 //Prototypes constructor  
 function Data(){
     this.dividedGroups = [];
-	this.avgPeople = [105, 105, 157.5, 157.5, 0, 150, 150, 112.5, 112.5, 112.5]; 
+	this.avgPeople = [105, 105, 157.5, 157.5, 100, 150, 150, 112.5, 112.5, 112.5]; 
 	this.avgPeopleLength = this.avgPeople.length;
 	this.time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 	this.calc();

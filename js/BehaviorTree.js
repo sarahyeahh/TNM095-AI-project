@@ -27,6 +27,9 @@ function BehaviorTree(state, stress, tired, speed){
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(group){
 
+	this.x = 2.5;
+	this.y = 0;
+
 	for(var i = 0; i < group.length; i++){
 
 		var groupsize = group[i].groupSize;
@@ -34,6 +37,8 @@ BehaviorTree.prototype.decision = function(group){
 
 		//Steg 1: Finns lediga platser? 
 		isEmpty = Elevator.prototype.checkEmpty(groupsize);
+
+		console.log(isEmpty);
 
 		if(isEmpty){
 
@@ -47,6 +52,12 @@ BehaviorTree.prototype.decision = function(group){
 			var newSpacesLeft = Elevator.prototype.takeElevator(groupsize, freeTemp);
 			console.log("Platser kvar: "  + newSpacesLeft); 
 
+		    this.start = 6; 
+		    this.newgoal = 45; // (9, 5) in the grid from 0-80
+		   
+			Move(this.start, this.newgoal, this.x, this.y, width, height);
+			init();
+
 			updateCanvas(group[i]); 
 
 		}
@@ -54,6 +65,11 @@ BehaviorTree.prototype.decision = function(group){
 
 			this.state = this.goalState('stairs'); 
 			group[i].goal = this.state; 
+
+		    this.start = 6; 
+		    this.newgoal = 62; // (0, 7) in the grid from 0-80
+
+			Move(this.start, this.newgoal, this.x, this.y, width, height);
 			
 			//Wait
 			console.log("	Tyvärr du måste vänta...");
@@ -118,7 +134,6 @@ BehaviorTree.prototype.goalState = function(state){
 	}	
 	else{
 		console.log("	State not defined.")
-
 	}
 
 	return goal; 
