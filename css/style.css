@@ -112,14 +112,15 @@ h4 {
                        GUI
 /*------------------------------------------------------*/
 
-/*
-#GUIparameters{
-    margin-right:10px;
-    width: 25%;
-}*/
-
 button{
     color: black; 
+}
+
+#gui {
+    background: #474747; 
+    color: white; 
+    padding: 20px; 
+    height:55vh;
 }
 
 
@@ -150,11 +151,9 @@ p#footertxt{
     color: #000000;
 }
 
-
 /*--------------------------------------------------------
                         HEADER           
 /*------------------------------------------------------*/
-
 #header {
     width:100%; 
     float:left; 
@@ -163,3 +162,5 @@ p#footertxt{
     padding-bottom: 20px;
     margin-bottom: 30px;
 }
+
+
