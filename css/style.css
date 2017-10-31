@@ -113,7 +113,13 @@ h4 {
 /*------------------------------------------------------*/
 
 button{
-    color: black; 
+    color: black;
+    background-color: #c7dbfc;
+    border-radius: 12px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    padding: 8px 10px; 
 }
 
 #gui {
@@ -131,7 +137,7 @@ button{
 #footer {
     width:100%; 
     float:left; 
-    background-color: #ff944d;
+    background-color: #c7dbfc;
     height:90px;
 }
 
@@ -157,7 +163,7 @@ p#footertxt{
 #header {
     width:100%; 
     float:left; 
-    background-color: #ff944d;
+    background-color: #c7dbfc;
     height:110px;
     padding-bottom: 20px;
     margin-bottom: 30px;
