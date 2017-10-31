@@ -209,7 +209,20 @@ function updateCanvas(group) {
         })  // Length of animation, default = 1000
         .each("start", function() {  // Start animation
             d3.select(this)  // 'this' means the current element
-                .attr("fill", "green")  // Change color
+                .attr("fill", function(d) { 
+                    if(d.speed>=0 && d.speed<=3){
+                        return "green";
+                    }
+                    else if(d.speed>3 && d.speed<=5){
+                        return "yellow";
+                    }
+                    else if(d.speed>5 && d.speed<=7){
+                        return "orange"; 
+                    }
+                    else{
+                        return "red"; 
+                    }                  
+                })  // Change color
                 .style("fill-opacity", .4)
                 .attr("r", function (d) { 
                     return 3*d.radius; 
@@ -228,7 +241,12 @@ function updateCanvas(group) {
             d3.select(this)  // 'this' means the current element
                 .transition()
                 .attr("fill", "black")
-                .style("fill-opacity", 0) //Disappears when reach goal
+                .style("fill-opacity", function (d){ 
+                    if(d.xval==6.5){
+                            return 0.3; 
+                    }
+                    return 0; 
+                }) 
                 .duration(500);    //default = 500
         });
 
@@ -237,6 +255,7 @@ function updateCanvas(group) {
         //    .style("fill-opacity", .4)
        
 } 
+
 
 /*
 

@@ -92,6 +92,10 @@
  			isEmpty = false; 
  			console.log("	Hissen är full, ta trappan.")
  		}
+ 		else if(this.allElevators[0].freeSpaces<groupsize){
+ 			isEmpty = false;
+ 			console.log("	Group too big, take the stairs.");
+ 		}
  		else{
  			isEmpty = true;
 			console.log("	Kapacitet: "+ this.allElevators[0].freeSpaces); 
@@ -153,7 +157,7 @@
 
 	//Elevator leaves
 	Elevator.prototype.emptyTheElevator = function(){
-		
+
 		//Väntar 3 sekunder innan hissen kommer tillbaka tom.
 		setTimeout(function(){ 
         	//alert('Hissen är tillbaka');

@@ -154,6 +154,8 @@ function getSmallestFValue() {
 	
 	return smallestFArray;
 }
+
+
 		 
 
 //Move.prototype.calculate = function(){
