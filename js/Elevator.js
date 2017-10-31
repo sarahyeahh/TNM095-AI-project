@@ -75,7 +75,7 @@
 			console.log("Antal hissar:" + gui.elevators);
 
 			//Display capacity of the elevator
-			document.getElementById("capacity").innerHTML = "I hissen får det plats " + "<b>" + this.allElevators[0].capacity + "</b> personer.";  
+			document.getElementById("capacity").innerHTML = "There is room for " + "<b>" + this.allElevators[0].capacity + "</b> persons in the elevator.";  
 		} 
 	}
 
