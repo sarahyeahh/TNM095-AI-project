@@ -129,6 +129,22 @@ button{
     height:55vh;
 }
 
+#blue{
+    color: blue; 
+     font-weight: bold;
+
+}
+
+#green{
+    color: lightgreen; 
+    font-weight: bold; 
+}
+
+#black{
+    font-weight: bold; 
+}
+
+
 
 /*--------------------------------------------------------
                        FOOTER

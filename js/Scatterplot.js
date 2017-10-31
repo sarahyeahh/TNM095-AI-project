@@ -194,7 +194,7 @@ function drawAxes(svg) {
 
 function updateCanvas(group) {
 
-    console.log("  --- Updating the canvas/plotting dots ---");
+    console.log("--- Updating the canvas/plotting dots ---");
 
     this.dataset[group.ID].xval = group.goal.x;
     this.dataset[group.ID].yval = group.goal.y; 

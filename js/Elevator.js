@@ -86,7 +86,7 @@
  		//Check if the elevator is full or not
 		console.log("	Kollar om hissen är full..."); 
 
-		console.log("	freespaces: " + this.allElevators[0].freeSpaces + "   groupsize: " + groupsize); 
+		console.log("	Lediga platser: " + this.allElevators[0].freeSpaces); 
 		
  		if(this.allElevators[0].freeSpaces == 0){
  			isEmpty = false; 

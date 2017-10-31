@@ -22,7 +22,7 @@ function GUI (){
 }
 
 var gui = new GUI();
-console.log(gui) ;
+//console.log(gui) ;
 
 	/****************************************************
 		SLIDER 0: Regulate number of elevators

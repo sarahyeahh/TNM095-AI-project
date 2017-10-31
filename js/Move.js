@@ -44,7 +44,7 @@ function Move(start, goal, x, y,  width, height){
 
 	init(); 
 
-	this.currentGrid = this.getCurrentGridSection(this.position);
+	this.currentGrid = getCurrentGridSection(this.position);
 	
 	if(this.print){
 		console.log(this.position); 
@@ -68,7 +68,7 @@ function init(){
 
 	if(this.print){
 		console.log("Init function"); 
-		console.log(this.sections);
+		//console.log(this.sections);
 	}
 
 //Räknar ut vad hörnen är i griden i förhållande till canvas width och height.
@@ -85,14 +85,13 @@ function init(){
 	}
 }
 
+//Används ej?
 Move.prototype.getGridSection = function(index) {
 	
 	if(this.print){
 		console.log("Getgridsection function"); 
 		console.log("		getgridsection" + index);
 	}
-
-	console.log(		"HÄJ " +this.sections[index]); 
 
 	return this.sections[index];
 }
@@ -104,22 +103,29 @@ function getCurrentGridSection(position){
 		console.log("GetCurrentGridSection function"); 
 	}
 
-	//var index = -1;
-	//index = 6;
-	var counter = 0;
+	index = this.start; //Will always be the same. 
 
+	//var index = -1;
+
+	//var counter = 0;
+ 
 	//Sätter in index: 
-	firstLoop:
+	/*firstLoop:
 	for(var y = 1; y <= this.gridWidth; y++){
+
 		for (var x = 1; x <= this.gridWidth; x++) {
+			
+			//console.log("if " + position.x + " <= " + this.height)
+			//console.log("if " + position.y + " <= " + this.height*y)
 
 			if(position.x <= (this.width * x) && position.y <= (this.height*y)){
-				index = counter;
+				index = 6;//counter;
 				break firstLoop; 
 			}
 			counter++;
+			console.log(counter); 
 		}
-	}
+	}*/
 
 	return this.sections[index];
 }
@@ -154,8 +160,7 @@ function getSmallestFValue() {
 function calculate(){
 
 	if(this.print){
-		console.log("Calculate function");
-		//console.log(this.currentGrid);  
+		console.log("Calculate function"); 
 	}
 	
 	this.currentGrid.g = 0;
@@ -166,8 +171,10 @@ function calculate(){
 
 	if(this.print){
 		console.log("		Moves left: "+ this.currentGrid.h); 
-		console.log("F" +  this.currentGrid.f + " = G" + this.currentGrid.g + " + H" + this.currentGrid.h );
+		console.log("		F" +  this.currentGrid.f + " = G" + this.currentGrid.g + " + H" + this.currentGrid.h );
 	}
+
+	//console.log(this.currentGrid);
 
 	this.addToQueue(this.currentGrid); 
 
@@ -182,7 +189,11 @@ function calculate(){
 
 		// Astar.prototype.reachedGoal() returns true or false. 
 		if(this.currentGrid.reachedGoal()){
-			console.log("		The goal " + this.goal + " is reached!");
+
+			if(this.print){
+				console.log("		The goal " + this.goal + " is reached!");
+			}
+			
 			return; 
 		}
 
@@ -199,10 +210,14 @@ function calculate(){
 		 --- --- --- 
 		|   | L |   |
 		 --- --- --- */
-		console.log(this.positionCheck()); 
+		//console.log(this.positionCheck()); 
 
 		var adjArr = this.setAdjacentSections(this.positionCheck());		
-		console.log(adjArr);
+		
+		if(this.print){
+			console.log(adjArr);
+		}
+		
 		
 		for (var i = 0; i < adjArr.length; i++) {
 			
@@ -226,6 +241,7 @@ function addToQueue(thing){
 	
 	if(this.print){
 		console.log("Addqueue function"); 
+		//console.log(thing);
 	}
 
 	var found = false;
@@ -302,16 +318,14 @@ function manhattan(index, goal){
 
 // Move.prototype.positionCheck = function() {
 function positionCheck(){
-		
-	if(this.print){
-		console.log("PositionCheck function"); 
-	}
 
 	//Gets the index-number of the current grid and checks which position it has.
 	var i = this.currentGrid.index;  
-
-	//console.log(this.currentGrid); 
-	console.log("INDEX: " + i); 
+		
+	if(this.print){
+		console.log("PositionCheck function"); 
+		console.log("		Current index: " + i); 
+	}
 
 	//TOP LEFT = TL
 	// MIDDLE = M
@@ -379,8 +393,6 @@ function setAdjacentSections(check) {
 		console.log("		check: " + check); 
 		//console.log(this.currentGrid);
 	}
-
-	console.log("		check: " + check); 
 
 	var adjSections = [];
 

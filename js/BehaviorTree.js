@@ -21,14 +21,18 @@ function BehaviorTree(state, stress, tired, speed){
 	this.speed = speed; 
 	this.state = state; 
 
+
 	this.goal = this.goalState(state); 
 }
 
 //Decision is generated every time the button is pushed.  
 BehaviorTree.prototype.decision = function(group){
 
-	this.x = 2.5;
-	this.y = 0;
+	this.countElevator = 0; 
+	this.countStairs = 0; 
+
+	this.x = 2.5; //Start position 0-9
+	this.y = 0; //Start position 0-9
 
 	for(var i = 0; i < group.length; i++){
 
@@ -38,7 +42,7 @@ BehaviorTree.prototype.decision = function(group){
 		//Steg 1: Finns lediga platser? 
 		isEmpty = Elevator.prototype.checkEmpty(groupsize);
 
-		console.log(isEmpty);
+		//console.log(isEmpty);
 
 		if(isEmpty){
 
@@ -103,6 +107,10 @@ BehaviorTree.prototype.decision = function(group){
 		}
 		
 	}
+
+	document.getElementById("goalcounter").innerHTML ="<b>" + this.countStairs + "</b>"
+	+  " people went to the stairs and <b>" + this.countElevator 
+	+ "</b> went to the elevator.";
 }
 
 //Decides which goal the group should go to. 
@@ -135,13 +143,16 @@ BehaviorTree.prototype.goalState = function(state){
 		y:6.5
 	};
 
+	
 	//If the elevator is empty, the goal is to take the elevator. 
 	if(state == "elevator"){
+		this.countElevator++; 
 		goal = goalElevator;
 		console.log(goal);
 		console.log("	Goal is set to elevator"); 
 	}
 	else if ( state == "stairs") {
+		this.countStairs++; 
 		goal = goalStairs; 
 		console.log(goal);
 		console.log("	Goal is set to stairs"); 

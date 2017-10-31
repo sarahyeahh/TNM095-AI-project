@@ -5,24 +5,21 @@
  	Declares variables and include functions representing a decision tree for an elevator-stairs problem.
 
  	The file includes the functions:
- 	- reset()
+ 	- onload
+ 	- onclick
 
 ***********************************************************************************************************/
 	var canvas = document.createElement("canvas");
-
-	//TODO - Se över denna: 
-	var GUI = document.createElement("GUI"); //Behövs denna?
+	//var GUI = document.createElement("GUI"); //Behövs denna?
 
 	var width = canvas.width;
     var height = canvas.height;
 	
-//Det som skapas direkt när rutan laddats. 
+	//Det som skapas direkt när rutan laddats. 
 	var load = document.getElementById("load");
 	load.onload = (event) => {
- 	//	draw();  //Ritar upp första cirkeln och första hissen.
  	console.log("************************Load**************************");
- 		//new World(width, height);	
-
+ 		new World(width, height);	
  		Elevator.prototype.implement();
  		Elevator.prototype.generateElevator(); //TODO: Implement borde kunna kalla på generateElevator....
  		Time.prototype.startTime();
@@ -33,14 +30,6 @@
 	start.onclick = (event) => {
  		console.log("************************START**************************");
  		createDataSet(hour);
-	}
-
-
-//Starta om-knapp
-	//Reset the application by restarting everything
-	function reset(){
-		
-		console.log("**********STARTAR OM*************"); 
 	}
 
 	 
