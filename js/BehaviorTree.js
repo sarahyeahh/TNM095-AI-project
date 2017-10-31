@@ -111,11 +111,25 @@ BehaviorTree.prototype.goalState = function(state){
 	var goal;
 	//console.log("State: " + state);
 
+	//coordinates to the elevator
 	var goalElevator = { 
 		x:9,
 		y:5.5
 	};
 
+	//coordinates to second elevator, if used
+	var goalElevator2 = {
+		x:9,
+		y:3.5
+	};
+
+	//coordinates to third elevator, if used
+	var goalElevator3 = {
+		x:9,
+		y:1.5
+	};
+
+	//coordinates to the stairs
 	var goalStairs = { 
 		x:0,
 		y:6.5

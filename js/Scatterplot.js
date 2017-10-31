@@ -145,6 +145,7 @@ function drawElevator(posX, posY) {
       .attr('y', posY)
       .attr('width', 20)
       .attr('height', 60)
+      .attr('id', 'elevator_ID')
       .style('fill', 'rgb(0,0,255)')
 }
 
@@ -155,6 +156,7 @@ function drawStairs(posX, posY) {
       .attr('y', posY)
       .attr('width', 20)
       .attr('height', 60)
+      .attr('id', 'stairs_ID')
       .style('fill', 'rgb(0,255,0)')
 }
 
@@ -165,6 +167,7 @@ function drawEntrance(posX, posY) {
       .attr('y', posY)
       .attr('width', 58)
       .attr('height', 10)
+      .attr('id', 'entrance_ID')
       .style('fill', 'rgb(0,0,0)')
 }
 
