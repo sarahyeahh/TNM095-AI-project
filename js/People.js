@@ -20,15 +20,12 @@ function People(width, height){
 	this.groups = [];			//array to store all groups
 	this.activeGroups = 0;		//counter of generated groups of people
 
-	//Get the variable freeSpaces to be able to include it when calling BehaviorTree
-	// !! SKA ÄNDRAS !! Det är inte Elevator() man ska kalla på, utan en annan funktion.
-	var allElevators = new Elevator.prototype.implement();
-	var freeSpaces = allElevators.freeSpaces;
-
-//TODO: x och y ska vara något annat. 
+/*	var allElevators = new Elevator.prototype.implement();
+	var freeSpaces = allElevators.freeSpaces;*/
+ 
 	this.x = 2.5;
     this.y = 0;
-    //this.currentGrid = 0; 
+
     this.start = 74; 
     this.goal = 35;
 

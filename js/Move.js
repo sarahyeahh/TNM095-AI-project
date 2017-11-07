@@ -48,8 +48,6 @@ function Move(start, goal, x, y,  width, height){
 	
 	if(this.print){
 		console.log(this.position); 
-	//	console.log(this.currentGrid); 
-
 		console.log("Start: " + this.start + " Goal: " + this.goal); 
 	}
 
@@ -154,9 +152,6 @@ function getSmallestFValue() {
 	
 	return smallestFArray;
 }
-
-
-		 
 
 //Move.prototype.calculate = function(){
 function calculate(){

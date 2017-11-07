@@ -210,17 +210,30 @@ function updateCanvas(group) {
         .each("start", function() {  // Start animation
             d3.select(this)  // 'this' means the current element
                 .attr("fill", function(d) { 
-                    if(d.speed>=0 && d.speed<=3){
-                        return "green";
+
+                    if(d.speed>=0 && d.speed<=2){
+                        return "#450920";
                     }
-                    else if(d.speed>3 && d.speed<=5){
-                        return "yellow";
+                    else if(d.speed>2 && d.speed<=4){
+                        return "#403087";
                     }
-                    else if(d.speed>5 && d.speed<=7){
-                        return "orange"; 
+                    else if(d.speed>4 && d.speed<=5){
+                        return "#61B63E"; 
+                    }
+                    else if(d.speed>5 && d.speed<=6){
+                        return "#FFB600";
+                    }
+                    else if(d.speed>6 && d.speed<=7){
+                        return "#FF7B02";
+                    }
+                    else if(d.speed>7 && d.speed<=9){
+                        return "#FF4302";
+                    }
+                    else if(d.speed>9 && d.speed<=10){
+                        return "#FF1E2D";
                     }
                     else{
-                        return "red"; 
+                        return "#BD0000"; 
                     }                  
                 })  // Change color
                 .style("fill-opacity", .4)
