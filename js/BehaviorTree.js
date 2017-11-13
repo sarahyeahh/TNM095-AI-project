@@ -76,7 +76,7 @@ BehaviorTree.prototype.decision = function(group){
 		    this.newgoal = 62; // (0, 7) in the grid from 0-80
 
 			Move(this.start, this.newgoal, this.x, this.y, width, height);
-			
+
 			//Wait
 			console.log("	Tyvärr du måste vänta...");
 			//Steg 3: När kommer nästa? 
@@ -88,7 +88,7 @@ BehaviorTree.prototype.decision = function(group){
 			//Steg 4A: Trött?
 			if(group[i].tired>0.7){
 				//Borde ställa sig i kön. 
-				group[i].speed = group[i].speed-1; //Går långsammare.
+				group[i].speed = group[i].speed -Math.floor(Math.random() * (3 - 1) + 1); //Går långsammare.
 				console.log("	Vänta i kön, du är " + group[i].tired*100 + "% trött och har hastigheten: " +  group[i].speed); 
 				
 				this.state = this.goalState('queue'); 
@@ -100,7 +100,7 @@ BehaviorTree.prototype.decision = function(group){
 			else{
 				//Steg 4B: Stressad? 
 				if(group[i].stress>0.7){
-					group[i].speed = group[i].speed+1; //Går långsammare.
+					group[i].speed = group[i].speed + Math.floor(Math.random() * (3 - 1) + 1); //Går långsammare.
 					console.log("	Ta trappan du är " + group[i].stress*100 + "% stressad och har hastigheten: " +  group[i].speed); 
 					updateCanvas(group[i]); 
 				}

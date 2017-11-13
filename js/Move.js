@@ -171,7 +171,7 @@ function calculate(){
 		console.log("		F" +  this.currentGrid.f + " = G" + this.currentGrid.g + " + H" + this.currentGrid.h );
 	}
 
-	//console.log(this.currentGrid);
+	//document.getElementById("astar").innerHTML ="Astar value: <b>" + this.currentGrid.f + "</b>";
 
 	this.addToQueue(this.currentGrid); 
 

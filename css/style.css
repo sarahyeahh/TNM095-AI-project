@@ -33,37 +33,18 @@
                       CANVAS
 /*------------------------------------------------------*/
 
-.canvas{
-	//border:2px solid black;
-    width: 95%;
-    height: 50%;
-}
-
 h4 {
-    //border:2px solid black;
-    width: 95%;
-    height: 50%; 
+    max-width: 30%;
+    //height: 50%;    
 }
 
+h3{
+     font-family: "Open Sans";
+     margin-top: 0px;
+}
 
-
-/* Moving ball */
-/*
-#ball {
-    width:10px;
-    height:10px;
-    border:6px solid #900;
-    border-radius:50%;
-    position:absolute;
-    left: 108px;
-    z-index: -1; /* position behind canvas */
-
-
-/*--------------------------------------------------------
-                       DOT
-/*------------------------------------------------------*/
-
-.dot{
+p{
+    font-family: "Roboto"; 
 }
 
 /*--------------------------------------------------------
@@ -77,7 +58,7 @@ h4 {
 .slider {
     -webkit-appearance: none;
     width: 100%;
-    height: 15px;
+    height: 12px;
     border-radius: 5px;
     background: #d3d3d3;
     outline: none;
@@ -108,31 +89,39 @@ h4 {
     cursor: pointer;
 }
 
+input[type=range] {
+    display: block;
+    width: 120px;
+}
+
 /*--------------------------------------------------------
                        GUI
 /*------------------------------------------------------*/
 
 button{
     color: black;
-    background-color: #c7dbfc;
-    border-radius: 12px;
+    background-color:  #879fc6;/*#c7dbfc;*/
+    color: white; 
+    border-radius: 10px;
     border: none;
     text-align: center;
     text-decoration: none;
     padding: 8px 10px; 
+    font-family: "Roboto";
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2)
 }
 
 #gui {
     background: #474747; 
     color: white; 
-    padding: 20px; 
-    height:55vh;
+    margin: 20px;
+    padding: 50px; 
+    height: 50%;
 }
 
 #blue{
     color: blue; 
      font-weight: bold;
-
 }
 
 #green{
@@ -144,6 +133,10 @@ button{
     font-weight: bold; 
 }
 
+span#demo{
+    margin-top: 20px;
+}
+
 
 
 /*--------------------------------------------------------
@@ -153,14 +146,16 @@ button{
 #footer {
     width:100%; 
     float:left; 
-    background-color: #c7dbfc;
+    background-color: #879fc6;
     height:90px;
+    font-family: 'Roboto';
 }
 
 p#footertxt{
     margin: 5%;
-    font-family: 'Arial';
+    font-family: 'Roboto';
     font-size: 90%;
+    color: white;
 }
 
 #git_logo{
@@ -179,10 +174,24 @@ p#footertxt{
 #header {
     width:100%; 
     float:left; 
-    background-color: #c7dbfc;
+    background-color: #879fc6;/*#c7dbfc;*/
+    color: white;
     height:110px;
     padding-bottom: 20px;
     margin-bottom: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700; 
+}
+
+/*.container{
+    padding: 0px;
+}
+body{
+    padding: 0px;
+
 }
 
 
+.row{
+    width: 100%; 
+}*/

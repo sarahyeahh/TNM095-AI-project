@@ -11,6 +11,8 @@
     <meta charset=utf-8>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />
+
     <!-- Title on tab -->
     <title>Täppan</title>
 
@@ -32,6 +34,9 @@
     <!-- Font awesome -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:200" rel="stylesheet">
+
 </head>
 <!-- <body onload="draw();"> -->
 <body id="load">
@@ -40,10 +45,10 @@
 		<div class ="col-lg-12" id="header">
 	        <div class="row">
 	            <div class="col-md-4">
+	            	<h1>Täppan - elevator or stairs</h1>
+					<p>A project in the course TNM095 at Linköping University<p>
 	            </div>
 	            <div class="col-md-4">
-	                <h1>Täppan - elevator or stairs!?</h1>
-					<p>A project in the course TNM095 at Linköping University<p>
 	            </div>
 	            <div class="col-md-4">
 	            </div>
@@ -51,76 +56,81 @@
 	    </div>
 	</header>
 
-	<div class="container">
-		
-		    <div class="col-md-8">
-		    	<p>The application visualizes how students enter the building Täppan (either alone or in groups) <br>
-				and then they decide to take either the elevator or the stairs to reach a higher level in the building. </p>
-
-		    	<h3>Map over Täppan, level 3, displayed as a 9x9 grid:</h3>
+	<div class="container col-md-12">
+  		<div class="row">
+    		<div class="col-md-3">
+    			<h3>Information</h3> 
+      			<p>The application visualizes how students enter the building Täppan (either alone or in groups)
+      			and then they decide to take either the elevator or the stairs to reach a higher level in the building. </p>
+   			</div>
+		    <div class="col-md-5">
+		    	<h3>Map over Täppan - level 3</h3>
+		    	<p>Displayed as a 9x9 grid</p>
 		    	<h4></h4>
 		    </div>
-
 		    <div class="col-md-4">
-			<div class="row" id="gui">
+				<div id="gui">
+					<div class="row">
+					    <h3>GUI</h3> 
+					 <!--    <div id="GUI"></div> -->
+					    <!-- Display capacity of the elevator -->
+						<p id="capacity"></p>
+						<p id="goalcounter"></p>
+						<!-- Display number of people that wants to enter the elevator -->
+						<p id="group"></p>
+						<!-- Display current time -->
+						<p id="counter"></p>
+						<!-- Display the astar value -->
+						<!-- <p id="astar"></p> -->
 
-			    <h3>Information</h3> 
-			    <br> 
-			    <div id="GUI"></div>
-			    <!-- Display capacity of the elevator -->
-				<p id="capacity"></p>
-				<p id="goalcounter"></p>
-				<!-- Display number of people that wants to enter the elevator -->
-				<p id="group"></p>
-				<!-- Display current time -->
-				<p id="counter"></p>
-				<!-- <p id="counter2"></p>	-->
+						<!-- Buttons -->
+						<button id="start" type="button">Start</button>
+						<button type="button" onClick="window.location.reload()">Refresh page</button><br>
+						<br>
+						<h3>Interact with the system:</h3>	
+						<br>
+						<!-- Parameters to be changed by user -->
+						<div class="col-lg-5">
+						    <div>
+						        <p>Elevators: </p>
+						        <p>Stairs: </p>
+						        <p>Speed: </p>
+						        <p>Max. groupsize: </p>
+						    </div>
+						</div>
 
-				<!-- Buttons -->
-				<button id="start" type="button">Start</button>
-				<button type="button" onClick="window.location.reload()">Refresh page</button><br>
-				
-				<h3>Interact with the system:</h3>	
-				<!-- Parameters to be changed by user -->
-				<div class="col-md-5">
-				    <div>
-				        <p>Elevators: </p>
-				        <p>Stairs: </p>
-				        <p>Speed: </p>
-				        <p>Max. groupsize: </p>
-				    </div>
+						<!-- Sliders -->
+						<div class="col-lg-5">
+						    <div id="slidecontainer">
+						        <input type="range" min="1" max="3" value="1" class="slider" id="myElevators"><br>
+						        <input type="range" min="1" max="3" value="1" class="slider" id="myStairs"><br>
+						        <input type="range" min="1" max="10" value="5" class="slider" id="mySpeed"><br>
+						        <input type="range" min="1" max="20" value="10" class="slider" id="myGroups" oninput="Group.prototype.getMaxSize()">
+						    </div>
+						</div>
+
+						<!-- Values from sliders -->
+						<div class="col-lg-2">
+							<div>
+						    	<p><span id="demo"></span></p>
+						    	<p><span id="demo1"></span></p>
+						    	<p><span id="demo2"></span></p>
+						    	<p><span id="demo3"></span></p>
+						    </div>
+						</div>
+					</div>
+
 				</div>
-				<!-- Sliders -->
-				<div class="col-md-5">
-				    <div id="slidecontainer">
-				        <input type="range" min="1" max="3" value="1" class="slider" id="myElevators"><br>
-				        <input type="range" min="1" max="3" value="1" class="slider" id="myStairs"><br>
-				        <input type="range" min="1" max="10" value="5" class="slider" id="mySpeed"><br>
-				        <input type="range" min="1" max="20" value="10" class="slider" id="myGroups" 
-				        oninput="Group.prototype.getMaxSize()">
-				    </div>
-				</div>
-				<!-- Values from sliders -->
-				<div class="col-md-2">
-					<div>
-				    	<p><span id="demo"></span></p>
-				    	<p><span id="demo1"></span></p>
-				    	<p><span id="demo2"></span></p>
-				    	<p><span id="demo3"></span></p>
-				    </div>
-				</div>
-			</div>
 
-			<p><br><br> The <font id="blue">blue</font> rectangle represents an elevator. <br>
-				The <font id="green">green</font> rectangle represent stairs. <br>
-				The <font id="black">black</font> rectangle represent the entrance of Täppan.
-			</p>
-
+				<p><br><br> The <font id="blue">blue</font> rectangle represents an elevator. <br>
+					The <font id="green">green</font> rectangle represent stairs. <br>
+					The <font id="black">black</font> rectangle represent the entrance of Täppan.
+				</p>
+	  		</div>
 	  	</div>
-
-  		<div class="row">
-  		</div>
   	</div>
+		   
+
 
 	<footer id="footer">
 	    <div class ="col-lg-12">

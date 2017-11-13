@@ -5,6 +5,8 @@
  	From index2.html
 
     Functions:
+    - DataSet()
+    - draw()
     - createGroupsArray(hour)
     - make_x_axis()
     - make_y_axis()
@@ -47,10 +49,12 @@ function draw(group){
     
     createCircles(svg);  
 }
+//Set the scale
+var scale = 1; 
 
 //Only use the canvas width. 
-var canvas_width = canvas.width*2;
-var canvas_height = canvas.width*2;
+var canvas_width = (canvas.width*2)*scale;
+var canvas_height = (canvas.width*2)*scale;
 var padding = 30;  // for chart edges
 
 // Create scale functions
@@ -146,7 +150,7 @@ function drawElevator(posX, posY) {
       .attr('width', 20)
       .attr('height', 60)
       .attr('id', 'elevator_ID')
-      .style('fill', 'rgb(0,0,255)')
+      .style('fill', '#3E92CC') //blue
 }
 
 //Draw the stairs --> a rectangle, a green rectangle
@@ -157,7 +161,7 @@ function drawStairs(posX, posY) {
       .attr('width', 20)
       .attr('height', 60)
       .attr('id', 'stairs_ID')
-      .style('fill', 'rgb(0,255,0)')
+      .style('fill', '#A3EA46') //green
 }
 
 //Draw the entrance
@@ -166,7 +170,7 @@ function drawEntrance(posX, posY) {
       .attr('x', posX)
       .attr('y', posY)
       .attr('width', 58)
-      .attr('height', 10)
+      .attr('height', 20)
       .attr('id', 'entrance_ID')
       .style('fill', 'rgb(0,0,0)')
 }
